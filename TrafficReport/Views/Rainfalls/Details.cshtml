@@ -1,0 +1,42 @@
+﻿@model TrafficReport.Models.tblRainfall
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblRainfall</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.rfDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rfDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rfValue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rfValue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblLocationName.lnLocationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblLocationName.lnLocationName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.rfID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

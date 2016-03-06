@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="254001451b9646b2ba7305f6226050cf" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="TrafficReportModel.tblLocationName" Width="1.5" PointX="3.875" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrafficReportModel.tblRainfall" Width="1.5" PointX="4.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrafficReportModel.tblRoadName" Width="1.5" PointX="1.5" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrafficReportModel.tblTrafficAccident" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrafficReportModel.tblTrafficSpeed" Width="1.5" PointX="2.625" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="TrafficReportModel.FK_tblRainfall_tblLocationName" ManuallyRouted="false" />
+        <AssociationConnector Association="TrafficReportModel.FK_tblRoadName_tblLocationName" ManuallyRouted="false" />
+        <AssociationConnector Association="TrafficReportModel.FK_tblTrafficAccident_tblRoadName" ManuallyRouted="false" />
+        <AssociationConnector Association="TrafficReportModel.FK_tblTrafficSpeed_tblRoadName" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
