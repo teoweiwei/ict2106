@@ -136,6 +136,7 @@
     <Compile Include="DAL\DataGateway.cs" />
     <Compile Include="DAL\IDataGateway.cs" />
     <Compile Include="DAL\LocationNameGateway.cs" />
+    <Compile Include="DAL\RainfallGateway.cs" />
     <Compile Include="DAL\TrafficReportContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -175,6 +176,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\image\citytraffic.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -227,16 +229,17 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Rainfalls\Create.cshtml" />
-    <Content Include="Views\Rainfalls\Delete.cshtml" />
-    <Content Include="Views\Rainfalls\Details.cshtml" />
-    <Content Include="Views\Rainfalls\Edit.cshtml" />
-    <Content Include="Views\Rainfalls\Index.cshtml" />
     <Content Include="Views\LocationNames\Create.cshtml" />
     <Content Include="Views\LocationNames\Delete.cshtml" />
     <Content Include="Views\LocationNames\Details.cshtml" />
     <Content Include="Views\LocationNames\Edit.cshtml" />
     <Content Include="Views\LocationNames\Index.cshtml" />
+    <Content Include="Views\Rainfalls\Create.cshtml" />
+    <Content Include="Views\Rainfalls\Delete.cshtml" />
+    <Content Include="Views\Rainfalls\Details.cshtml" />
+    <Content Include="Views\Rainfalls\Edit.cshtml" />
+    <Content Include="Views\Rainfalls\Index.cshtml" />
+    <Content Include="Views\Rainfalls\Upload.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

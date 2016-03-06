@@ -1,0 +1,35 @@
+﻿@model IEnumerable<TrafficReport.Models.tblRainfall>
+
+@{
+    ViewBag.Title = "Upload";
+}
+
+<h2>Uploaded List</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.rfDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rfValue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblLocationName.lnLocationName)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.rfDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rfValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblLocationName.lnLocationName)
+        </td>
+    </tr>
+}
+
+</table>

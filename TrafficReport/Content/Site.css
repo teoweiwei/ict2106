@@ -22,3 +22,15 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.jumbotron{
+    background-image: url(image/citytraffic.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.indexHeader {
+    background-color: rgba(195, 189, 189, 0.82);
+    border-radius: 6px;
+    padding-left: 10px;
+}

@@ -1,45 +1,25 @@
-﻿@model IEnumerable<TrafficReport.Models.tblRainfall>
-
-@{
+﻿@{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Upload Rainfall Data</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.rfDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.rfValue)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tblLocationName.lnLocationName)
-        </th>
-        <th></th>
-    </tr>
+<div class="row">
+    <div class="col-md-12">
+        <h4>CSV File Upload</h4>
+        <p>
+            @using (Html.BeginForm("Upload", "Rainfalls", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary()
+                <div class="form-group">
+                    <input type="file" id="csvFile" name="upload" />
+                </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.rfDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.rfValue)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tblLocationName.lnLocationName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.rfID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.rfID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.rfID })
-        </td>
-    </tr>
-}
-
-</table>
+                <div class="form-group">
+                    <input type="submit" value="Upload" class="btn btn-default" />
+                </div>
+            }
+        </p>
+    </div>
+</div>
