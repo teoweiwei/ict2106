@@ -137,7 +137,10 @@
     <Compile Include="DAL\IDataGateway.cs" />
     <Compile Include="DAL\LocationNameGateway.cs" />
     <Compile Include="DAL\RainfallGateway.cs" />
+    <Compile Include="DAL\RoadNameGateway.cs" />
+    <Compile Include="DAL\TrafficAccidentGateway.cs" />
     <Compile Include="DAL\TrafficReportContext.cs" />
+    <Compile Include="DAL\TrafficSpeedGateway.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
