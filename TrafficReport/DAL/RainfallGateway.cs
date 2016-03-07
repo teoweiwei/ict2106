@@ -22,11 +22,11 @@ namespace TrafficReport.DAL
                     StreamReader read = new StreamReader(stream);
 
                     List<string> row = new List<string>();
-                    tblRainfall rainfallData = new tblRainfall();
                     read.ReadLine();
                     
                     while (!read.EndOfStream)
                     {
+                        tblRainfall rainfallData = new tblRainfall();
                         row = read.ReadLine().Split(',').ToList();
 
                         string locationName = row[0];
