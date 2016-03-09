@@ -1,0 +1,124 @@
+TRAFFIC INCIDENTS SAMPLE
+
+
+{
+"d" : [
+{
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/IncidentSet(12737127)", "type": "LTAModel.Incident"
+}, "IncidentID": 12737127, "Message": "(9/3)10:38 Roadworks on PIE (towards Changi Airport) before BKE.", "Latitude": 1.3451982408683969, "Longitude": 103.78793567753401, "Type": "Road Work", "Summary": null, "CreateDate": "\/Date(1457491366740)\/", "Distance": 0
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/IncidentSet(12737128)", "type": "LTAModel.Incident"
+}, "IncidentID": 12737128, "Message": "(9/3)10:32 Roadworks on TPE (towards PIE) after Pasir Ris Dr 8 Exit. Avoid lane 3.", "Latitude": 1.3659954944324684, "Longitude": 103.95141453462455, "Type": "Road Work", "Summary": null, "CreateDate": "\/Date(1457491366747)\/", "Distance": 0
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/IncidentSet(12737129)", "type": "LTAModel.Incident"
+}, "IncidentID": 12737129, "Message": "(9/3)10:31 Vehicle breakdown in CTE Tunnel (towards AYE) before Outram Rd Exit.", "Latitude": 1.2871777834637632, "Longitude": 103.84023616406812, "Type": "Vehicle Breakdown", "Summary": null, "CreateDate": "\/Date(1457491366750)\/", "Distance": 0
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/IncidentSet(12737130)", "type": "LTAModel.Incident"
+}, "IncidentID": 12737130, "Message": "(9/3)10:28 Roadworks on PIE (towards Tuas) at Thomson Rd Exit.", "Latitude": 1.3288028033985193, "Longitude": 103.84157054257156, "Type": "Road Work", "Summary": null, "CreateDate": "\/Date(1457491366753)\/", "Distance": 0
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/IncidentSet(12737131)", "type": "LTAModel.Incident"
+}, "IncidentID": 12737131, "Message": "(9/3)10:27 Roadworks on AYE (towards MCE) after Clementi Ave 2 Exit. Avoid lane 1.", "Latitude": 1.3051687614167251, "Longitude": 103.7693863555845, "Type": "Road Work", "Summary": null, "CreateDate": "\/Date(1457491366757)\/", "Distance": 0
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/IncidentSet(12737132)", "type": "LTAModel.Incident"
+}, "IncidentID": 12737132, "Message": "(9/3)10:27 Roadworks on ECP (towards City) after PIE(Tuas) Exit. Avoid lane 2.", "Latitude": 1.3389502730065983, "Longitude": 103.98077183765588, "Type": "Road Work", "Summary": null, "CreateDate": "\/Date(1457491366763)\/", "Distance": 0
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/IncidentSet(12737133)", "type": "LTAModel.Incident"
+}, "IncidentID": 12737133, "Message": "(9/3)10:22 Heavy Traffic on PIE (towards Changi Airport) at Lornie Rd Exit.", "Latitude": 1.3338446430910336, "Longitude": 103.81367980455367, "Type": "Heavy Traffic", "Summary": null, "CreateDate": "\/Date(1457491366770)\/", "Distance": 0
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/IncidentSet(12737134)", "type": "LTAModel.Incident"
+}, "IncidentID": 12737134, "Message": "(9/3)10:22 Accident on KPE (towards ECP) after PIE(Tuas) Exit.", "Latitude": 1.3228744026210593, "Longitude": 103.88226171302742, "Type": "Accident", "Summary": null, "CreateDate": "\/Date(1457491366770)\/", "Distance": 0
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/IncidentSet(12737135)", "type": "LTAModel.Incident"
+}, "IncidentID": 12737135, "Message": "(9/3)10:12 Roadworks on PIE (towards Tuas) after Upper Jurong Rd. Avoid lane 4.", "Latitude": 1.3290648648503092, "Longitude": 103.66984156259535, "Type": "Road Work", "Summary": null, "CreateDate": "\/Date(1457491366777)\/", "Distance": 0
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/IncidentSet(12737136)", "type": "LTAModel.Incident"
+}, "IncidentID": 12737136, "Message": "(9/3)10:12 Roadworks on PIE (towards Changi Airport) at Bukit Batok Rd Entrance.", "Latitude": 1.3458810392660476, "Longitude": 103.73815753456128, "Type": "Road Work", "Summary": null, "CreateDate": "\/Date(1457491366780)\/", "Distance": 0
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/IncidentSet(12737137)", "type": "LTAModel.Incident"
+}, "IncidentID": 12737137, "Message": "(9/3)10:10 Roadworks on CTE (towards SLE) after AYE Entrance.", "Latitude": 1.2798755860929845, "Longitude": 103.82965236478043, "Type": "Road Work", "Summary": null, "CreateDate": "\/Date(1457491366783)\/", "Distance": 0
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/IncidentSet(12737138)", "type": "LTAModel.Incident"
+}, "IncidentID": 12737138, "Message": "(9/3)10:09 Roadworks on ECP (towards City) after East Coast Park Carpark H Exit. Avoid lane 1.", "Latitude": 1.3147888939453576, "Longitude": 103.95788288720823, "Type": "Road Work", "Summary": null, "CreateDate": "\/Date(1457491366787)\/", "Distance": 0
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/IncidentSet(12737139)", "type": "LTAModel.Incident"
+}, "IncidentID": 12737139, "Message": "(9/3)10:05 Roadworks on TPE (towards SLE) before Punggol Rd Exit. Avoid lane 1.", "Latitude": 1.3929033177114793, "Longitude": 103.90822653132804, "Type": "Road Work", "Summary": null, "CreateDate": "\/Date(1457491366790)\/", "Distance": 0
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/IncidentSet(12737140)", "type": "LTAModel.Incident"
+}, "IncidentID": 12737140, "Message": "(9/3)10:03 Roadworks on SLE (towards BKE) after Woodlands Ave 2 Exit. Avoid lane 1.", "Latitude": 1.4265014065485242, "Longitude": 103.78456593855708, "Type": "Road Work", "Summary": null, "CreateDate": "\/Date(1457491366797)\/", "Distance": 0
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/IncidentSet(12737141)", "type": "LTAModel.Incident"
+}, "IncidentID": 12737141, "Message": "(9/3)10:03 Roadworks on PIE (towards Changi Airport) after Tampines Ave 5. Avoid lane 3.", "Latitude": 1.3451565546773843, "Longitude": 103.95114447850332, "Type": "Road Work", "Summary": null, "CreateDate": "\/Date(1457491366800)\/", "Distance": 0
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/IncidentSet(12737142)", "type": "LTAModel.Incident"
+}, "IncidentID": 12737142, "Message": "(9/3)10:02 Roadworks on AYE (towards MCE) after Keppel Rd Exit. Avoid lane 1.", "Latitude": 1.2731381593904993, "Longitude": 103.83134773135895, "Type": "Road Work", "Summary": null, "CreateDate": "\/Date(1457491366803)\/", "Distance": 0
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/IncidentSet(12737143)", "type": "LTAModel.Incident"
+}, "IncidentID": 12737143, "Message": "(9/3)10:01 Roadworks on ECP (towards Changi Airport) after Bayshore Rd Exit. Avoid lane 3.", "Latitude": 1.310191551099892, "Longitude": 103.93884585846348, "Type": "Road Work", "Summary": null, "CreateDate": "\/Date(1457491366810)\/", "Distance": 0
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/IncidentSet(12737144)", "type": "LTAModel.Incident"
+}, "IncidentID": 12737144, "Message": "(9/3)9:58 Roadworks on CTE (towards SLE) after Braddell Rd Exit. Avoid lane 1.", "Latitude": 1.3397724225720251, "Longitude": 103.86166372044444, "Type": "Road Work", "Summary": null, "CreateDate": "\/Date(1457491366813)\/", "Distance": 0
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/IncidentSet(12737145)", "type": "LTAModel.Incident"
+}, "IncidentID": 12737145, "Message": "(9/3)9:51 Roadworks on PIE (towards Tuas) after Thomson Rd Exit.", "Latitude": 1.3269845810051353, "Longitude": 103.83658059303134, "Type": "Road Work", "Summary": null, "CreateDate": "\/Date(1457491366817)\/", "Distance": 0
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/IncidentSet(12737146)", "type": "LTAModel.Incident"
+}, "IncidentID": 12737146, "Message": "(9/3)9:51 Roadworks on PIE (towards Changi Airport) before Eng Neo Ave.", "Latitude": 1.3468920254701291, "Longitude": 103.79897753142585, "Type": "Road Work", "Summary": null, "CreateDate": "\/Date(1457491366820)\/", "Distance": 0
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/IncidentSet(12737147)", "type": "LTAModel.Incident"
+}, "IncidentID": 12737147, "Message": "(9/3)9:45 Roadworks on PIE (towards Tuas) after Upper Changi Rd East. Avoid lane 1.", "Latitude": 1.3504722501397028, "Longitude": 103.95909198624737, "Type": "Road Work", "Summary": null, "CreateDate": "\/Date(1457491366827)\/", "Distance": 0
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/IncidentSet(12737148)", "type": "LTAModel.Incident"
+}, "IncidentID": 12737148, "Message": "(9/3)9:43 Roadworks on PIE (towards Tuas) at Thomson Rd Entrance.", "Latitude": 1.328242102485049, "Longitude": 103.83986481357147, "Type": "Road Work", "Summary": null, "CreateDate": "\/Date(1457491366830)\/", "Distance": 0
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/IncidentSet(12737149)", "type": "LTAModel.Incident"
+}, "IncidentID": 12737149, "Message": "(9/3)9:43 Roadworks on AYE (towards Tuas) before Telok Blangah Rd Exit. Avoid lane 1.", "Latitude": 1.2723646645379181, "Longitude": 103.83589916391682, "Type": "Road Work", "Summary": null, "CreateDate": "\/Date(1457491366837)\/", "Distance": 0
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/IncidentSet(12737150)", "type": "LTAModel.Incident"
+}, "IncidentID": 12737150, "Message": "(9/3)9:39 Roadworks on AYE (towards MCE) after Yuan Ching Entrance. Avoid lane 4.", "Latitude": 1.3264588584920189, "Longitude": 103.73220196200565, "Type": "Road Work", "Summary": null, "CreateDate": "\/Date(1457491366840)\/", "Distance": 0
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/IncidentSet(12737151)", "type": "LTAModel.Incident"
+}, "IncidentID": 12737151, "Message": "(9/3)9:38 Roadworks on AYE (towards MCE) before Jurong Town Hall Exit.", "Latitude": 1.3257331975472901, "Longitude": 103.74070239182127, "Type": "Road Work", "Summary": null, "CreateDate": "\/Date(1457491366843)\/", "Distance": 0
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/IncidentSet(12737152)", "type": "LTAModel.Incident"
+}, "IncidentID": 12737152, "Message": "(9/3)9:37 Roadworks on SLE (towards BKE) after Upper Thomson Rd Exit. Avoid lane 3.", "Latitude": 1.399333011115762, "Longitude": 103.813338071887, "Type": "Road Work", "Summary": null, "CreateDate": "\/Date(1457491366850)\/", "Distance": 0
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/IncidentSet(12737153)", "type": "LTAModel.Incident"
+}, "IncidentID": 12737153, "Message": "(9/3)9:36 Roadworks on PIE (towards Changi Airport) at Upper Serangoon Rd Exit.", "Latitude": 1.3294261547153672, "Longitude": 103.86565219965348, "Type": "Road Work", "Summary": null, "CreateDate": "\/Date(1457491366850)\/", "Distance": 0
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/IncidentSet(12737154)", "type": "LTAModel.Incident"
+}, "IncidentID": 12737154, "Message": "(9/3)9:36 Roadworks on ECP (towards City) at Bedok South Ave 1 Entrance.", "Latitude": 1.3082302308526288, "Longitude": 103.93269828082164, "Type": "Road Work", "Summary": null, "CreateDate": "\/Date(1457491366853)\/", "Distance": 0
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/IncidentSet(12737155)", "type": "LTAModel.Incident"
+}, "IncidentID": 12737155, "Message": "(9/3)9:31 Roadworks on BKE (towards Woodlands) after SLE Exit.", "Latitude": 1.4204321683565511, "Longitude": 103.77142204331562, "Type": "Road Work", "Summary": null, "CreateDate": "\/Date(1457491366860)\/", "Distance": 0
+}
+]
+}

@@ -1,0 +1,208 @@
+TRAFFIC SPEED BAND DATA SET
+
+
+{
+"d" : [
+{
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'45aa6023-c655-4bce-8fe9-0004351f5443')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "45aa6023-c655-4bce-8fe9-0004351f5443", "LinkID": 103053662, "RoadName": "PORTSDOWN ROAD", "RoadCategory": "E ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.30000080433815 103.793173765791 1.30004849171295 103.793188168711 1.30011390488065 103.793218035308 1.30024232664491 103.793342940005 1.30033361473236 103.793438831281 1.30042750718038 103.793521747535 1.30054228148634 103.793609866043 1.30059965519577 103.793661702208 1.30063618325943 103.793710932919 1.30069877580417 103.793804218895 1.30071964031173 103.793856064614", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457519854000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'1a13258e-df83-4bb8-919d-00096f40546c')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "1a13258e-df83-4bb8-919d-00096f40546c", "LinkID": 103116016, "RoadName": "BARKER ROAD", "RoadCategory": "E ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.32070924192721 103.834317742407 1.32101106452573 103.834458806283 1.32134746093885 103.834670163982 1.32150854636774 103.834830214272 1.32158908900901 103.834947583275 1.32164278103575 103.835096958715 1.32163492202632 103.835206402431", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457520321000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'938374ad-dd5d-4528-bfca-000a46113447')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "938374ad-dd5d-4528-bfca-000a46113447", "LinkID": 103006966, "RoadName": "JALAN SINGA", "RoadCategory": "E ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.33078227359986 103.906230917411 1.33059007293005 103.907312412822", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457520373000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'98ac9fe4-415e-4b45-954f-000f913a77ae')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "98ac9fe4-415e-4b45-954f-000f913a77ae", "LinkID": 103062739, "RoadName": "SERANGOON AVENUE ", "RoadCategory": "D ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.34997686470847 103.865164019143 1.35125953130451 103.864649904836", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457519954000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'82ce7aec-9ae2-4db2-91cc-0013e955552a')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "82ce7aec-9ae2-4db2-91cc-0013e955552a", "LinkID": 103060292, "RoadName": "HOUGANG AVENUE ", "RoadCategory": "D ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.37082182911882 103.888725807293 1.37083304754051 103.888928794584 1.37088432824758 103.889175075923", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457519919000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'0901710f-f20e-4607-b628-001632aa9c2b')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "0901710f-f20e-4607-b628-001632aa9c2b", "LinkID": 103063550, "RoadName": "CENTRAL EXPRESSWAY", "RoadCategory": "A ", "Band": 4, "MinimumSpeed": 60, "MaximumSpeed": null, "Location": "1.29645810045529 103.843938827338 1.29670387073225 103.843916113173", "Summary": "Road Speed Band: 4", "CreateDate": "\/Date(1457519966000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'f7ee50cc-8bf8-4676-a15f-0016f3bd0cf0')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "f7ee50cc-8bf8-4676-a15f-0016f3bd0cf0", "LinkID": 103000383, "RoadName": "SURREY ROAD", "RoadCategory": "E ", "Band": 4, "MinimumSpeed": 60, "MaximumSpeed": null, "Location": "1.31593822180781 103.842612450537 1.31558010340737 103.842350090427 1.31556981184908 103.842319306048 1.31561328489346 103.842254430854", "Summary": "Road Speed Band: 4", "CreateDate": "\/Date(1457520340000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'c1004a1c-24a0-4b66-ab73-001b586498a4')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "c1004a1c-24a0-4b66-ab73-001b586498a4", "LinkID": 103113831, "RoadName": "PANDAN VALLEY", "RoadCategory": "D ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.32074338733774 103.778871136832 1.32093719682348 103.778653260694", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457520313000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'f2963fb6-a787-4a3c-bf57-001bbf4aac00')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "f2963fb6-a787-4a3c-bf57-001bbf4aac00", "LinkID": 103115758, "RoadName": "BALESTIER ROAD", "RoadCategory": "B ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.32106925512981 103.852943001745 1.32028044955113 103.853029436278", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457519706000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'718ab935-c308-4e1d-a6cd-001dff3177bd')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "718ab935-c308-4e1d-a6cd-001dff3177bd", "LinkID": 103049179, "RoadName": "DUNEARN CLOSE", "RoadCategory": "E ", "Band": 3, "MinimumSpeed": 40, "MaximumSpeed": 59, "Location": "1.32344218015106 103.814744555637 1.32432609780355 103.814844971415", "Summary": "Road Speed Band: 3", "CreateDate": "\/Date(1457519799000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'4519a523-44ab-44ac-a67a-00232696ca7a')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "4519a523-44ab-44ac-a67a-00232696ca7a", "LinkID": 108000727, "RoadName": "BUANGKOK LINK", "RoadCategory": "D ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.37916767444044 103.881463288473 1.37955137808522 103.881456772537 1.37955448909791 103.881456727671", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457520226000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'e3f0a23f-91a7-4302-b3b2-00237c619e0c')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "e3f0a23f-91a7-4302-b3b2-00237c619e0c", "LinkID": 103113578, "RoadName": "HARBOUR DRIVE", "RoadCategory": "E ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.29081096072974 103.766729649071 1.29063846117255 103.767031033232", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457520312000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'27cf9b86-f404-4d24-bcf7-0023b00a14de')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "27cf9b86-f404-4d24-bcf7-0023b00a14de", "LinkID": 103107851, "RoadName": "TAMPINES STREET ", "RoadCategory": "D ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.35835224121911 103.933674190819 1.35825760294655 103.933594861625 1.35742719944892 103.933143999688", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457520276000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'45f178f0-cfc9-4fd5-b526-0024ad55c70f')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "45f178f0-cfc9-4fd5-b526-0024ad55c70f", "LinkID": 103102363, "RoadName": "JURONG WEST STREET ", "RoadCategory": "D ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.34687804963742 103.725932014601 1.34672242191729 103.725820231535 1.34665875113717 103.725738366504 1.34656395644444 103.725548918233 1.34652572301224 103.725413821393 1.34650006312771 103.725141325174 1.34650243635158 103.724418667075", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457520244000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'c0b9edbc-415f-46aa-9df1-0028ef09a8ca')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "c0b9edbc-415f-46aa-9df1-0028ef09a8ca", "LinkID": 103116730, "RoadName": "ANG MO KIO AVENUE ", "RoadCategory": "B ", "Band": 3, "MinimumSpeed": 40, "MaximumSpeed": 59, "Location": "1.37716141954145 103.841661695189 1.37708905466435 103.840964743697 1.37708605412305 103.840334017282", "Summary": "Road Speed Band: 3", "CreateDate": "\/Date(1457519708000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'4ed63b1e-c4e5-4155-bb38-002bd68b3dc1')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "4ed63b1e-c4e5-4155-bb38-002bd68b3dc1", "LinkID": 103001998, "RoadName": "SIMEI STREET ", "RoadCategory": "D ", "Band": 1, "MinimumSpeed": 0, "MaximumSpeed": 19, "Location": "1.34553503489826 103.954357978804 1.34476296647657 103.955003501554", "Summary": "Road Speed Band: 1", "CreateDate": "\/Date(1457520348000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'cc3f80af-7e88-4f32-b770-002ed22c2f04')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "cc3f80af-7e88-4f32-b770-002ed22c2f04", "LinkID": 103052923, "RoadName": "TUAS SOUTH AVENUE ", "RoadCategory": "C ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.31636857787131 103.635710742529 1.31614773767406 103.635538382968 1.31611128096515 103.635513487149", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457519846000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'801a3122-c6f5-45e8-b07e-0031bb69528c')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "801a3122-c6f5-45e8-b07e-0031bb69528c", "LinkID": 103101666, "RoadName": "CLEMENTI AVENUE ", "RoadCategory": "D ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.31884372667354 103.766074802525 1.31856766806809 103.766020312817 1.31739045711385 103.766010127903", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457520237000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'3aa38326-a23b-4692-b4c9-003419e30098')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "3aa38326-a23b-4692-b4c9-003419e30098", "LinkID": 103079730, "RoadName": "CLEMENTI ROAD", "RoadCategory": "B ", "Band": 3, "MinimumSpeed": 40, "MaximumSpeed": 59, "Location": "1.33309822809509 103.777880306984 1.33285362441121 103.777866348895", "Summary": "Road Speed Band: 3", "CreateDate": "\/Date(1457519604000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'c175aaf0-739e-4535-9fbb-0038a54cd8f1')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "c175aaf0-739e-4535-9fbb-0038a54cd8f1", "LinkID": 103044146, "RoadName": "WOODLANDS IND PARK D", "RoadCategory": "E ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.43399622926576 103.767067721825 1.43321347111269 103.766290056227", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457519753000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'df187ab5-e2dc-4b74-bba3-0038fa36230a')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "df187ab5-e2dc-4b74-bba3-0038fa36230a", "LinkID": 103058038, "RoadName": "TAMPINES AVENUE ", "RoadCategory": "C ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.35683297057356 103.955460347519 1.35720041219219 103.955475902113 1.35860069098034 103.955468756935", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457519892000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'8acaaae5-41df-403b-92ca-003a5fa8da38')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "8acaaae5-41df-403b-92ca-003a5fa8da38", "LinkID": 103007487, "RoadName": "KALLANG JUNCTION", "RoadCategory": "D ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.31239933217765 103.864885948446 1.31310482790126 103.865519147172", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457520377000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'd867d3b2-3da1-4fa9-ad48-003b26bb2943')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "d867d3b2-3da1-4fa9-ad48-003b26bb2943", "LinkID": 103057718, "RoadName": "WOODLANDS STREET ", "RoadCategory": "D ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.42753474166822 103.774937234844 1.42753474677645 103.775137459078 1.42754998768119 103.775231082985 1.42762767549505 103.775349191947 1.42774239588938 103.775424122654 1.42831827669512 103.775435852841", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457519889000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'a29e27f6-54fc-49a4-ab26-003d5ef219ca')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "a29e27f6-54fc-49a4-ab26-003d5ef219ca", "LinkID": 103102814, "RoadName": "ANDREW ROAD", "RoadCategory": "E ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.33573268214028 103.834722629525 1.33568970665665 103.834857925344 1.33554798311757 103.835595542329 1.33547929604314 103.836159575937", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457520249000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'96545dcf-3556-47d5-979d-003f29a8a7c2')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "96545dcf-3556-47d5-979d-003f29a8a7c2", "LinkID": 109001484, "RoadName": "PASIR PANJANG ROAD", "RoadCategory": "B ", "Band": 4, "MinimumSpeed": 60, "MaximumSpeed": null, "Location": "1.27634549018784 103.790851104812 1.27635843095317 103.790809385555 1.27644002882256 103.790631914264 1.27654808011868 103.790500447599 1.27665613225457 103.790419379841 1.27670905475745 103.790364604172 1.27675977869194 103.790252861316 1.27681269919007 103.790079766338 1.27693397731945 103.789713871193 1.27704203441265 103.789396164763 1.27705937018115 103.789343716881", "Summary": "Road Speed Band: 4", "CreateDate": "\/Date(1457519710000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'15df0f60-edf7-489c-8991-00423a66e2b8')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "15df0f60-edf7-489c-8991-00423a66e2b8", "LinkID": 103062202, "RoadName": "UPPER CHANGI ROAD EAST", "RoadCategory": "B ", "Band": 3, "MinimumSpeed": 40, "MaximumSpeed": 59, "Location": "1.34089160371635 103.961255868951 1.34114985879053 103.961325233029", "Summary": "Road Speed Band: 3", "CreateDate": "\/Date(1457519569000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'35d01653-3eec-41a2-8163-0044f73410fb')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "35d01653-3eec-41a2-8163-0044f73410fb", "LinkID": 103089147, "RoadName": "COMMONWEALTH AVENUE", "RoadCategory": "B ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.30655240612978 103.793493113488 1.30660519251137 103.793406959957", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457519651000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'c1e998a5-18e4-4fd5-958b-0047e6097bee')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "c1e998a5-18e4-4fd5-958b-0047e6097bee", "LinkID": 103003878, "RoadName": "JALAN ANGIN LAUT", "RoadCategory": "E ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.33698494863363 103.955070805775 1.33738415195794 103.955980604775", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457520357000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'd3576dd7-fcf3-4ef0-954d-0048139f015a')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "d3576dd7-fcf3-4ef0-954d-0048139f015a", "LinkID": 106001946, "RoadName": "TAMPINES INDUSTRIAL AVENUE ", "RoadCategory": "D ", "Band": 3, "MinimumSpeed": 40, "MaximumSpeed": 59, "Location": "1.35540268890976 103.923855795528 1.35520210711527 103.923937314775 1.35502888827865 103.924100352731 1.35491948181599 103.924249815745 1.35448599253869 103.924987717931", "Summary": "Road Speed Band: 3", "CreateDate": "\/Date(1457519944000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'b5b7dc1d-f8fb-400e-ab16-004b493d913f')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "b5b7dc1d-f8fb-400e-ab16-004b493d913f", "LinkID": 103042342, "RoadName": "SENOKO LOOP", "RoadCategory": "E ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.46002644973709 103.797648398424 1.45937933904254 103.798060571615", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457519740000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'825c1b02-cfd1-49e9-b52b-004b502ffc3e')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "825c1b02-cfd1-49e9-b52b-004b502ffc3e", "LinkID": 103059270, "RoadName": "WOODLANDS IND PARK E", "RoadCategory": "E ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.45279368784791 103.800153823665 1.45134251111338 103.800848337966 1.45124902738457 103.800870957099", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457519904000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'179033b7-6e33-4a79-9479-004b759db609')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "179033b7-6e33-4a79-9479-004b759db609", "LinkID": 103013196, "RoadName": "CANTONMENT LINK", "RoadCategory": "D ", "Band": 3, "MinimumSpeed": 40, "MaximumSpeed": 59, "Location": "1.27298200399952 103.839933589186 1.27321195640687 103.840116666406", "Summary": "Road Speed Band: 3", "CreateDate": "\/Date(1457519717000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'596c68cc-5daf-41ed-9bf4-004f6171aa54')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "596c68cc-5daf-41ed-9bf4-004f6171aa54", "LinkID": 103108671, "RoadName": "POH HUAT CRESCENT", "RoadCategory": "E ", "Band": 1, "MinimumSpeed": 0, "MaximumSpeed": 19, "Location": "1.36772260661917 103.881390814545 1.36780188361178 103.881368675375 1.36818383306395 103.881350361135 1.36833783895627 103.880811420187", "Summary": "Road Speed Band: 1", "CreateDate": "\/Date(1457520280000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'b6fb2411-6efe-4ec6-94fb-005f11dfd97e')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "b6fb2411-6efe-4ec6-94fb-005f11dfd97e", "LinkID": 104000663, "RoadName": "JALAN JURONG KECHIL", "RoadCategory": "D ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.34200483650477 103.777733525019 1.34196332585643 103.777718762621 1.34181932279478 103.777667583918 1.34167862973159 103.777617582259 1.34161913946809 103.777565449185", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457519723000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'99537f4f-2be0-42ac-97ec-006330a95537')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "99537f4f-2be0-42ac-97ec-006330a95537", "LinkID": 109000422, "RoadName": "BRICKLAND ROAD", "RoadCategory": "B ", "Band": 3, "MinimumSpeed": 40, "MaximumSpeed": 59, "Location": "1.36939066106955 103.748110352435 1.36939205373435 103.748108824819 1.37032748097085 103.747078878323 1.37048995213731 103.746893219055", "Summary": "Road Speed Band: 3", "CreateDate": "\/Date(1457520327000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'a5bf423b-bb39-4847-a2c7-0064f243c681')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "a5bf423b-bb39-4847-a2c7-0064f243c681", "LinkID": 103103606, "RoadName": "PAN ISLAND EXPRESSWAY", "RoadCategory": "A ", "Band": 4, "MinimumSpeed": 60, "MaximumSpeed": null, "Location": "1.33021815927233 103.672564603084 1.33033668465356 103.673391703841 1.33043330469346 103.673779054567", "Summary": "Road Speed Band: 4", "CreateDate": "\/Date(1457520258000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'cb70f558-9da5-4bb6-970f-006816ec9939')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "cb70f558-9da5-4bb6-970f-006816ec9939", "LinkID": 103063834, "RoadName": "DOVER ROAD", "RoadCategory": "D ", "Band": 1, "MinimumSpeed": 0, "MaximumSpeed": 19, "Location": "1.30319467696896 103.782288011923 1.30231949954258 103.782890171818 1.30179815151243 103.783340407295", "Summary": "Road Speed Band: 1", "CreateDate": "\/Date(1457519972000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'19ac220a-dc8a-4132-9b29-006c4719ed6a')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "19ac220a-dc8a-4132-9b29-006c4719ed6a", "LinkID": 103080998, "RoadName": "BEDOK ROAD", "RoadCategory": "B ", "Band": 3, "MinimumSpeed": 40, "MaximumSpeed": 59, "Location": "1.32480864468802 103.952546661755 1.32404222117408 103.953173787206", "Summary": "Road Speed Band: 3", "CreateDate": "\/Date(1457519611000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'c0d5d514-2df6-47b7-b22a-007422539b7a')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "c0d5d514-2df6-47b7-b22a-007422539b7a", "LinkID": 107001277, "RoadName": "BRADDELL ROAD", "RoadCategory": "B ", "Band": 3, "MinimumSpeed": 40, "MaximumSpeed": 59, "Location": "1.34341823446091 103.853210347451 1.34352711514624 103.852684025442 1.34367330213623 103.851978189221 1.34368117953363 103.851928229307", "Summary": "Road Speed Band: 3", "CreateDate": "\/Date(1457519612000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'e8770f71-5d02-47a5-93c4-007743c7979c')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "e8770f71-5d02-47a5-93c4-007743c7979c", "LinkID": 103008526, "RoadName": "TAI SENG AVENUE", "RoadCategory": "C ", "Band": 3, "MinimumSpeed": 40, "MaximumSpeed": 59, "Location": "1.33622343477782 103.893553412198 1.33650794393165 103.893339337778", "Summary": "Road Speed Band: 3", "CreateDate": "\/Date(1457520382000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'1e4dfd63-d735-4dd2-a923-007bcbba0827')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "1e4dfd63-d735-4dd2-a923-007bcbba0827", "LinkID": 103111671, "RoadName": "WAN THO AVENUE", "RoadCategory": "E ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.33222515094366 103.869708993522 1.33213269193584 103.870099819241", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457520293000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'65ff56f8-99f4-4f05-af05-0081cc3e3e6b')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "65ff56f8-99f4-4f05-af05-0081cc3e3e6b", "LinkID": 103112522, "RoadName": "LORONG CHUAN", "RoadCategory": "B ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.35676879935154 103.868052590993 1.35644619507734 103.868637390619 1.35638910161327 103.868702131415 1.35630147809842 103.868679423401 1.35604687526671 103.868486578655", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457520297000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'799b0fb0-ee85-4fea-acc9-0082b70eb429')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "799b0fb0-ee85-4fea-acc9-0082b70eb429", "LinkID": 103087944, "RoadName": "FARRER ROAD", "RoadCategory": "B ", "Band": 3, "MinimumSpeed": 40, "MaximumSpeed": 59, "Location": "1.31194178710586 103.804004821738 1.31130088015852 103.803848930964", "Summary": "Road Speed Band: 3", "CreateDate": "\/Date(1457519644000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'876fa666-7745-47be-b76b-00858d02395c')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "876fa666-7745-47be-b76b-00858d02395c", "LinkID": 103044598, "RoadName": "ANG MO KIO STREET ", "RoadCategory": "D ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.37094732965477 103.835152516832 1.37096393391265 103.834974105615 1.37107872516027 103.834478597796", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457519758000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'0e359ae6-94a2-4809-a8d9-008a98432a05')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "0e359ae6-94a2-4809-a8d9-008a98432a05", "LinkID": 103072072, "RoadName": "GEYLANG ROAD", "RoadCategory": "B ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.31025054052956 103.872158368594 1.31014428258435 103.871843767189", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457519581000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'68f7591d-df4d-4187-9607-008af824e0e8')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "68f7591d-df4d-4187-9607-008af824e0e8", "LinkID": 103009914, "RoadName": "STEVENS ROAD", "RoadCategory": "C ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.31316889882687 103.828979698339 1.31314225641921 103.829081629861", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457519716000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'8dea3158-e9c2-4eca-8004-008f758164b2')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "8dea3158-e9c2-4eca-8004-008f758164b2", "LinkID": 103079715, "RoadName": "BOON LAY WAY", "RoadCategory": "B ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.33048773111629 103.748090447097 1.33078336386301 103.747724644186", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457519604000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'e4a0fa64-fc04-487f-86f2-00951b79957e')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "e4a0fa64-fc04-487f-86f2-00951b79957e", "LinkID": 109001176, "RoadName": "T", "RoadCategory": "T ", "Band": 3, "MinimumSpeed": 40, "MaximumSpeed": 59, "Location": "1.35654931918145 103.987819089116 1.35702052387562 103.988015724443 1.35762227254931 103.988220311454 1.35798380178897 103.988331603479", "Summary": "Road Speed Band: 3", "CreateDate": "\/Date(1457520331000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'3dc82ff5-bd53-4c41-aba8-009d787cdb2c')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "3dc82ff5-bd53-4c41-aba8-009d787cdb2c", "LinkID": 109001584, "RoadName": "WEST COAST HIGHWAY", "RoadCategory": "B ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.27918665341162 103.784403620803 1.27913812633473 103.784462475925 1.27893584319981 103.784731654565 1.27881349609641 103.784962437177 1.27854078734771 103.785570140942", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457519711000)\/"
+}, {
+"__metadata": {
+"uri": "http://datamall.mytransport.sg/LTAoDataService.svc/TrafficSpeedBands(guid'b9b91f2e-ce1f-4834-92ed-009f173e8909')", "type": "LTAModel.TrafficSpeedBand"
+}, "TrafficSpeedBandID": "b9b91f2e-ce1f-4834-92ed-009f173e8909", "LinkID": 103001595, "RoadName": "BEDOK RESERVOIR ROAD", "RoadCategory": "C ", "Band": 2, "MinimumSpeed": 20, "MaximumSpeed": 39, "Location": "1.33542753438495 103.914119952257 1.33520108158691 103.914124266922 1.33456342545178 103.914075068113 1.33403055016076 103.913987153962", "Summary": "Road Speed Band: 2", "CreateDate": "\/Date(1457520346000)\/"
+}
+]
+}
