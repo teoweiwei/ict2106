@@ -21,7 +21,6 @@ namespace TrafficReport.Models
             this.tblRoadNames = new HashSet<tblRoadName>();
         }
     
-
         public int lnID { get; set; }
         public string lnLocationName { get; set; }
         public string lnRegion { get; set; }

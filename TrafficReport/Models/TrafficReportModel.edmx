@@ -4,12 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TrafficReportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="trafficreportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tblLocationName">
           <Key>
             <PropertyRef Name="lnID" />
           </Key>
-          <Property Name="lnID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="lnID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="lnLocationName" Type="nvarchar(max)" Nullable="false" />
           <Property Name="lnRegion" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
@@ -17,7 +17,7 @@
           <Key>
             <PropertyRef Name="rfID" />
           </Key>
-          <Property Name="rfID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="rfID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="rfDate" Type="datetime" Nullable="false" />
           <Property Name="rfLocation" Type="int" Nullable="false" />
           <Property Name="rfValue" Type="decimal" Precision="18" Scale="2" Nullable="false" />
@@ -26,7 +26,7 @@
           <Key>
             <PropertyRef Name="rnID" />
           </Key>
-          <Property Name="rnID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="rnID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="rnRoadName" Type="nvarchar(max)" Nullable="false" />
           <Property Name="rnLocation" Type="int" Nullable="false" />
           <Property Name="rnSpeedLimit" Type="int" />
@@ -35,7 +35,7 @@
           <Key>
             <PropertyRef Name="taID" />
           </Key>
-          <Property Name="taID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="taID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="taDateTime" Type="datetime" Nullable="false" />
           <Property Name="taRoadName" Type="int" />
           <Property Name="taLat" Type="float" />
@@ -46,14 +46,11 @@
           <Key>
             <PropertyRef Name="tsID" />
           </Key>
-          <Property Name="tsID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="tsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="tsDateTime" Type="datetime" Nullable="false" />
           <Property Name="tsRoadName" Type="int" />
           <Property Name="tsMinSpeed" Type="int" />
           <Property Name="tsMaxSpeed" Type="int" />
-          <Property Name="tsStartLat" Type="float" />
-          <Property Name="tsStartLong" Type="float" />
-          <Property Name="tsEndLong" Type="float" />
         </EntityType>
         <Association Name="FK_tblRainfall_tblLocationName">
           <End Role="tblLocationName" Type="Self.tblLocationName" Multiplicity="1" />
@@ -103,7 +100,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TrafficReportModelStoreContainer">
+        <EntityContainer Name="trafficreportModelStoreContainer">
           <EntitySet Name="tblLocationName" EntityType="Self.tblLocationName" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblRainfall" EntityType="Self.tblRainfall" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblRoadName" EntityType="Self.tblRoadName" Schema="dbo" store:Type="Tables" />
@@ -130,7 +127,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="TrafficReportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="trafficreportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="tblLocationName">
           <Key>
             <PropertyRef Name="lnID" />
@@ -184,9 +181,6 @@
           <Property Name="tsRoadName" Type="Int32" />
           <Property Name="tsMinSpeed" Type="Int32" />
           <Property Name="tsMaxSpeed" Type="Int32" />
-          <Property Name="tsStartLat" Type="Double" />
-          <Property Name="tsStartLong" Type="Double" />
-          <Property Name="tsEndLong" Type="Double" />
           <NavigationProperty Name="tblRoadName" Relationship="Self.FK_tblTrafficSpeed_tblRoadName" FromRole="tblTrafficSpeed" ToRole="tblRoadName" />
         </EntityType>
         <Association Name="FK_tblRainfall_tblLocationName">
@@ -237,7 +231,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="trafficreportEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="trafficreportEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tblLocationNames" EntityType="Self.tblLocationName" />
           <EntitySet Name="tblRainfalls" EntityType="Self.tblRainfall" />
           <EntitySet Name="tblRoadNames" EntityType="Self.tblRoadName" />
@@ -265,9 +259,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TrafficReportModelStoreContainer" CdmEntityContainer="trafficreportEntities">
+        <EntityContainerMapping StorageEntityContainer="trafficreportModelStoreContainer" CdmEntityContainer="trafficreportEntities1">
           <EntitySetMapping Name="tblLocationNames">
-            <EntityTypeMapping TypeName="TrafficReportModel.tblLocationName">
+            <EntityTypeMapping TypeName="trafficreportModel.tblLocationName">
               <MappingFragment StoreEntitySet="tblLocationName">
                 <ScalarProperty Name="lnID" ColumnName="lnID" />
                 <ScalarProperty Name="lnLocationName" ColumnName="lnLocationName" />
@@ -276,7 +270,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblRainfalls">
-            <EntityTypeMapping TypeName="TrafficReportModel.tblRainfall">
+            <EntityTypeMapping TypeName="trafficreportModel.tblRainfall">
               <MappingFragment StoreEntitySet="tblRainfall">
                 <ScalarProperty Name="rfID" ColumnName="rfID" />
                 <ScalarProperty Name="rfDate" ColumnName="rfDate" />
@@ -286,7 +280,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblRoadNames">
-            <EntityTypeMapping TypeName="TrafficReportModel.tblRoadName">
+            <EntityTypeMapping TypeName="trafficreportModel.tblRoadName">
               <MappingFragment StoreEntitySet="tblRoadName">
                 <ScalarProperty Name="rnID" ColumnName="rnID" />
                 <ScalarProperty Name="rnRoadName" ColumnName="rnRoadName" />
@@ -296,7 +290,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblTrafficAccidents">
-            <EntityTypeMapping TypeName="TrafficReportModel.tblTrafficAccident">
+            <EntityTypeMapping TypeName="trafficreportModel.tblTrafficAccident">
               <MappingFragment StoreEntitySet="tblTrafficAccident">
                 <ScalarProperty Name="taID" ColumnName="taID" />
                 <ScalarProperty Name="taDateTime" ColumnName="taDateTime" />
@@ -308,16 +302,13 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblTrafficSpeeds">
-            <EntityTypeMapping TypeName="TrafficReportModel.tblTrafficSpeed">
+            <EntityTypeMapping TypeName="trafficreportModel.tblTrafficSpeed">
               <MappingFragment StoreEntitySet="tblTrafficSpeed">
                 <ScalarProperty Name="tsID" ColumnName="tsID" />
                 <ScalarProperty Name="tsDateTime" ColumnName="tsDateTime" />
                 <ScalarProperty Name="tsRoadName" ColumnName="tsRoadName" />
                 <ScalarProperty Name="tsMinSpeed" ColumnName="tsMinSpeed" />
                 <ScalarProperty Name="tsMaxSpeed" ColumnName="tsMaxSpeed" />
-                <ScalarProperty Name="tsStartLat" ColumnName="tsStartLat" />
-                <ScalarProperty Name="tsStartLong" ColumnName="tsStartLong" />
-                <ScalarProperty Name="tsEndLong" ColumnName="tsEndLong" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

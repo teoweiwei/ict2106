@@ -19,9 +19,6 @@ namespace TrafficReport.Models
         public Nullable<int> tsRoadName { get; set; }
         public Nullable<int> tsMinSpeed { get; set; }
         public Nullable<int> tsMaxSpeed { get; set; }
-        public Nullable<double> tsStartLat { get; set; }
-        public Nullable<double> tsStartLong { get; set; }
-        public Nullable<double> tsEndLong { get; set; }
     
         public virtual tblRoadName tblRoadName { get; set; }
     }
