@@ -11,112 +11,112 @@ using TrafficReport.Models;
 
 namespace TrafficReport.Controllers
 {
-    public class TrafficAccidentsController : Controller
+    public class TrafficSpeedsController : Controller
     {
         private TrafficReportContext db = new TrafficReportContext();
 
-        // GET: TrafficAccidents
+        // GET: TrafficSpeeds
         public ActionResult Index()
         {
-            var tblTrafficAccidents = db.tblTrafficAccidents.Include(t => t.tblRoadName);
-            return View(tblTrafficAccidents.ToList());
+            var tblTrafficSpeeds = db.tblTrafficSpeeds.Include(t => t.tblRoadName);
+            return View(tblTrafficSpeeds.ToList());
         }
 
-        // GET: TrafficAccidents/Details/5
+        // GET: TrafficSpeeds/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tblTrafficAccident tblTrafficAccident = db.tblTrafficAccidents.Find(id);
-            if (tblTrafficAccident == null)
+            tblTrafficSpeed tblTrafficSpeed = db.tblTrafficSpeeds.Find(id);
+            if (tblTrafficSpeed == null)
             {
                 return HttpNotFound();
             }
-            return View(tblTrafficAccident);
+            return View(tblTrafficSpeed);
         }
 
-        // GET: TrafficAccidents/Create
+        // GET: TrafficSpeeds/Create
         public ActionResult Create()
         {
-            ViewBag.taRoadName = new SelectList(db.tblRoadNames, "rnID", "rnRoadName");
+            ViewBag.tsRoadName = new SelectList(db.tblRoadNames, "rnID", "rnRoadName");
             return View();
         }
 
-        // POST: TrafficAccidents/Create
+        // POST: TrafficSpeeds/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "taID,taDateTime,taRoadName,taLat,taLong,taDescription")] tblTrafficAccident tblTrafficAccident)
+        public ActionResult Create([Bind(Include = "tsID,tsDateTime,tsRoadName,tsMinSpeed,tsMaxSpeed")] tblTrafficSpeed tblTrafficSpeed)
         {
             if (ModelState.IsValid)
             {
-                db.tblTrafficAccidents.Add(tblTrafficAccident);
+                db.tblTrafficSpeeds.Add(tblTrafficSpeed);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.taRoadName = new SelectList(db.tblRoadNames, "rnID", "rnRoadName", tblTrafficAccident.taRoadName);
-            return View(tblTrafficAccident);
+            ViewBag.tsRoadName = new SelectList(db.tblRoadNames, "rnID", "rnRoadName", tblTrafficSpeed.tsRoadName);
+            return View(tblTrafficSpeed);
         }
 
-        // GET: TrafficAccidents/Edit/5
+        // GET: TrafficSpeeds/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tblTrafficAccident tblTrafficAccident = db.tblTrafficAccidents.Find(id);
-            if (tblTrafficAccident == null)
+            tblTrafficSpeed tblTrafficSpeed = db.tblTrafficSpeeds.Find(id);
+            if (tblTrafficSpeed == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.taRoadName = new SelectList(db.tblRoadNames, "rnID", "rnRoadName", tblTrafficAccident.taRoadName);
-            return View(tblTrafficAccident);
+            ViewBag.tsRoadName = new SelectList(db.tblRoadNames, "rnID", "rnRoadName", tblTrafficSpeed.tsRoadName);
+            return View(tblTrafficSpeed);
         }
 
-        // POST: TrafficAccidents/Edit/5
+        // POST: TrafficSpeeds/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "taID,taDateTime,taRoadName,taLat,taLong,taDescription")] tblTrafficAccident tblTrafficAccident)
+        public ActionResult Edit([Bind(Include = "tsID,tsDateTime,tsRoadName,tsMinSpeed,tsMaxSpeed")] tblTrafficSpeed tblTrafficSpeed)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tblTrafficAccident).State = EntityState.Modified;
+                db.Entry(tblTrafficSpeed).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.taRoadName = new SelectList(db.tblRoadNames, "rnID", "rnRoadName", tblTrafficAccident.taRoadName);
-            return View(tblTrafficAccident);
+            ViewBag.tsRoadName = new SelectList(db.tblRoadNames, "rnID", "rnRoadName", tblTrafficSpeed.tsRoadName);
+            return View(tblTrafficSpeed);
         }
 
-        // GET: TrafficAccidents/Delete/5
+        // GET: TrafficSpeeds/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tblTrafficAccident tblTrafficAccident = db.tblTrafficAccidents.Find(id);
-            if (tblTrafficAccident == null)
+            tblTrafficSpeed tblTrafficSpeed = db.tblTrafficSpeeds.Find(id);
+            if (tblTrafficSpeed == null)
             {
                 return HttpNotFound();
             }
-            return View(tblTrafficAccident);
+            return View(tblTrafficSpeed);
         }
 
-        // POST: TrafficAccidents/Delete/5
+        // POST: TrafficSpeeds/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            tblTrafficAccident tblTrafficAccident = db.tblTrafficAccidents.Find(id);
-            db.tblTrafficAccidents.Remove(tblTrafficAccident);
+            tblTrafficSpeed tblTrafficSpeed = db.tblTrafficSpeeds.Find(id);
+            db.tblTrafficSpeeds.Remove(tblTrafficSpeed);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

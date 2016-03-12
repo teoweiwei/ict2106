@@ -1,0 +1,50 @@
+﻿@model TrafficReport.Models.tblTrafficSpeed
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblTrafficSpeed</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tsDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tsDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tsMinSpeed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tsMinSpeed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tsMaxSpeed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tsMaxSpeed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblRoadName.rnRoadName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblRoadName.rnRoadName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.tsID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

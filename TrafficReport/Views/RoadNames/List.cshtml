@@ -1,0 +1,41 @@
+﻿@model IEnumerable<TrafficReport.Models.LTADataMallModel.SpeedData>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LinkID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoadName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MinimumSpeed)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LinkID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoadName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MinimumSpeed)
+            </td>
+        </tr>
+    }
+
+</table>
+
