@@ -13,6 +13,7 @@ namespace TrafficReport.Controllers
     {
         private TrafficAccidentGateway trafficAccidentsGateway = new TrafficAccidentGateway();
         private TrafficSpeedGateway trafficSpeedGateway = new TrafficSpeedGateway();
+        String test;
 
         //public string ACCOUNT_KEY { get; private set; }
         //public string UNIQUE_USER_ID { get; private set; }
@@ -130,7 +131,7 @@ namespace TrafficReport.Controllers
         //    request.ContentType = "application/x-www-form-urlencoded";
         //    request.ContentLength = postData.Length;
         //    request.Method = "GET";
-  
+
         //    try
         //    {
         //        HttpWebResponse response = (HttpWebResponse)request.GetResponse();
