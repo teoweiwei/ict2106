@@ -8,14 +8,36 @@ using System.Web;
 using System.Web.Mvc;
 using TrafficReport.DAL;
 using TrafficReport.Models;
+using TrafficReport.Services;
 
 namespace TrafficReport.Controllers
 {
     public class LTADataMallController : Controller
     {
-        private TrafficReportContext db = new TrafficReportContext();
+        private TrafficAccidentGateway trafficAccidentGateway = new TrafficAccidentGateway();
+        private TrafficSpeedGateway trafficSpeedGateway = new TrafficSpeedGateway();
+        private LTADataMallGateway ltaDataMallGateway = new LTADataMallGateway();
 
-        public ActionResult RetrieveSpeedData()
+        public ActionResult index()
+        {
+            return View();
+        }
+
+        public ActionResult AccidentList()
+        {
+            return View(trafficAccidentGateway.SelectAll());
+        }
+
+        public ActionResult GetAccidentData()
+        {
+            List<LTADataMallModel.AccidentData> accidentData = ltaDataMallGateway.GetLTAAccidentData().d;
+
+            return View("ConfirmAccidentList", trafficAccidentGateway.SaveAccidentData(accidentData));
+        }
+
+
+
+        public ActionResult GetSpeedData()
         {
 
 
@@ -26,7 +48,8 @@ namespace TrafficReport.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                trafficAccidentGateway.db.Dispose();
+                trafficSpeedGateway.db.Dispose();
             }
             base.Dispose(disposing);
         }

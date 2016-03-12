@@ -32,6 +32,13 @@ namespace TrafficReport.Services
             return ltaDataMallAccidentData;
         }
 
+        public LTADataMallModel.LTADataMallSpeedBandData GetLTARoadName(int skipCount)
+        {
+            LTADataMallModel.LTADataMallSpeedBandData ltaDataMallSpeedBandData = JsonConvert.DeserializeObject<LTADataMallModel.LTADataMallSpeedBandData>(LTADataMallRequest(SPEED_URL+"?$skip="+skipCount.ToString()));
+
+            return ltaDataMallSpeedBandData;
+        }
+
         private string LTADataMallRequest(string url)
         {
             try
