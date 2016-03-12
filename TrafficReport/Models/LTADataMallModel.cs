@@ -28,9 +28,27 @@ namespace TrafficReport.Models
             public DateTime CreateDate { get; set; }
         }
 
+        public class AccidentData
+        {
+            public Metadata __metadata { get; set; }
+            public int IncidentID { get; set; }
+            public string Message { get; set; }
+            public double Latitude { get; set; }
+            public double Longitude { get; set; }
+            public string Type { get; set; }
+            public object Summary { get; set; }
+            public DateTime CreateDate { get; set; }
+            public int Distance { get; set; }
+        }
+
         public class LTADataMallSpeedBandData
         {
             public List<SpeedData> d { get; set; }
+        }
+
+        public class LTADataMallAccidentData
+        {
+            public List<AccidentData> d { get; set; }
         }
     }
 }

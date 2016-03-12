@@ -18,46 +18,18 @@ namespace TrafficReport.Services
         private const string ACCOUNT_KEY = "73yoKcEiJDZCbxL3KOxLJw==";
         private const string UNIQUE_USER_ID = "4eab90a3-02d5-4362-8dc5-0cc5f32325b0";
 
-
         public LTADataMallModel.LTADataMallSpeedBandData GetLTASpeedData()
         {
-
-            /*LTADataMallModel.Metadata meta = new LTADataMallModel.Metadata();
-            meta.type = "A";
-            meta.uri = "B";
-
-            LTADataMallModel.SpeedData speedData = new LTADataMallModel.SpeedData();
-            speedData.__MetaData = meta;
-            speedData.Band = 1;
-
-            LTADataMallModel.LTADataMallSpeedBandData data = new LTADataMallModel.LTADataMallSpeedBandData();
-            data.ltaDataMallSpeedBandDataList = new List<LTADataMallModel.SpeedData>();
-            data.ltaDataMallSpeedBandDataList.Add(speedData);
-            data.ltaDataMallSpeedBandDataList.Add(speedData);
-            data.ltaDataMallSpeedBandDataList.Add(speedData);
-
-            string itemsSerialized2 = JsonConvert.SerializeObject(data);*/
-
-
-
-
-
-            string itemsSerialized = LTADataMallRequest(SPEED_URL);
-
-            LTADataMallModel.LTADataMallSpeedBandData ltaDataMallSpeedBandData = JsonConvert.DeserializeObject<LTADataMallModel.LTADataMallSpeedBandData>(itemsSerialized);
-
-            object dict = JsonConvert.DeserializeObject<object>(itemsSerialized);
-            
-
-
-            //LTADataMallModel.LTADataMallSpeedBandData ltaDataMallSpeedBandData = JsonConvert.DeserializeObject<LTADataMallModel.LTADataMallSpeedBandData>(itemsSerialized);
+            LTADataMallModel.LTADataMallSpeedBandData ltaDataMallSpeedBandData = JsonConvert.DeserializeObject<LTADataMallModel.LTADataMallSpeedBandData>(LTADataMallRequest(SPEED_URL));
 
             return ltaDataMallSpeedBandData;
         }
 
-        public void GetLTAAccidentData()
+        public LTADataMallModel.LTADataMallAccidentData GetLTAAccidentData()
         {
-            
+            LTADataMallModel.LTADataMallAccidentData ltaDataMallAccidentData = JsonConvert.DeserializeObject<LTADataMallModel.LTADataMallAccidentData>(LTADataMallRequest(ACCIDENT_URL));
+
+            return ltaDataMallAccidentData;
         }
 
         private string LTADataMallRequest(string url)
