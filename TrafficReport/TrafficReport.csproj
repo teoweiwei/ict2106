@@ -146,34 +146,34 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\tblLocationName.cs">
-      <DependentUpon>TrafficReportModel.tt</DependentUpon>
+      <DependentUpon>TrafficAccidentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblRainfall.cs">
-      <DependentUpon>TrafficReportModel.tt</DependentUpon>
+      <DependentUpon>TrafficAccidentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblRoadName.cs">
-      <DependentUpon>TrafficReportModel.tt</DependentUpon>
+      <DependentUpon>TrafficAccidentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblTrafficAccident.cs">
-      <DependentUpon>TrafficReportModel.tt</DependentUpon>
+      <DependentUpon>TrafficAccidentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblTrafficSpeed.cs">
-      <DependentUpon>TrafficReportModel.tt</DependentUpon>
+      <DependentUpon>TrafficAccidentModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TrafficReportModel.Context.cs">
+    <Compile Include="Models\TrafficAccidentModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TrafficReportModel.Context.tt</DependentUpon>
+      <DependentUpon>TrafficAccidentModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TrafficReportModel.cs">
+    <Compile Include="Models\TrafficAccidentModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TrafficReportModel.tt</DependentUpon>
+      <DependentUpon>TrafficAccidentModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TrafficReportModel.Designer.cs">
+    <Compile Include="Models\TrafficAccidentModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TrafficReportModel.edmx</DependentUpon>
+      <DependentUpon>TrafficAccidentModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -187,24 +187,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\TrafficReportModel.Context.tt">
+    <Content Include="Models\TrafficAccidentModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TrafficReportModel.edmx</DependentUpon>
-      <LastGenOutput>TrafficReportModel.Context.cs</LastGenOutput>
+      <DependentUpon>TrafficAccidentModel.edmx</DependentUpon>
+      <LastGenOutput>TrafficAccidentModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\TrafficReportModel.tt">
+    <Content Include="Models\TrafficAccidentModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TrafficReportModel.edmx</DependentUpon>
-      <LastGenOutput>TrafficReportModel.cs</LastGenOutput>
+      <DependentUpon>TrafficAccidentModel.edmx</DependentUpon>
+      <LastGenOutput>TrafficAccidentModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\TrafficReportModel.edmx">
+    <EntityDeploy Include="Models\TrafficAccidentModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TrafficReportModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>TrafficAccidentModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\TrafficReportModel.edmx.diagram">
-      <DependentUpon>TrafficReportModel.edmx</DependentUpon>
+    <Content Include="Models\TrafficAccidentModel.edmx.diagram">
+      <DependentUpon>TrafficAccidentModel.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\trafficreport.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

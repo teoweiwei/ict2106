@@ -26,9 +26,9 @@
           <Key>
             <PropertyRef Name="rnID" />
           </Key>
-          <Property Name="rnID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rnID" Type="int" Nullable="false" />
           <Property Name="rnRoadName" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="rnLocation" Type="int" Nullable="false" />
+          <Property Name="rnLocation" Type="int" />
           <Property Name="rnSpeedLimit" Type="int" />
         </EntityType>
         <EntityType Name="tblTrafficAccident">
@@ -65,7 +65,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblRoadName_tblLocationName">
-          <End Role="tblLocationName" Type="Self.tblLocationName" Multiplicity="1" />
+          <End Role="tblLocationName" Type="Self.tblLocationName" Multiplicity="0..1" />
           <End Role="tblRoadName" Type="Self.tblRoadName" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblLocationName">
@@ -152,9 +152,9 @@
           <Key>
             <PropertyRef Name="rnID" />
           </Key>
-          <Property Name="rnID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rnID" Type="Int32" Nullable="false" />
           <Property Name="rnRoadName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="rnLocation" Type="Int32" Nullable="false" />
+          <Property Name="rnLocation" Type="Int32" />
           <Property Name="rnSpeedLimit" Type="Int32" />
           <NavigationProperty Name="tblLocationName" Relationship="Self.FK_tblRoadName_tblLocationName" FromRole="tblRoadName" ToRole="tblLocationName" />
           <NavigationProperty Name="tblTrafficAccidents" Relationship="Self.FK_tblTrafficAccident_tblRoadName" FromRole="tblRoadName" ToRole="tblTrafficAccident" />
@@ -196,7 +196,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblRoadName_tblLocationName">
-          <End Role="tblLocationName" Type="Self.tblLocationName" Multiplicity="1" />
+          <End Role="tblLocationName" Type="Self.tblLocationName" Multiplicity="0..1" />
           <End Role="tblRoadName" Type="Self.tblRoadName" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblLocationName">
@@ -231,7 +231,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="trafficreportEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="trafficreportEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tblLocationNames" EntityType="Self.tblLocationName" />
           <EntitySet Name="tblRainfalls" EntityType="Self.tblRainfall" />
           <EntitySet Name="tblRoadNames" EntityType="Self.tblRoadName" />
@@ -259,7 +259,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="trafficreportModelStoreContainer" CdmEntityContainer="trafficreportEntities1">
+        <EntityContainerMapping StorageEntityContainer="trafficreportModelStoreContainer" CdmEntityContainer="trafficreportEntities2">
           <EntitySetMapping Name="tblLocationNames">
             <EntityTypeMapping TypeName="trafficreportModel.tblLocationName">
               <MappingFragment StoreEntitySet="tblLocationName">

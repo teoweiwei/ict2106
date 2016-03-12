@@ -16,7 +16,7 @@ namespace TrafficReport.DAL
 
     public partial class TrafficReportContext : DbContext
     {
-        public TrafficReportContext() : base("name=trafficreportEntities")
+        public TrafficReportContext() : base("name=trafficreportEntities2")
         {
         }
 

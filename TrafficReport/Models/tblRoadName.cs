@@ -23,7 +23,7 @@ namespace TrafficReport.Models
     
         public int rnID { get; set; }
         public string rnRoadName { get; set; }
-        public int rnLocation { get; set; }
+        public Nullable<int> rnLocation { get; set; }
         public Nullable<int> rnSpeedLimit { get; set; }
     
         public virtual tblLocationName tblLocationName { get; set; }

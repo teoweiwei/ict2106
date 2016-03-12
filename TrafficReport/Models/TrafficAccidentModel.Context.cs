@@ -13,10 +13,10 @@ namespace TrafficReport.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class trafficreportEntities1 : DbContext
+    public partial class trafficreportEntities2 : DbContext
     {
-        public trafficreportEntities1()
-            : base("name=trafficreportEntities1")
+        public trafficreportEntities2()
+            : base("name=trafficreportEntities2")
         {
         }
     
