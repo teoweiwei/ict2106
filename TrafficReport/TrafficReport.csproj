@@ -246,6 +246,7 @@
     <Content Include="Views\Rainfalls\Edit.cshtml" />
     <Content Include="Views\Rainfalls\Index.cshtml" />
     <Content Include="Views\Rainfalls\Upload.cshtml" />
+    <Content Include="Views\test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
