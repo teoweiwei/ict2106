@@ -1,0 +1,51 @@
+﻿@model IEnumerable<TrafficReport.Models.tblTrafficSpeed>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.tsDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tsMinSpeed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tsMaxSpeed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblRoadName.rnRoadName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tsDateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tsMinSpeed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tsMaxSpeed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblRoadName.rnRoadName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.tsID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.tsID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.tsID })
+        </td>
+    </tr>
+}
+
+</table>

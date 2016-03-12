@@ -133,7 +133,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationNamesController.cs" />
     <Compile Include="Controllers\RainfallsController.cs" />
+    <Compile Include="Controllers\LTADataMallController.cs" />
+    <Compile Include="Controllers\RoadNamesController.cs" />
     <Compile Include="Controllers\TrafficAccidentsController.cs" />
+    <Compile Include="Controllers\TrafficController.cs" />
+    <Compile Include="Controllers\TrafficSpeedsController.cs" />
     <Compile Include="DAL\DataGateway.cs" />
     <Compile Include="DAL\IDataGateway.cs" />
     <Compile Include="DAL\LocationNameGateway.cs" />
@@ -145,6 +149,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\LTADataMallModel.cs" />
     <Compile Include="Models\tblLocationName.cs">
       <DependentUpon>TrafficAccidentModel.tt</DependentUpon>
     </Compile>
@@ -176,6 +181,7 @@
       <DependentUpon>TrafficAccidentModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\LTADataMallGateway.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -246,7 +252,12 @@
     <Content Include="Views\Rainfalls\Edit.cshtml" />
     <Content Include="Views\Rainfalls\Index.cshtml" />
     <Content Include="Views\Rainfalls\Upload.cshtml" />
-    <Content Include="Views\test.cshtml" />
+    <Content Include="Views\Traffic\Create.cshtml" />
+    <Content Include="Views\Traffic\Delete.cshtml" />
+    <Content Include="Views\Traffic\Details.cshtml" />
+    <Content Include="Views\Traffic\Edit.cshtml" />
+    <Content Include="Views\Traffic\Index.cshtml" />
+    <Content Include="Views\Traffic\FormResults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

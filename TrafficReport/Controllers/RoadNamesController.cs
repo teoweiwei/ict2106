@@ -8,115 +8,121 @@ using System.Web;
 using System.Web.Mvc;
 using TrafficReport.DAL;
 using TrafficReport.Models;
+using TrafficReport.Services;
 
 namespace TrafficReport.Controllers
 {
-    public class TrafficAccidentsController : Controller
+    public class RoadNamesController : Controller
     {
         private TrafficReportContext db = new TrafficReportContext();
+        private LTADataMallGateway ltaDataMallGateway = new LTADataMallGateway();
 
-        // GET: TrafficAccidents
+        // GET: RoadNames
         public ActionResult Index()
         {
-            var tblTrafficAccidents = db.tblTrafficAccidents.Include(t => t.tblRoadName);
-            return View(tblTrafficAccidents.ToList());
+            List<LTADataMallModel.SpeedData> speedData = ltaDataMallGateway.GetLTASpeedData().ltaDataMallSpeedBandDataList;
+
+            return View("List", speedData);
+
+            // var tblRoadNames = db.tblRoadNames.Include(t => t.tblLocationName);
+            // return View(tblRoadNames.ToList());
         }
 
-        // GET: TrafficAccidents/Details/5
+/*        // GET: RoadNames/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tblTrafficAccident tblTrafficAccident = db.tblTrafficAccidents.Find(id);
-            if (tblTrafficAccident == null)
+            tblRoadName tblRoadName = db.tblRoadNames.Find(id);
+            if (tblRoadName == null)
             {
                 return HttpNotFound();
             }
-            return View(tblTrafficAccident);
+            return View(tblRoadName);
         }
 
-        // GET: TrafficAccidents/Create
+        // GET: RoadNames/Create
         public ActionResult Create()
         {
-            ViewBag.taRoadName = new SelectList(db.tblRoadNames, "rnID", "rnRoadName");
+            ViewBag.rnLocation = new SelectList(db.tblLocationNames, "lnID", "lnLocationName");
             return View();
         }
 
-        // POST: TrafficAccidents/Create
+        // POST: RoadNames/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "taID,taDateTime,taRoadName,taLat,taLong,taDescription")] tblTrafficAccident tblTrafficAccident)
+        public ActionResult Create([Bind(Include = "rnID,rnRoadName,rnLocation,rnSpeedLimit")] tblRoadName tblRoadName)
         {
             if (ModelState.IsValid)
             {
-                db.tblTrafficAccidents.Add(tblTrafficAccident);
+                db.tblRoadNames.Add(tblRoadName);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.taRoadName = new SelectList(db.tblRoadNames, "rnID", "rnRoadName", tblTrafficAccident.taRoadName);
-            return View(tblTrafficAccident);
+            ViewBag.rnLocation = new SelectList(db.tblLocationNames, "lnID", "lnLocationName", tblRoadName.rnLocation);
+            return View(tblRoadName);
         }
 
-        // GET: TrafficAccidents/Edit/5
+        // GET: RoadNames/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tblTrafficAccident tblTrafficAccident = db.tblTrafficAccidents.Find(id);
-            if (tblTrafficAccident == null)
+            tblRoadName tblRoadName = db.tblRoadNames.Find(id);
+            if (tblRoadName == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.taRoadName = new SelectList(db.tblRoadNames, "rnID", "rnRoadName", tblTrafficAccident.taRoadName);
-            return View(tblTrafficAccident);
+            ViewBag.rnLocation = new SelectList(db.tblLocationNames, "lnID", "lnLocationName", tblRoadName.rnLocation);
+            return View(tblRoadName);
         }
 
-        // POST: TrafficAccidents/Edit/5
+        // POST: RoadNames/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "taID,taDateTime,taRoadName,taLat,taLong,taDescription")] tblTrafficAccident tblTrafficAccident)
+        public ActionResult Edit([Bind(Include = "rnID,rnRoadName,rnLocation,rnSpeedLimit")] tblRoadName tblRoadName)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tblTrafficAccident).State = EntityState.Modified;
+                db.Entry(tblRoadName).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.taRoadName = new SelectList(db.tblRoadNames, "rnID", "rnRoadName", tblTrafficAccident.taRoadName);
-            return View(tblTrafficAccident);
+            ViewBag.rnLocation = new SelectList(db.tblLocationNames, "lnID", "lnLocationName", tblRoadName.rnLocation);
+            return View(tblRoadName);
         }
 
-        // GET: TrafficAccidents/Delete/5
+        // GET: RoadNames/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tblTrafficAccident tblTrafficAccident = db.tblTrafficAccidents.Find(id);
-            if (tblTrafficAccident == null)
+            tblRoadName tblRoadName = db.tblRoadNames.Find(id);
+            if (tblRoadName == null)
             {
                 return HttpNotFound();
             }
-            return View(tblTrafficAccident);
+            return View(tblRoadName);
         }
 
-        // POST: TrafficAccidents/Delete/5
+        // POST: RoadNames/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            tblTrafficAccident tblTrafficAccident = db.tblTrafficAccidents.Find(id);
-            db.tblTrafficAccidents.Remove(tblTrafficAccident);
+            tblRoadName tblRoadName = db.tblRoadNames.Find(id);
+            db.tblRoadNames.Remove(tblRoadName);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -128,6 +134,6 @@ namespace TrafficReport.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
+        }*/
     }
 }

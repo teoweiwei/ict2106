@@ -1,0 +1,58 @@
+﻿@model TrafficReport.Models.tblTrafficAccident
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblTrafficAccident</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.taDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.taDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.taLat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.taLat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.taLong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.taLong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.taDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.taDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblRoadName.rnRoadName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblRoadName.rnRoadName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.taID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,42 @@
+﻿@model TrafficReport.Models.tblRoadName
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblRoadName</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.rnRoadName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rnRoadName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rnSpeedLimit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rnSpeedLimit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblLocationName.lnLocationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblLocationName.lnLocationName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.rnID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
