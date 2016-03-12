@@ -20,7 +20,7 @@ namespace TrafficReport.Controllers
         // GET: RoadNames
         public ActionResult Index()
         {
-            List<LTADataMallModel.SpeedData> speedData = ltaDataMallGateway.GetLTASpeedData().ltaDataMallSpeedBandDataList;
+            List<LTADataMallModel.SpeedData> speedData = ltaDataMallGateway.GetLTASpeedData().d;
 
             return View("List", speedData);
 

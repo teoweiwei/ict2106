@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Web;
 using TrafficReport.Models;
@@ -20,7 +21,36 @@ namespace TrafficReport.Services
 
         public LTADataMallModel.LTADataMallSpeedBandData GetLTASpeedData()
         {
-            LTADataMallModel.LTADataMallSpeedBandData ltaDataMallSpeedBandData = JsonConvert.DeserializeObject<LTADataMallModel.LTADataMallSpeedBandData>(LTADataMallRequest(SPEED_URL));
+
+            /*LTADataMallModel.Metadata meta = new LTADataMallModel.Metadata();
+            meta.type = "A";
+            meta.uri = "B";
+
+            LTADataMallModel.SpeedData speedData = new LTADataMallModel.SpeedData();
+            speedData.__MetaData = meta;
+            speedData.Band = 1;
+
+            LTADataMallModel.LTADataMallSpeedBandData data = new LTADataMallModel.LTADataMallSpeedBandData();
+            data.ltaDataMallSpeedBandDataList = new List<LTADataMallModel.SpeedData>();
+            data.ltaDataMallSpeedBandDataList.Add(speedData);
+            data.ltaDataMallSpeedBandDataList.Add(speedData);
+            data.ltaDataMallSpeedBandDataList.Add(speedData);
+
+            string itemsSerialized2 = JsonConvert.SerializeObject(data);*/
+
+
+
+
+
+            string itemsSerialized = LTADataMallRequest(SPEED_URL);
+
+            LTADataMallModel.LTADataMallSpeedBandData ltaDataMallSpeedBandData = JsonConvert.DeserializeObject<LTADataMallModel.LTADataMallSpeedBandData>(itemsSerialized);
+
+            object dict = JsonConvert.DeserializeObject<object>(itemsSerialized);
+            
+
+
+            //LTADataMallModel.LTADataMallSpeedBandData ltaDataMallSpeedBandData = JsonConvert.DeserializeObject<LTADataMallModel.LTADataMallSpeedBandData>(itemsSerialized);
 
             return ltaDataMallSpeedBandData;
         }
