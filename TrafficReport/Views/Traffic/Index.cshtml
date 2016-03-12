@@ -1,0 +1,70 @@
+﻿@model IEnumerable<TrafficReport.Models.tblLocationName>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Traffic Reports</h2>
+
+
+@using (Html.BeginForm("HandleForm", "Traffic"))
+{
+
+    <table>
+        <tr>
+            <td>Region: </td>
+            <td>
+                @Html.DropDownList("regions")
+            </td>
+            <td>Road Name: </td>
+            <td colspan="2">
+                @Html.DropDownList("roadNames")
+            </td>
+            
+
+        </tr>
+
+        <tr>
+            <td>Period: </td>
+            <td width="100px">
+                @Html.RadioButton("period", "1month", true) 1-Month
+            </td>
+            <td width="100px">@Html.RadioButton("period", "3month", false) 3-Month </td>
+            <td width="100px">@Html.RadioButton("period", "6month", false) 6-Months </td>
+            <td width="100px">@Html.RadioButton("period", "1year", false) 1-Year </td>
+               
+        </tr>
+        <tr>
+            <td>Report Type: </td>
+            <td>@Html.RadioButton("reportType", "accidents", true) Accidents</td>
+            <td>@Html.RadioButton("reportType", "congestions", false) Congestions</td>
+        </tr>
+
+        <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><input type="submit" value="Search" /></td></tr>
+    </table>
+    <p>
+        @Html.Encode(ViewData["regions"])
+    </p>
+
+
+} 
+
+
+
+
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.lnLocationName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lnRegion)
+        </th>
+        <th></th>
+    </tr>
+    *@
