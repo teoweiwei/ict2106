@@ -16,6 +16,7 @@ namespace TrafficReport.Controllers
     {
         private TrafficAccidentGateway trafficAccidentGateway = new TrafficAccidentGateway();
         private TrafficSpeedGateway trafficSpeedGateway = new TrafficSpeedGateway();
+        private RoadNameGateway roadNameGateway = new RoadNameGateway();
         private LTADataMallGateway ltaDataMallGateway = new LTADataMallGateway();
 
         public ActionResult index()
@@ -28,20 +29,28 @@ namespace TrafficReport.Controllers
             return View(trafficAccidentGateway.SelectAll());
         }
 
-        public ActionResult GetAccidentData()
+        public ActionResult SpeedList()
         {
-            List<LTADataMallModel.AccidentData> accidentData = ltaDataMallGateway.GetLTAAccidentData().d;
-
-            return View("ConfirmAccidentList", trafficAccidentGateway.SaveAccidentData(accidentData));
+            return View(trafficAccidentGateway.SelectAll());
         }
 
-
+        public ActionResult GetAccidentData()
+        {
+            List<LTADataMallModel.AccidentData> accidentData = ltaDataMallGateway.GetLTAAccidentData();
+            return View("SavedAccidentList", trafficAccidentGateway.SaveAccidentData(accidentData));
+        }
 
         public ActionResult GetSpeedData()
         {
+            List<LTADataMallModel.SpeedData> speedData = ltaDataMallGateway.GetLTASpeedData();
 
+            return View("SavedSpeedList", trafficSpeedGateway.SaveSpeedData(speedData));
+        }
 
-            return View();
+        public ActionResult GetRoadNameData()
+        {
+            List<LTADataMallModel.SpeedData> roadNameData = ltaDataMallGateway.GetLTASpeedData();
+            return View("SavedRoadNameList", roadNameGateway.SaveRoadNameData(roadNameData));
         }
 
         protected override void Dispose(bool disposing)

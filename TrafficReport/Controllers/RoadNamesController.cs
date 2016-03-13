@@ -21,9 +21,8 @@ namespace TrafficReport.Controllers
         public ActionResult Index()
         {
             int skipCount = 0;
-            List<LTADataMallModel.SpeedData> speedData = ltaDataMallGateway.GetLTASpeedData().d;
-
-
+            List<LTADataMallModel.SpeedData> speedData = ltaDataMallGateway.GetLTASpeedData();
+            
             do
             {
                 for(int i=0; i<speedData.Count(); i++)
@@ -49,12 +48,6 @@ namespace TrafficReport.Controllers
                 }
 
                 skipCount += 50;
-                speedData = ltaDataMallGateway.GetLTARoadName(skipCount).d;
-
-                if(!(speedData.Count() == 0))
-                {
-                    int w = 0;
-                }
             } while (!(speedData.Count() == 0)); 
             
 
