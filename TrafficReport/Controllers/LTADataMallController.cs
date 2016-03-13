@@ -43,7 +43,6 @@ namespace TrafficReport.Controllers
         public ActionResult GetSpeedData()
         {
             List<LTADataMallModel.SpeedData> speedData = ltaDataMallGateway.GetLTASpeedData();
-
             return View("SavedSpeedList", trafficSpeedGateway.SaveSpeedData(speedData));
         }
 
