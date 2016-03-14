@@ -10,13 +10,13 @@ namespace TrafficReport.DAL
 {
     public class RainfallGateway : DataGateway<tblRainfall>
     {
-        public IEnumerable<tblRainfall> Upload(HttpPostedFileBase upload)
+        public IEnumerable<tblRainfall> SaveRainfallData(HttpPostedFileBase upload)
         {
             if (upload != null && upload.ContentLength > 0)
             {
                 if (upload.FileName.EndsWith(".csv"))
                 {
-                    List<tblRainfall> saveRecord = new List<tblRainfall>();
+                    List<tblRainfall> savedRainfallRecord = new List<tblRainfall>();
 
                     Stream stream = upload.InputStream;
                     StreamReader read = new StreamReader(stream);
@@ -46,10 +46,10 @@ namespace TrafficReport.DAL
 
                         //Add record into DB
                         Insert(rainfallData);
-                        saveRecord.Add(rainfallData);
+                        savedRainfallRecord.Add(rainfallData);
                     }
 
-                    return saveRecord;
+                    return savedRainfallRecord;
                 }
             }
             return null;

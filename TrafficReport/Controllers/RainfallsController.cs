@@ -32,16 +32,16 @@ namespace TrafficReport.Controllers
         {
             if (ModelState.IsValid)
             {
-                IEnumerable<tblRainfall> saveRecord = rainfallGateway.Upload(upload);
+                IEnumerable<tblRainfall> savedRainfallRecord = rainfallGateway.SaveRainfallData(upload);
 
-                if(saveRecord == null)
+                if(savedRainfallRecord == null)
                 {
                     ModelState.AddModelError("File", "Error in uploading file");
                     return View("Index");
                 }
                 else
                 {
-                    return View(saveRecord);
+                    return View(savedRainfallRecord);
                 }
             }
             else
