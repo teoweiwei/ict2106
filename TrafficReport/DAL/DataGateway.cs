@@ -19,7 +19,6 @@ namespace TrafficReport.DAL
         public IEnumerable<T> SelectAll()
         {
             return data.ToList();
-
         }
 
         public T Delete(int? id)

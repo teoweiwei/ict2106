@@ -149,6 +149,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\GoogleReverseGeocodingModel.cs" />
     <Compile Include="Models\LTADataMallModel.cs" />
     <Compile Include="Models\myViewModel.cs" />
     <Compile Include="Models\tblLocationName.cs">
@@ -182,6 +183,7 @@
       <DependentUpon>TrafficAccidentModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\GoogleReverseGeocodingGateway.cs" />
     <Compile Include="Services\LTADataMallGateway.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -259,6 +261,12 @@
     <Content Include="Views\Traffic\Edit.cshtml" />
     <Content Include="Views\Traffic\Index.cshtml" />
     <Content Include="Views\Traffic\FormResults.cshtml" />
+    <Content Include="Views\LTADataMall\Index.cshtml" />
+    <Content Include="Views\LTADataMall\SavedAccidentList.cshtml" />
+    <Content Include="Views\LTADataMall\AccidentList.cshtml" />
+    <Content Include="Views\LTADataMall\SavedSpeedList.cshtml" />
+    <Content Include="Views\LTADataMall\SpeedList.cshtml" />
+    <Content Include="Views\LTADataMall\SavedRoadNameList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

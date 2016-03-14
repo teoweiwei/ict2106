@@ -34,7 +34,15 @@ namespace TrafficReport.DAL
 
                         rainfallData.rfDate = DateTime.ParseExact(row[3] + "/" + row[2] + "/" + row[1], "d/M/yyyy", CultureInfo.InvariantCulture);
                         rainfallData.rfLocation = locationId;
-                        rainfallData.rfValue = decimal.Parse(row[4]);
+
+                        if(row[4].Equals("-"))
+                        {
+                            rainfallData.rfValue = 0;
+                        }
+                        else
+                        {
+                            rainfallData.rfValue = decimal.Parse(row[4]);
+                        }
 
                         //Add record into DB
                         Insert(rainfallData);

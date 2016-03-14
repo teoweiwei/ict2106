@@ -1,0 +1,42 @@
+﻿@model IEnumerable<TrafficReport.Models.tblTrafficSpeed>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Speed Record Stored</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Date/Time
+        </th>
+        <th>
+            Road Name
+        </th>
+        <th>
+            Min Speed
+        </th>
+        <th>
+            Max Speed
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.tsDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tblRoadName.rnRoadName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tsMinSpeed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tsMaxSpeed)
+            </td>
+        </tr>
+    }
+</table>

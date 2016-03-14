@@ -14,13 +14,43 @@ namespace TrafficReport.Controllers
 {
     public class RoadNamesController : Controller
     {
-        private TrafficReportContext db = new TrafficReportContext();
+        private RoadNameGateway roadNameGateway = new RoadNameGateway();
         private LTADataMallGateway ltaDataMallGateway = new LTADataMallGateway();
-
+        //List<LTADataMallModel.SpeedData> speedData = ltaDataMallGateway.GetLTASpeedData().d;
         // GET: RoadNames
         public ActionResult Index()
         {
-            List<LTADataMallModel.SpeedData> speedData = ltaDataMallGateway.GetLTASpeedData().d;
+            int skipCount = 0;
+            List<LTADataMallModel.SpeedData> speedData = ltaDataMallGateway.GetLTASpeedData();
+            
+            do
+            {
+                for(int i=0; i<speedData.Count(); i++)
+                {
+                    tblRoadName roadName = new tblRoadName();
+
+                    roadName.rnID = speedData[i].LinkID;
+                    roadName.rnRoadName = speedData[i].RoadName;
+                    roadName.rnSpeedLimit = 50;
+
+                    tblRoadName check = roadNameGateway.SelectById(speedData[i].LinkID);
+                    Boolean count = (check == null);
+
+                    IEnumerable<tblRoadName> check2 = roadNameGateway.db.tblRoadNames.Where(m => m.rnRoadName.Equals(roadName.rnRoadName)).ToList();
+
+
+                    Boolean count2 = (check2.Count() == 0);
+
+                    if (count && count2)
+                    {
+                        roadNameGateway.Insert(roadName);
+                    }
+                }
+
+                skipCount += 50;
+            } while (!(speedData.Count() == 0)); 
+            
+
 
             return View("List", speedData);
 
