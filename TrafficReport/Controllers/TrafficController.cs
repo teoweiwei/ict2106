@@ -13,6 +13,7 @@ namespace TrafficReport.Controllers
 {
     public class TrafficController : Controller
     {
+        private LocationNameGateway locationNameGateway = new LocationNameGateway();
         private TrafficReportContext db = new TrafficReportContext();
 
         // GET: Traffic
@@ -31,9 +32,11 @@ namespace TrafficReport.Controllers
             roadName.Add("Jurong East Avenue 1");
             roadName.Add("Woodlands Drive 43");
             roadName.Add("Tampines Central 2");
-            roadName.Add("Yishun Street 61");
+            roadName.Add("CENTRAL EXPRESSWAY");
 
             ViewData["roadNames"] = new SelectList(roadName);
+
+            
 
 
             return View();
@@ -44,8 +47,29 @@ namespace TrafficReport.Controllers
             ViewData["roadNames"] = roadNames;
             ViewData["period"] = period;
             ViewData["reportType"] = reportType;
+            //var model = (
+            //    from db 
+            //    )
+            var accidentlist = (from rn in db.tblRoadNames
+                                join ta in db.tblTrafficAccidents on rn.rnID equals ta.taRoadName
+                                where rn.rnRoadName == roadNames && rn.rnID == ta.taRoadName
+                                
+                                select new myViewModel
+                                {
+                                    //RoadName = rn.rnRoadName
+                                    tblRoadName = rn,
+                                    tblTrafficAccident = ta                                    
+                                    
+                                }
+                                );
 
-            return View("FormResults");
+            //var test = new myViewModel();
+            //test.RoadName = "lol";
+            
+            List<tblLocationName> data = db.tblLocationNames.ToList();
+            ViewData["data"] = data;
+            //return View("FormResults", locationNameGateway.SelectAll());
+            return View("FormResults", accidentlist);
         }
 
         // GET: Traffic/Details/5

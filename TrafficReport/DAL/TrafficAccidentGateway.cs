@@ -8,5 +8,8 @@ namespace TrafficReport.DAL
 {
     public class TrafficAccidentGateway : DataGateway<tblTrafficAccident>
     {
+
+         
+
     }
 }

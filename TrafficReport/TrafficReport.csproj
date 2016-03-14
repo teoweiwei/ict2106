@@ -150,6 +150,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\LTADataMallModel.cs" />
+    <Compile Include="Models\myViewModel.cs" />
     <Compile Include="Models\tblLocationName.cs">
       <DependentUpon>TrafficAccidentModel.tt</DependentUpon>
     </Compile>
