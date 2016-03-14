@@ -15,7 +15,7 @@ namespace TrafficReport.Services
         private const string URL = "https://maps.googleapis.com/maps/api/geocode/json?latlng=";
         private const string API_KEY = "AIzaSyC7f9VGd6gfZaJO3IAHZl05sHhFTl2V5UM";
 
-        public string getGeolocationRoadName(double? lat, double? lng)
+        public string GetRoadNameGeolocation(double? lat, double? lng)
         {
             try
             {

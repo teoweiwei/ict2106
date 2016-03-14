@@ -30,7 +30,7 @@ namespace TrafficReport.DAL
                         accidentData.taLat = dataList[i].Latitude;
                         accidentData.taLong = dataList[i].Longitude;
 
-                        string roadName = googleReverseGeocodingGateway.getGeolocationRoadName(accidentData.taLat, accidentData.taLong);
+                        string roadName = googleReverseGeocodingGateway.GetRoadNameGeolocation(accidentData.taLat, accidentData.taLong);
 
                         if (roadName != null)
                         {
