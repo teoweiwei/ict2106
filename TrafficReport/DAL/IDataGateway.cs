@@ -13,6 +13,7 @@ namespace TrafficReport.DAL
         void Insert(T obj);
         void Update(T obj);
         T Delete(int? id);
+        int MonthDifference(DateTime lValue, DateTime rValue);
         void Save();
     }
 }

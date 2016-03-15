@@ -34,11 +34,11 @@ namespace TrafficReport.Controllers
             return View(trafficAccidentGateway.SelectAll());
         }
 
-        public ActionResult GetAccidentData()
-        {
-            List<LTADataMallModel.AccidentData> accidentData = ltaDataMallGateway.GetLTAAccidentData();
-            return View("SavedAccidentList", trafficAccidentGateway.SaveAccidentData(accidentData));
-        }
+        //public ActionResult GetAccidentData()
+        //{
+        //    List<LTADataMallModel.AccidentData> accidentData = ltaDataMallGateway.GetLTAAccidentData();
+        //    return View("SavedAccidentList", trafficAccidentGateway.SaveAccidentData(accidentData));
+        //}
 
         public ActionResult GetSpeedData()
         {

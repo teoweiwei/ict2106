@@ -13,6 +13,9 @@
 
 @Html.Encode(ViewData["period"])
 @Html.Encode(ViewData["reportType"])
+@Html.Encode(ViewData["date"])
+@Html.Encode(ViewData["testdate"])
+@Html.Encode(ViewData["result"])
 
 
 
@@ -31,6 +34,7 @@
 
            <div>@item.tblRoadName.rnRoadName</div> 
            <div>@item.tblTrafficAccident.taID</div>
+           <div>@item.tblTrafficAccident.taDateTime</div>
    
    
 }
