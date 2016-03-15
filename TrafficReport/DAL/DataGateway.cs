@@ -16,10 +16,9 @@ namespace TrafficReport.DAL
             this.data = db.Set<T>();
         }
 
-        public int MonthDifference(DateTime lValue, DateTime rValue)
-        {
-            return Math.Abs((lValue.Month - rValue.Month) + 12 * (lValue.Year - rValue.Year));
-        }
+       
+
+        
 
         public IEnumerable<T> SelectAll()
         {

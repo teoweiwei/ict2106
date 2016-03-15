@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TrafficReport.Models.tblLocationName>
+﻿@model IEnumerable<TrafficReport.Models.myViewModel>
 
 @{
     ViewBag.Title = "Search";
@@ -7,7 +7,7 @@
 <h2>Traffic Reports</h2>
 
 
-@using (Html.BeginForm("HandleForm", "Traffic"))
+@using (Html.BeginForm("HandleForm", "Traffic", FormMethod.Post))
 {
 
     <table>
@@ -47,24 +47,37 @@
         <td></td>
         <td><input type="submit" value="Search" /></td></tr>
     </table>
-    <p>
-        @Html.Encode(ViewData["regions"])
-    </p>
+
+    <table border="1">
+        <tr>
+            <th>Road Name</th>
+            <th>Date</th>
+            <th>Rainfall Value</th>
+        </tr>
+
+
+        @foreach (var item in Model)
+        {
+
+
+            <tr>
+                <td>
+                    @item.tblRoadName.rnRoadName
+                </td>
+
+                <td>@item.tblTrafficAccident.taDateTime.ToString("dd/MM/yyyy")</td>
+
+                <td>@item.tblRainfall.rfValue</td>
+
+
+            </tr>
+
+        }
+
+    </table>
+
 
 
 } 
 
 
-
-
-@*<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.lnLocationName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.lnRegion)
-        </th>
-        <th></th>
-    </tr>
-    *@

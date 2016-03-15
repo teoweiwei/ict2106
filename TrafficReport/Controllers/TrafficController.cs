@@ -21,14 +21,21 @@ namespace TrafficReport.Controllers
         // GET: Traffic
         public ActionResult Index()
         {
-            
-            List<string> regionList = new List<string>();
-            regionList.Add("North");
-            regionList.Add("South");
-            regionList.Add("East");
-            regionList.Add("West");
 
-            ViewData["regions"] = new SelectList(regionList);
+            List<SelectListItem> regionList = new List<SelectListItem>();
+            // List<myViewModel> regionList = new List<myViewModel>();
+            var query = (from ln in db.tblLocationNames
+                         orderby ln.lnRegion
+                         select new  { Text = ln.lnRegion, Value = ln.lnRegion }).Distinct().ToList();
+
+            foreach (var item in query)
+            {   
+                regionList.Add(new SelectListItem { Value = item.Value.ToString(), Text = item.Text });
+            }
+
+            
+            ViewBag.regions = regionList;
+            
 
             List<string> roadName = new List<string>();
             roadName.Add("Jurong East Avenue 1");
@@ -37,18 +44,55 @@ namespace TrafficReport.Controllers
             roadName.Add("CENTRAL EXPRESSWAY");
 
             ViewData["roadNames"] = new SelectList(roadName);
+            DateTime todaysDate = DateTime.Now.Date;
 
-            
+            var initial = (
+                from rn in db.tblRoadNames
+                join ta in db.tblTrafficAccidents on rn.rnID equals ta.taRoadName
+                join ln in db.tblLocationNames on rn.rnLocation equals ln.lnID
+                join rf in db.tblRainfalls on rn.rnLocation equals rf.rfLocation
+
+                where DbFunctions.DiffDays(ta.taDateTime, todaysDate) == 0 && DbFunctions.DiffDays(ta.taDateTime, rf.rfDate) == 0
+
+                select new myViewModel
+                {
+                    tblRoadName = rn,
+                    tblTrafficAccident = ta,
+                    tblLocationName = ln,
+                    tblRainfall = rf
+                }
+                );
 
 
-            return View();
+            return View(initial);
         }
+        [HttpPost]
         public ActionResult HandleForm(string regions, string roadNames, string period, string reportType)
         {
-            ViewData["regions"] = regions;
-            ViewData["roadNames"] = roadNames;
-            ViewData["period"] = period;
-            ViewData["reportType"] = reportType;
+            List<SelectListItem> regionList = new List<SelectListItem>();
+            // List<myViewModel> regionList = new List<myViewModel>();
+            var query = (from ln in db.tblLocationNames
+                         orderby ln.lnRegion
+                         select new { Text = ln.lnRegion, Value = ln.lnRegion }).Distinct().ToList();
+
+            foreach (var item in query)
+            {
+                regionList.Add(new SelectListItem { Value = item.Value.ToString(), Text = item.Text });
+            }
+
+
+            //ViewData["regions"] = regionList;
+            ViewBag.regions = regionList;
+
+
+            List<string> roadName = new List<string>();
+            roadName.Add("Jurong East Avenue 1");
+            roadName.Add("Woodlands Drive 43");
+            roadName.Add("Tampines Central 2");
+            roadName.Add("CENTRAL EXPRESSWAY");
+
+            ViewData["roadNames"] = new SelectList(roadName);
+            
             DateTime todayDate = DateTime.Now;
             int periodDuration = 0;
             if (period.Equals("1month"))
@@ -67,15 +111,8 @@ namespace TrafficReport.Controllers
             }
             
             DateTime comparingDates = DateTime.Today.AddMonths(periodDuration);
+           
             
-
-            ViewData["date"] = (todayDate - comparingDates).TotalDays.ToString();
-            ViewData["testdate"] = comparingDates.ToString();
-            //var model = (
-            //    from db 
-            //    )
-            int result = locationNameGateway.MonthDifference(todayDate, comparingDates);
-            ViewData["result"] = result.ToString();
             var accidentlist = (
                                 from rn in db.tblRoadNames
                                 join ta in db.tblTrafficAccidents on rn.rnID equals ta.taRoadName
@@ -97,14 +134,8 @@ namespace TrafficReport.Controllers
 
                                 }
                                 );
-
-            //var test = new myViewModel();
-            //test.RoadName = "lol";
             
-           // List<tblLocationName> data = db.tblLocationNames.ToList();
-           // ViewData["data"] = data;
-            //return View("FormResults", locationNameGateway.SelectAll());
-            return View("FormResults", accidentlist);
+            return View("Index", accidentlist);
         }
 
         // GET: Traffic/Details/5

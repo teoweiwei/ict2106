@@ -15,7 +15,6 @@
 @Html.Encode(ViewData["reportType"])
 @Html.Encode(ViewData["date"])
 @Html.Encode(ViewData["testdate"])
-@Html.Encode(ViewData["result"])
 
 
 
@@ -27,10 +26,12 @@
 
 
 </dl>
-<table>
+<table border="1">
     <tr>
         <th>Road Name</th>
-        <th>Date</th>
+        <th>Accident Date</th>
+        <th>Rainfall Date</th>
+        
         <th>Rainfall Value</th>
     </tr>
     @foreach (var item in Model)
@@ -42,7 +43,8 @@
                 @item.tblRoadName.rnRoadName
             </td>
 
-            <td>@item.tblTrafficAccident.taDateTime</td>
+            <td>@item.tblTrafficAccident.taDateTime.ToString("dd/MM/yyyy")</td>
+            <td>@item.tblRainfall.rfDate.ToString("dd/MM/yyyy")</td>
 
             <td>@item.tblRainfall.rfValue</td>
 
