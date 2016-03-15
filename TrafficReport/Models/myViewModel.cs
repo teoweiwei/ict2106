@@ -11,6 +11,8 @@ namespace TrafficReport.Models
 
         public tblRoadName tblRoadName { get; set; }
         public tblTrafficAccident tblTrafficAccident { get; set; }
+        public tblLocationName tblLocationName { get; set; }
+        public tblRainfall tblRainfall { set; get; }
         //DateTime Date { get; set; }
     }
 }

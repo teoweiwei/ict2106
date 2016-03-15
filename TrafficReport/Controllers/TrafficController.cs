@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -78,15 +79,22 @@ namespace TrafficReport.Controllers
             var accidentlist = (
                                 from rn in db.tblRoadNames
                                 join ta in db.tblTrafficAccidents on rn.rnID equals ta.taRoadName
-                                where rn.rnRoadName == roadNames && rn.rnID == ta.taRoadName && ta.taDateTime > comparingDates
+                                join ln in db.tblLocationNames on rn.rnLocation equals ln.lnID
+                                join rf in db.tblRainfalls on rn.rnLocation equals rf.rfLocation
+
+                                where rn.rnRoadName == roadNames && rn.rnID == ta.taRoadName && ta.taDateTime > comparingDates && DbFunctions.DiffDays(ta.taDateTime, rf.rfDate) == 0
+                                    
 
 
                                 select new myViewModel
                                 {
-                                    //RoadName = rn.rnRoadName
-                                    tblRoadName = rn,
-                                    tblTrafficAccident = ta                                    
                                     
+                                    tblRoadName = rn,
+                                    tblTrafficAccident = ta,
+                                    tblLocationName = ln,
+                                    tblRainfall = rf
+                                    
+
                                 }
                                 );
 

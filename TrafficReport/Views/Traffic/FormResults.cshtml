@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<TrafficReport.Models.myViewModel>
 
-@*@model System.Data.Entity.Infrastructure.DbQuery<TrafficReport.Models.myViewModel>*@ 
+@*@model System.Data.Entity.Infrastructure.DbQuery<TrafficReport.Models.myViewModel>*@
 @{
     ViewBag.Title = "FormResults";
 }
@@ -21,25 +21,43 @@
 
 <dl class="dl-horizontal">
     <dt>
-        
+
     </dt>
 
-    
+
 
 </dl>
+<table>
+    <tr>
+        <th>Road Name</th>
+        <th>Date</th>
+        <th>Rainfall Value</th>
+    </tr>
+    @foreach (var item in Model)
+    {
 
-@foreach (var item in Model)
-{
 
+        <tr>
+            <td>
+                @item.tblRoadName.rnRoadName
+            </td>
 
-           <div>@item.tblRoadName.rnRoadName</div> 
-           <div>@item.tblTrafficAccident.taID</div>
-           <div>@item.tblTrafficAccident.taDateTime</div>
-   
-   
-}
-   
+            <td>@item.tblTrafficAccident.taDateTime</td>
 
+            <td>@item.tblRainfall.rfValue</td>
+
+            
+        </tr>
+        
+    }
+        
+    </table>
+
+@*<div>@item.tblRoadName.rnRoadName</div>
+    <div>@item.tblTrafficAccident.taID</div>
+    <div>@item.tblTrafficAccident.taDateTime</div>
+    <div>@item.tblRainfall.rfDate</div>
+    <div>@item.tblRainfall.rfValue</div>*@
 
 
 
