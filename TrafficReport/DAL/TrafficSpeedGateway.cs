@@ -35,5 +35,52 @@ namespace TrafficReport.DAL
 
             return savedSpeedData;
         }
+
+        internal IQueryable<myViewModel> filterDatabase(string regions, string roadNames, string period, string reportType)
+        {
+
+            int periodDuration = 0;
+            if (period.Equals("1month"))
+            {
+                periodDuration = -1;
+            }
+            else if (period.Equals("3month"))
+            {
+                periodDuration = -3;
+            }
+            else if (period.Equals("6month"))
+            {
+                periodDuration = -6;
+            }
+            else if (period.Equals("1year"))
+            {
+                periodDuration = -12;
+            }
+
+
+            DateTime comparingDates = DateTime.Today.AddMonths(periodDuration);
+
+            var viewModel = (
+                                   from rn in db.tblRoadNames
+                                   join ts in db.tblTrafficSpeeds on rn.rnID equals ts.tsRoadName
+                                   join ln in db.tblLocationNames on rn.rnLocation equals ln.lnID
+                                   join rf in db.tblRainfalls on rn.rnLocation equals rf.rfLocation
+
+                                   where rn.rnRoadName == roadNames && rn.rnID == ts.tsRoadName && ts.tsDateTime > comparingDates && DbFunctions.DiffDays(ts.tsDateTime, rf.rfDate) == 0
+                                   && ((ts.tsMinSpeed + ts.tsMaxSpeed) / 2) < (rn.rnSpeedLimit / 2)
+
+                                   select new myViewModel
+                                   {
+
+                                       tblRoadName = rn,
+                                       tblTrafficSpeed = ts,
+                                       tblLocationName = ln,
+                                       tblRainfall = rf
+
+                                   }
+                                   );
+            return viewModel;
+        }
+
+        }
     }
-}

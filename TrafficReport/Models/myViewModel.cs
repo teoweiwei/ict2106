@@ -13,7 +13,7 @@ namespace TrafficReport.Models
         public tblTrafficAccident tblTrafficAccident { get; set; }
         public tblLocationName tblLocationName { get; set; }
         public tblRainfall tblRainfall { set; get; }
-        List<string> regionList { set; get; }
+        public tblTrafficSpeed tblTrafficSpeed { set; get; }
         
         //DateTime Date { get; set; }
     }

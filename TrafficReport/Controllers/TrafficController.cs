@@ -16,6 +16,7 @@ namespace TrafficReport.Controllers
     {
         private LocationNameGateway locationNameGateway = new LocationNameGateway();
         private TrafficAccidentGateway trafficAccidentGateway = new TrafficAccidentGateway();
+        private TrafficSpeedGateway trafficSpeedGateway = new TrafficSpeedGateway();
         
         private TrafficReportContext db = new TrafficReportContext();
 
@@ -69,7 +70,7 @@ namespace TrafficReport.Controllers
 
             //ViewData["regions"] = regionList;
             ViewBag.regions = regionList;
-
+            ViewBag.reportType = reportType;
 
             List<string> roadName = new List<string>();
             roadName.Add("Jurong East Avenue 1");
@@ -78,11 +79,20 @@ namespace TrafficReport.Controllers
             roadName.Add("CENTRAL EXPRESSWAY");
 
             ViewData["roadNames"] = new SelectList(roadName);
-                       
 
-            IQueryable<myViewModel> accidentList = trafficAccidentGateway.filterDatabase(regions, roadNames, period, reportType);
+            IQueryable<myViewModel> viewModel = trafficAccidentGateway.initModel();
+
+            if (reportType.Equals("accident"))
+            {
+                viewModel = trafficAccidentGateway.filterDatabase(regions, roadNames, period, reportType);
+            }
+            else if (reportType.Equals("congestion"))
+            {
+                viewModel = trafficSpeedGateway.filterDatabase(regions, roadNames, period, reportType);
+            }
            
-            return View("Index", accidentList);
+            
+            return View("Index", viewModel);
         }
 
         // GET: Traffic/Details/5
