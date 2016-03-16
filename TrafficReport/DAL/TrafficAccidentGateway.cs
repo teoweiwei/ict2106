@@ -53,6 +53,7 @@ namespace TrafficReport.DAL
 
         internal IQueryable<myViewModel> filterDatabase(string regions, string roadNames, string period, string reportType)
         {
+            
             int periodDuration = 0;
             if (period.Equals("1month"))
             {
@@ -70,29 +71,31 @@ namespace TrafficReport.DAL
             {
                 periodDuration = -12;
             }
+            
 
             DateTime comparingDates = DateTime.Today.AddMonths(periodDuration);
+            
+            {
+                var viewModel = (
+                                   from rn in db.tblRoadNames
+                                   join ta in db.tblTrafficAccidents on rn.rnID equals ta.taRoadName
+                                   join ln in db.tblLocationNames on rn.rnLocation equals ln.lnID
+                                   join rf in db.tblRainfalls on rn.rnLocation equals rf.rfLocation
 
-            var accidentlist = (
-                               from rn in db.tblRoadNames
-                               join ta in db.tblTrafficAccidents on rn.rnID equals ta.taRoadName
-                               join ln in db.tblLocationNames on rn.rnLocation equals ln.lnID
-                               join rf in db.tblRainfalls on rn.rnLocation equals rf.rfLocation
+                                   where rn.rnRoadName == roadNames && rn.rnID == ta.taRoadName && ta.taDateTime > comparingDates && DbFunctions.DiffDays(ta.taDateTime, rf.rfDate) == 0
 
-                               where rn.rnRoadName == roadNames && rn.rnID == ta.taRoadName && ta.taDateTime > comparingDates && DbFunctions.DiffDays(ta.taDateTime, rf.rfDate) == 0
-                               
-                               select new myViewModel
-                               {
+                                   select new myViewModel
+                                   {
 
-                                   tblRoadName = rn,
-                                   tblTrafficAccident = ta,
-                                   tblLocationName = ln,
-                                   tblRainfall = rf
+                                       tblRoadName = rn,
+                                       tblTrafficAccident = ta,
+                                       tblLocationName = ln,
+                                       tblRainfall = rf
 
-
-                               }
-                               );
-            return accidentlist;
+                                   }
+                                   );
+                return viewModel;
+            }
         }
 
         internal IQueryable<myViewModel> initModel()
@@ -104,6 +107,7 @@ namespace TrafficReport.DAL
                 join ta in db.tblTrafficAccidents on rn.rnID equals ta.taRoadName
                 join ln in db.tblLocationNames on rn.rnLocation equals ln.lnID
                 join rf in db.tblRainfalls on rn.rnLocation equals rf.rfLocation
+
 
                 where DbFunctions.DiffDays(ta.taDateTime, todaysDate) == 0 && DbFunctions.DiffDays(ta.taDateTime, rf.rfDate) == 0
 
@@ -117,6 +121,6 @@ namespace TrafficReport.DAL
                 );
             return initial;
         }
-        
+
     }
 }

@@ -16,6 +16,8 @@ namespace TrafficReport.DAL
             this.data = db.Set<T>();
         }
 
+
+
        
 
         

@@ -37,8 +37,8 @@
         </tr>
         <tr>
             <td>Report Type: </td>
-            <td>@Html.RadioButton("reportType", "accidents", true) Accidents</td>
-            <td>@Html.RadioButton("reportType", "congestions", false) Congestions</td>
+            <td>@Html.RadioButton("reportType", "accident", true) Accidents</td>
+            <td>@Html.RadioButton("reportType", "congestion", false) Congestions</td>
         </tr>
 
         <tr>
@@ -49,15 +49,15 @@
             <td><input type="submit" value="Search" /></td>
         </tr>
     </table>
-
+    @Html.Raw(ViewBag.reportType)
 
     if (!Model.Any())
     {
         <tr>
-            <td>There nothing during this point of time. </td>
+            <td>It seems there are no events that happened in your search! :(</td>
         </tr>
     }
-    else {
+    else if(ViewBag.reportType == "accident"){
 
         <table border="1">
             <tr>
@@ -85,6 +85,37 @@
 
                 }
                     
+        </table>
+    }
+    else if (ViewBag.reportType == "congestion")
+    {
+
+        <table border="1">
+            <tr>
+                <th>Road Name</th>
+                <th>DateTime</th>
+                <th>Rainfall Value</th>
+                <th>Average Speed</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>
+                        @item.tblRoadName.rnRoadName
+                    </td>
+
+                    <td>@item.tblTrafficSpeed.tsDateTime.ToString()</td>
+
+                    <td>@item.tblRainfall.rfValue</td>
+
+                    <td>@((item.tblTrafficSpeed.tsMinSpeed + item.tblTrafficSpeed.tsMaxSpeed)/2) </td>
+
+                </tr>
+
+            }
+
         </table>
     }
 
