@@ -15,6 +15,7 @@ namespace TrafficReport.Controllers
     public class TrafficController : Controller
     {
         private LocationNameGateway locationNameGateway = new LocationNameGateway();
+        private TrafficAccidentGateway trafficAccidentGateway = new TrafficAccidentGateway();
         
         private TrafficReportContext db = new TrafficReportContext();
 
@@ -44,28 +45,13 @@ namespace TrafficReport.Controllers
             roadName.Add("CENTRAL EXPRESSWAY");
 
             ViewData["roadNames"] = new SelectList(roadName);
-            DateTime todaysDate = DateTime.Now.Date;
-
-            var initial = (
-                from rn in db.tblRoadNames
-                join ta in db.tblTrafficAccidents on rn.rnID equals ta.taRoadName
-                join ln in db.tblLocationNames on rn.rnLocation equals ln.lnID
-                join rf in db.tblRainfalls on rn.rnLocation equals rf.rfLocation
-
-                where DbFunctions.DiffDays(ta.taDateTime, todaysDate) == 0 && DbFunctions.DiffDays(ta.taDateTime, rf.rfDate) == 0
-
-                select new myViewModel
-                {
-                    tblRoadName = rn,
-                    tblTrafficAccident = ta,
-                    tblLocationName = ln,
-                    tblRainfall = rf
-                }
-                );
 
 
-            return View(initial);
+            IQueryable<myViewModel> initModel = trafficAccidentGateway.initModel();
+            
+            return View(initModel);
         }
+
         [HttpPost]
         public ActionResult HandleForm(string regions, string roadNames, string period, string reportType)
         {
@@ -92,50 +78,12 @@ namespace TrafficReport.Controllers
             roadName.Add("CENTRAL EXPRESSWAY");
 
             ViewData["roadNames"] = new SelectList(roadName);
-            
-            DateTime todayDate = DateTime.Now;
-            int periodDuration = 0;
-            if (period.Equals("1month"))
-            {
-                periodDuration = -1;
-            }else if(period.Equals("3month"))
-            {
-                periodDuration = -3;
-            }
-            else if (period.Equals("6month"))
-            {
-                periodDuration = -6;
-            }else if (period.Equals("1year"))
-            {
-                periodDuration = -12;
-            }
-            
-            DateTime comparingDates = DateTime.Today.AddMonths(periodDuration);
+                       
+
+            IQueryable<myViewModel> accidentList = trafficAccidentGateway.filterDatabase(regions, roadNames, period, reportType);
            
             
-            var accidentlist = (
-                                from rn in db.tblRoadNames
-                                join ta in db.tblTrafficAccidents on rn.rnID equals ta.taRoadName
-                                join ln in db.tblLocationNames on rn.rnLocation equals ln.lnID
-                                join rf in db.tblRainfalls on rn.rnLocation equals rf.rfLocation
-
-                                where rn.rnRoadName == roadNames && rn.rnID == ta.taRoadName && ta.taDateTime > comparingDates && DbFunctions.DiffDays(ta.taDateTime, rf.rfDate) == 0
-                                    
-
-
-                                select new myViewModel
-                                {
-                                    
-                                    tblRoadName = rn,
-                                    tblTrafficAccident = ta,
-                                    tblLocationName = ln,
-                                    tblRainfall = rf
-                                    
-
-                                }
-                                );
-            
-            return View("Index", accidentlist);
+            return View("Index", accidentList);
         }
 
         // GET: Traffic/Details/5
