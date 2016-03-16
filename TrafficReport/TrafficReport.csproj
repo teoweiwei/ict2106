@@ -131,10 +131,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LocationNamesController.cs" />
     <Compile Include="Controllers\RainfallsController.cs" />
     <Compile Include="Controllers\LTADataMallController.cs" />
-    <Compile Include="Controllers\RoadNamesController.cs" />
     <Compile Include="Controllers\TrafficAccidentsController.cs" />
     <Compile Include="Controllers\TrafficController.cs" />
     <Compile Include="Controllers\TrafficSpeedsController.cs" />
@@ -244,15 +242,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\LocationNames\Create.cshtml" />
-    <Content Include="Views\LocationNames\Delete.cshtml" />
-    <Content Include="Views\LocationNames\Details.cshtml" />
-    <Content Include="Views\LocationNames\Edit.cshtml" />
-    <Content Include="Views\LocationNames\Index.cshtml" />
-    <Content Include="Views\Rainfalls\Create.cshtml" />
-    <Content Include="Views\Rainfalls\Delete.cshtml" />
-    <Content Include="Views\Rainfalls\Details.cshtml" />
-    <Content Include="Views\Rainfalls\Edit.cshtml" />
     <Content Include="Views\Rainfalls\Index.cshtml" />
     <Content Include="Views\Rainfalls\Upload.cshtml" />
     <Content Include="Views\Traffic\Create.cshtml" />
