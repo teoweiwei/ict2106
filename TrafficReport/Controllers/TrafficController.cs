@@ -82,7 +82,6 @@ namespace TrafficReport.Controllers
 
             IQueryable<myViewModel> accidentList = trafficAccidentGateway.filterDatabase(regions, roadNames, period, reportType);
            
-            
             return View("Index", accidentList);
         }
 

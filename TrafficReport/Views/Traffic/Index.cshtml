@@ -6,22 +6,24 @@
 }
 
 <h2>Traffic Reports</h2>
-
+@using System.Web.Script.Serialization;
+@using System.Collections.Generic;
 
 @using (Html.BeginForm("HandleForm", "Traffic", FormMethod.Post))
 {
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-        function TestDrawChart(RoadName, Date, Description) {
+        function TestDrawChart(RoadName, Date, Description, rfValue, i) {
             google.charts.load('current', { 'packages': ['bar'] });
             google.charts.setOnLoadCallback(drawChart);
             function drawChart() {
+
                 var data = google.visualization.arrayToDataTable([
-                  ['Year', 'Sales', 'Expenses', 'Profit'],
-                  ['2014', 1000, 400, 200],
-                  ['2015', 1170, 460, 250],
-                  ['2016', 660, 1120, 300],
-                  ['2017', 1030, 540, 350]
+                  ['Date', 'Qty', 'rfValue'],
+                  [Description[0], 10, rfValue[0]],
+                  [Description[1], 11, rfValue[1]],
+                  [Description[2], 16, rfValue[2]],
+                  [Description[3], 13, rfValue[3]]
                 ]);
 
                 var options = {
@@ -98,20 +100,21 @@
 
             @{
                 List<decimal> RFValue = new List<decimal>();
-                String RoadName="";
-                String Date="";
-                String Description="";
-            }
+                String RoadName = "";
+                List<String> AcccidentDate = new List<String>();
+                List<String> AccDescription = new List<String>();
+                int i = 0;
 
-                    @foreach (var item in Model)
+
+                foreach (var item in Model)
+                {
+                    if (item != null)
                     {
-                        if (item != null)
-                        {
-                            RoadName = item.tblRoadName.rnRoadName;
-                            Date = item.tblTrafficAccident.taDateTime.ToString("dd/MM/yyyy");
-                            RFValue.Add(item.tblRainfall.rfValue);
-                            Description = item.tblTrafficAccident.taDescription;
-                        }
+                        RoadName = item.tblRoadName.rnRoadName;
+                        AcccidentDate.Add(item.tblTrafficAccident.taDateTime.ToString("dd/MM/yyyy"));
+                        RFValue.Add(item.tblRainfall.rfValue);
+                        AccDescription.Add(item.tblTrafficAccident.taDescription);
+                    }
 
                         <tr>
                             <td>
@@ -125,13 +128,18 @@
                             <td>@item.tblTrafficAccident.taDescription</td>
 
                         </tr>
+                    i++;
+                }
 
-                    }
+                JavaScriptSerializer jsss = new JavaScriptSerializer();
+                string rfValue = jsss.Serialize((object)RFValue);
+
+                }
 
         </table>
         <div id="barchart_material" style="width: 900px; height: 500px;">
             <script>
-                TestDrawChart("@RoadName", "@Date", "@Description");
+                TestDrawChart("@RoadName", "@AcccidentDate", "@AccDescription", @rfValue, @i);
             </script>
         </div>
     }
