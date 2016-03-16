@@ -16,7 +16,7 @@ namespace TrafficReport.DAL
             {
                 if (upload.FileName.EndsWith(".csv"))
                 {
-                    List<tblRainfall> savedRainfallRecord = new List<tblRainfall>();
+                    List<tblRainfall> savedRainfallData = new List<tblRainfall>();
 
                     Stream stream = upload.InputStream;
                     StreamReader read = new StreamReader(stream);
@@ -46,10 +46,10 @@ namespace TrafficReport.DAL
 
                         //Add record into DB
                         Insert(rainfallData);
-                        savedRainfallRecord.Add(rainfallData);
+                        savedRainfallData.Add(rainfallData);
                     }
 
-                    return savedRainfallRecord;
+                    return savedRainfallData;
                 }
             }
             return null;
