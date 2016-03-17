@@ -67,8 +67,8 @@
         </tr>
         <tr>
             <td>Report Type: </td>
-            <td>@Html.RadioButton("reportType", "accidents", true) Accidents</td>
-            <td>@Html.RadioButton("reportType", "congestions", false) Congestions</td>
+            <td>@Html.RadioButton("reportType", "accident", true) Accidents</td>
+            <td>@Html.RadioButton("reportType", "congestion", false) Congestions</td>
         </tr>
 
         <tr>
@@ -87,8 +87,9 @@
             <td>Theres nothing during this point of time. </td>
         </tr>
     }
-    else
+    else if (ViewBag.reportType == "accident")
     {
+
 
         <table border="1">
             <tr>
@@ -116,33 +117,64 @@
                         AccDescription.Add(item.tblTrafficAccident.taDescription);
                     }
 
-                        <tr>
-                            <td>
-                                @item.tblRoadName.rnRoadName
-                            </td>
+                    <tr>
+                        <td>
+                            @item.tblRoadName.rnRoadName
+                        </td>
 
-                            <td>@item.tblTrafficAccident.taDateTime.ToString("dd/MM/yyyy")</td>
+                        <td>@item.tblTrafficAccident.taDateTime.ToString("dd/MM/yyyy")</td>
 
-                            <td>@item.tblRainfall.rfValue</td>
+                        <td>@item.tblRainfall.rfValue</td>
 
-                            <td>@item.tblTrafficAccident.taDescription</td>
+                        <td>@item.tblTrafficAccident.taDescription</td>
 
-                        </tr>
+                    </tr>
                     i++;
                 }
 
-                JavaScriptSerializer jsss = new JavaScriptSerializer();
-                string rfValue = jsss.Serialize((object)RFValue);
+                //JavaScriptSerializer jsss = new JavaScriptSerializer();
+                //string rfValue = jsss.Serialize((object)RFValue);
 
-                }
+            }
 
         </table>
         <div id="barchart_material" style="width: 900px; height: 500px;">
-            <script>
-                TestDrawChart("@RoadName", "@AcccidentDate", "@AccDescription", @rfValue, @i);
-            </script>
+            @*<script>
+                    TestDrawChart("@RoadName", "@AcccidentDate", "@AccDescription", @rfValue, @i);
+                </script>*@
         </div>
-    }
+                }
+                else if (ViewBag.reportType == "congestion")
+                {
+
+                    <table border="1">
+                        <tr>
+                            <th>Road Name</th>
+                            <th>DateTime</th>
+                            <th>Rainfall Value</th>
+                            <th>Average Speed</th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+
+                            <tr>
+                                <td>
+                                    @item.tblRoadName.rnRoadName
+                                </td>
+
+                                <td>@item.tblTrafficSpeed.tsDateTime.ToString()</td>
+
+                                <td>@item.tblRainfall.rfValue</td>
+
+                                <td>@((item.tblTrafficSpeed.tsMinSpeed + item.tblTrafficSpeed.tsMaxSpeed) / 2) </td>
+
+                            </tr>
+
+                        }
+
+                    </table>
+                    }
 
 
-}
+                }
