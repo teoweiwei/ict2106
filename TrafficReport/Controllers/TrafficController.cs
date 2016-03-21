@@ -41,8 +41,8 @@ namespace TrafficReport.Controllers
 
             List<string> roadName = new List<string>();
             roadName.Add("Jurong East Avenue 1");
-            roadName.Add("Woodlands Drive 43");
-            roadName.Add("Tampines Central 2");
+            roadName.Add("TAMPINES EXPRESSWAY");
+            roadName.Add("PAN ISLAND EXPRESSWAY");
             roadName.Add("CENTRAL EXPRESSWAY");
 
             ViewData["roadNames"] = new SelectList(roadName);
@@ -74,25 +74,25 @@ namespace TrafficReport.Controllers
 
             List<string> roadName = new List<string>();
             roadName.Add("Jurong East Avenue 1");
-            roadName.Add("Woodlands Drive 43");
-            roadName.Add("Tampines Central 2");
+            roadName.Add("TAMPINES EXPRESSWAY");
+            roadName.Add("PAN ISLAND EXPRESSWAY");
             roadName.Add("CENTRAL EXPRESSWAY");
 
             ViewData["roadNames"] = new SelectList(roadName);
 
-            IQueryable<myViewModel> viewModel = trafficAccidentGateway.initModel();
+            IQueryable<myViewModel> queryResults = trafficAccidentGateway.initModel();
 
             if (reportType.Equals("accident"))
             {
-                viewModel = trafficAccidentGateway.filterDatabase(regions, roadNames, period, reportType);
+                queryResults = trafficAccidentGateway.filterDatabase(regions, roadNames, period, reportType);
             }
             else if (reportType.Equals("congestion"))
             {
-                viewModel = trafficSpeedGateway.filterDatabase(regions, roadNames, period, reportType);
+                queryResults = trafficSpeedGateway.filterDatabase(regions, roadNames, period, reportType);
             }
            
             
-            return View("Index", viewModel);
+            return View("Index", queryResults);
         }
 
         // GET: Traffic/Details/5

@@ -5,6 +5,7 @@ using System.Web;
 using System.IO;
 using System.Globalization;
 using TrafficReport.Models;
+using System.Data.Entity;
 
 namespace TrafficReport.DAL
 {
@@ -53,6 +54,74 @@ namespace TrafficReport.DAL
                 }
             }
             return null;
+        }
+
+        internal IQueryable<myViewModel> initModel()
+        {
+            DateTime todaysDate = DateTime.Now.Date;
+
+            var initial = (
+                                   from rn in db.tblRoadNames
+                                   join ln in db.tblLocationNames on rn.rnLocation equals ln.lnID
+                                   join rf in db.tblRainfalls on rn.rnLocation equals rf.rfLocation
+
+                                   where DbFunctions.DiffDays(rf.rfDate, todaysDate) == 0
+
+                                   select new myViewModel
+                                   {
+
+                                       tblRoadName = rn,
+                                       tblLocationName = ln,
+                                       tblRainfall = rf
+
+                                   }
+                );
+            return initial;
+        }
+
+        internal IQueryable<myViewModel> filterDatabase(string regions, string roadNames, string period)
+        {
+
+            int periodDuration = 0;
+            if (period.Equals("1month"))
+            {
+                periodDuration = -1;
+            }
+            else if (period.Equals("3month"))
+            {
+                periodDuration = -3;
+            }
+            else if (period.Equals("6month"))
+            {
+                periodDuration = -6;
+            }
+            else if (period.Equals("1year"))
+            {
+                periodDuration = -12;
+            }
+
+
+            DateTime comparingDates = DateTime.Today.AddMonths(periodDuration);
+
+            {
+                var queryResults = (
+                                   from rn in db.tblRoadNames
+                                   join ln in db.tblLocationNames on rn.rnLocation equals ln.lnID
+                                   join rf in db.tblRainfalls on rn.rnLocation equals rf.rfLocation
+
+                                   where rn.rnRoadName == roadNames && rf.rfDate > comparingDates
+
+                                   select new myViewModel
+                                   {
+
+                                       tblRoadName = rn,
+                                       tblLocationName = ln,
+                                       tblRainfall = rf
+
+                                   }
+                                   );
+                return queryResults;
+            }
         }
     }
 }

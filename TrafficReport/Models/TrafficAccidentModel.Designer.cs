@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'G:\SIT\Current Trimester\ICT2106\Project\azure\TrafficReport\TrafficReport\Models\TrafficAccidentModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\User\Source\Repos\ict2106\TrafficReport\Models\TrafficAccidentModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

@@ -76,7 +76,7 @@ namespace TrafficReport.DAL
             DateTime comparingDates = DateTime.Today.AddMonths(periodDuration);
             
             {
-                var viewModel = (
+                var queryResults = (
                                    from rn in db.tblRoadNames
                                    join ta in db.tblTrafficAccidents on rn.rnID equals ta.taRoadName
                                    join ln in db.tblLocationNames on rn.rnLocation equals ln.lnID
@@ -94,7 +94,7 @@ namespace TrafficReport.DAL
 
                                    }
                                    );
-                return viewModel;
+                return queryResults;
             }
         }
 
