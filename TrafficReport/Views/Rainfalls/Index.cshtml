@@ -4,72 +4,53 @@
 }
 
 <h2>Upload Rainfall Data</h2>
-
 <div class="row">
-    <div class="col-md-12">
-        <h4>CSV File Upload</h4>
-        <p>
-            @using (Html.BeginForm("Upload", "Rainfalls", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
-                @Html.AntiForgeryToken()
-                @Html.ValidationSummary()
-                <div class="form-group">
-                    <input type="file" id="csvFile" name="upload" />
-                </div>
-
-                <div class="form-group">
-                    <input type="submit" value="Upload" class="btn btn-default" />
-                </div>
-            }
-        </p>
-    </div>
-</div>
-<div></div>
-@using (Html.BeginForm("HandleForm", "RainFalls", FormMethod.Post))
-{
-    <table>
-        <tr>
-            <td>Region: </td>
-            <td>
-                @Html.DropDownList("regions")
-            </td>
-            <td>Road Name: </td>
-            <td colspan="2">
-                @Html.DropDownList("roadNames")
-            </td>
+    <div class="col-md-6">
+        @using (Html.BeginForm("HandleForm", "RainFalls", FormMethod.Post))
+        {
+            <table>
+                <tr>
+                    <td>Region: </td>
+                    <td>
+                        @Html.DropDownList("regions")
+                    </td>
+                    <td>Road Name: </td>
+                    <td colspan="2">
+                        @Html.DropDownList("roadNames")
+                    </td>
 
 
-        </tr>
+                </tr>
 
-        <tr>
-            <td>Period: </td>
-            <td width="100px">
-                @Html.RadioButton("period", "1month", true) 1-Month
-            </td>
-            <td width="100px">@Html.RadioButton("period", "3month", false) 3-Month </td>
-            <td width="100px">@Html.RadioButton("period", "6month", false) 6-Months </td>
-            <td width="100px">@Html.RadioButton("period", "1year", false) 1-Year </td>
+                <tr>
+                    <td>Period: </td>
+                    <td width="100px">
+                        @Html.RadioButton("period", "1month", true) 1-Month
+                    </td>
+                    <td width="100px">@Html.RadioButton("period", "3month", false) 3-Month </td>
+                    <td width="100px">@Html.RadioButton("period", "6month", false) 6-Months </td>
+                    <td width="100px">@Html.RadioButton("period", "1year", false) 1-Year </td>
 
-        </tr>
-       
+                </tr>
 
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-    
-            <td><input type="submit" value="Search" /></td>
-        </tr>
-    </table>
-}
 
-    @if (!Model.Any())
-    {
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                    <td><input type="submit" value="Search" /></td>
+                </tr>
+            </table>
+        }
+
+        @if (!Model.Any())
+        {
             <tr>
                 <td>Theres nothing during this point of time. </td>
             </tr>
-    }
-    else{
+        }
+        else {
             <table border="1">
                 <tr>
                     <th>Road Name</th>
@@ -79,22 +60,44 @@
 
 
                     @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @item.tblRoadName.rnRoadName
-                            </td>
+                {
+                    <tr>
+                        <td>
+                            @item.tblRoadName.rnRoadName
+                        </td>
 
-                            <td>@item.tblRainfall.rfDate.ToString("dd/MM/yyyy")</td>
+                        <td>@item.tblRainfall.rfDate.ToString("dd/MM/yyyy")</td>
 
-                            <td>@item.tblRainfall.rfValue</td>
+                        <td>@item.tblRainfall.rfValue</td>
 
-                        </tr>
+                    </tr>
                     }
-                
 
-                
 
-            </table>
-            }
+
+
+                </table>
+        }
+    </div>
+    
+        <div class="col-md-6">
+            <h4 style="margin-top: 0">CSV File Upload</h4>
+            <p>
+                @using (Html.BeginForm("Upload", "Rainfalls", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary()
+                    <div class="form-group">
+                        <input type="file" id="csvFile" name="upload" />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Upload" class="btn btn-default" />
+                    </div>
+                }
+            </p>
+        </div>
+    
+</div>
+
                 
