@@ -8,6 +8,8 @@
 <h2>Traffic Reports</h2>
 @using System.Web.Script.Serialization;
 @using System.Collections.Generic;
+@using Newtonsoft.Json;
+
 <div class="container">
     <div class="row col-md-6">
         @using (Html.BeginForm("HandleForm", "Traffic", FormMethod.Post))
@@ -19,18 +21,30 @@
                     google.charts.setOnLoadCallback(drawChart);
                     function drawChart() {
 
-                        var data = google.visualization.arrayToDataTable([
-                          ['Date', 'Qty', 'rfValue'],
-                          [Description[0], 10, rfValue[0]],
-                          [Description[1], 11, rfValue[1]],
-                          [Description[2], 16, rfValue[2]],
-                          [Description[3], 13, rfValue[3]]
-                        ]);
+
+                        @*var data1 = google.visualization.DataTable();
+                        data.addColumn('number','year');
+                        data.addColumn('number','ict');
+                        @foreach(Description row in Model)
+                        {
+                            @if(row != null)
+                            {
+                                @: data.addRow([@row.Get("year"), @row.Get("ict_revenue")]);
+                            }
+                        }*@
+
+                        //var data = google.visualization.arrayToDataTable([
+                        //  ['Date', 'rfValue'],
+                        //  [Description, rfValue[0]],
+                        //  [Description[1], rfValue[1]],
+                        //  [Description[2], rfValue[2]],
+                        //  [Description[3], rfValue[3]]
+                        //]);
 
                         var options = {
                             chart: {
                                 title: RoadName,
-                                subtitle: RoadName + ', ' + Description + ', and Profit: 2014-2017: ' + Date,
+                                subtitle: RoadName + ', and DESCRIPTION DATA: ' + Description + ', and DATE DATA: ' + Date,
                             },
                             bars: 'horizontal' // Required for Material Bar Charts.
                         };
@@ -115,7 +129,7 @@
                                 RoadName = item.tblRoadName.rnRoadName;
                                 AcccidentDate.Add(item.tblTrafficAccident.taDateTime.ToString("dd/MM/yyyy"));
                                 RFValue.Add(item.tblRainfall.rfValue);
-                                AccDescription.Add(item.tblTrafficAccident.taDescription);
+                                AccDescription.Add(item.tblTrafficAccident.taDescription.ToString());
                             }
 
                             <tr>
@@ -133,16 +147,17 @@
                             i++;
                         }
 
-                        //JavaScriptSerializer jsss = new JavaScriptSerializer();
-                        //string rfValue = jsss.Serialize((object)RFValue);
+                        JavaScriptSerializer jsss = new JavaScriptSerializer();
+                        string rfValue = jsss.Serialize((object)RFValue);
 
                     }
 
                 </table>
                 <div id="barchart_material" style="width: 900px; height: 500px;">
-                    @*<script>
-                            TestDrawChart("@RoadName", "@AcccidentDate", "@AccDescription", @rfValue, @i);
-                        </script>*@
+                    <script>
+                            //var Array = new Array();
+                            TestDrawChart("@RoadName", "@AcccidentDate", @accDescription, @rfValue, @i);
+                        </script>
                 </div>
                         }
                         else if (ViewBag.reportType == "congestion")
