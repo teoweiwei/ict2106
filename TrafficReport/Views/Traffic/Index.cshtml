@@ -69,27 +69,26 @@
                                     google.charts.load('current', { 'packages': ['bar'] });
                                     google.charts.setOnLoadCallback(drawChart);
                                     function drawChart() {
-
+                                                 
+                                        @{ int i = 0; }
+                                        @foreach (var item in Model)
+                                        {
+                                            if (item != null)
+                                            {
+                                                i++;
+                                            }
+                                        }
                                         // new method
                                         var data = new google.visualization.DataTable();
                                         data.addColumn('string', 'Date');
                                         data.addColumn('number', 'rfValue');
-                                        //data.addColumn('string','Number of Accidents');
+                                        data.addColumn('number','Number of Accidents');
                                         @foreach (var item in Model)
                                         {
                                             if(item != null)
                                             {
-                                                try
-                                                {
-                                                    int m = Int32.Parse("abc");
-                                                }
-                                                catch (FormatException e)
-                                                {
-                                                    Console.WriteLine(e.Message);
-                                                }
-
                                                 //@: data.addRow(["@item.tblTrafficAccident.taDateTime.ToString("dd/MM/yyyy")", "@item.tblRainfall.rfValue.ToString()", "@item.tblTrafficAccident.taDescription.ToString()"]);
-                                                  @: data.addRow(["@item.tblTrafficAccident.taDateTime.ToString("dd/MM/yyyy")", @item.tblRainfall.rfValue]);
+                                                  @: data.addRow(["@item.tblTrafficAccident.taDateTime.ToString("dd/MM/yyyy")", @item.tblRainfall.rfValue, @i]);
                                             }
                                         }
 
