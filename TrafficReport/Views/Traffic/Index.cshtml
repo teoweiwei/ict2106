@@ -8,173 +8,176 @@
 <h2>Traffic Reports</h2>
 @using System.Web.Script.Serialization;
 @using System.Collections.Generic;
+<div class="container">
+    <div class="row col-md-6">
+        @using (Html.BeginForm("HandleForm", "Traffic", FormMethod.Post))
+        {
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script type="text/javascript">
+                function TestDrawChart(RoadName, Date, Description, rfValue, i) {
+                    google.charts.load('current', { 'packages': ['bar'] });
+                    google.charts.setOnLoadCallback(drawChart);
+                    function drawChart() {
 
-@using (Html.BeginForm("HandleForm", "Traffic", FormMethod.Post))
-{
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-        function TestDrawChart(RoadName, Date, Description, rfValue, i) {
-            google.charts.load('current', { 'packages': ['bar'] });
-            google.charts.setOnLoadCallback(drawChart);
-            function drawChart() {
+                        var data = google.visualization.arrayToDataTable([
+                          ['Date', 'Qty', 'rfValue'],
+                          [Description[0], 10, rfValue[0]],
+                          [Description[1], 11, rfValue[1]],
+                          [Description[2], 16, rfValue[2]],
+                          [Description[3], 13, rfValue[3]]
+                        ]);
 
-                var data = google.visualization.arrayToDataTable([
-                  ['Date', 'Qty', 'rfValue'],
-                  [Description[0], 10, rfValue[0]],
-                  [Description[1], 11, rfValue[1]],
-                  [Description[2], 16, rfValue[2]],
-                  [Description[3], 13, rfValue[3]]
-                ]);
+                        var options = {
+                            chart: {
+                                title: RoadName,
+                                subtitle: RoadName + ', ' + Description + ', and Profit: 2014-2017: ' + Date,
+                            },
+                            bars: 'horizontal' // Required for Material Bar Charts.
+                        };
 
-                var options = {
-                    chart: {
-                        title: RoadName,
-                        subtitle: RoadName + ', ' + Description + ', and Profit: 2014-2017: ' + Date,
-                    },
-                    bars: 'horizontal' // Required for Material Bar Charts.
-                };
+                        var chart = new google.charts.Bar(document.getElementById('barchart_material'));
 
-                var chart = new google.charts.Bar(document.getElementById('barchart_material'));
-
-                chart.draw(data, options);
-            }
-        }
-    </script>
-
-    <table>
-        <tr>
-            <td>Region: </td>
-            <td>
-                @Html.DropDownList("regions")
-            </td>
-            <td>Road Name: </td>
-            <td colspan="2">
-                @Html.DropDownList("roadNames")
-            </td>
-
-
-        </tr>
-
-        <tr>
-            <td>Period: </td>
-            <td width="100px">
-                @Html.RadioButton("period", "1month", true) 1-Month
-            </td>
-            <td width="100px">@Html.RadioButton("period", "3month", false) 3-Month </td>
-            <td width="100px">@Html.RadioButton("period", "6month", false) 6-Months </td>
-            <td width="100px">@Html.RadioButton("period", "1year", false) 1-Year </td>
-
-        </tr>
-        <tr>
-            <td>Report Type: </td>
-            <td>@Html.RadioButton("reportType", "accident", true) Accidents</td>
-            <td>@Html.RadioButton("reportType", "congestion", false) Congestions</td>
-        </tr>
-
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><input type="submit" value="Search" /></td>
-        </tr>
-    </table>
-
-
-    if (!Model.Any())
-    {
-        <tr>
-            <td>Theres nothing during this point of time. </td>
-        </tr>
-    }
-    else if (ViewBag.reportType == "accident")
-    {
-
-
-        <table border="1">
-            <tr>
-                <th>Road Name</th>
-                <th>Date</th>
-                <th>Rainfall Value</th>
-                <th>Accident Description</th>
-            </tr>//Div that will hold the pie chart
-
-            @{
-                List<decimal> RFValue = new List<decimal>();
-                String RoadName = "";
-                List<String> AcccidentDate = new List<String>();
-                List<String> AccDescription = new List<String>();
-                int i = 0;
-
-
-                foreach (var item in Model)
-                {
-                    if (item != null)
-                    {
-                        RoadName = item.tblRoadName.rnRoadName;
-                        AcccidentDate.Add(item.tblTrafficAccident.taDateTime.ToString("dd/MM/yyyy"));
-                        RFValue.Add(item.tblRainfall.rfValue);
-                        AccDescription.Add(item.tblTrafficAccident.taDescription);
+                        chart.draw(data, options);
                     }
-
-                    <tr>
-                        <td>
-                            @item.tblRoadName.rnRoadName
-                        </td>
-
-                        <td>@item.tblTrafficAccident.taDateTime.ToString("dd/MM/yyyy")</td>
-
-                        <td>@item.tblRainfall.rfValue</td>
-
-                        <td>@item.tblTrafficAccident.taDescription</td>
-
-                    </tr>
-                    i++;
                 }
+            </script>
 
-                //JavaScriptSerializer jsss = new JavaScriptSerializer();
-                //string rfValue = jsss.Serialize((object)RFValue);
+            <table>
+                <tr>
+                    <td>Region: </td>
+                    <td>
+                        @Html.DropDownList("regions")
+                    </td>
+                    <td>Road Name: </td>
+                    <td colspan="2">
+                        @Html.DropDownList("roadNames")
+                    </td>
 
+
+                </tr>
+
+                <tr>
+                    <td>Period: </td>
+                    <td width="100px">
+                        @Html.RadioButton("period", "1month", true) 1-Month
+                    </td>
+                    <td width="100px">@Html.RadioButton("period", "3month", false) 3-Month </td>
+                    <td width="100px">@Html.RadioButton("period", "6month", false) 6-Months </td>
+                    <td width="100px">@Html.RadioButton("period", "1year", false) 1-Year </td>
+
+                </tr>
+                <tr>
+                    <td>Report Type: </td>
+                    <td>@Html.RadioButton("reportType", "accident", true) Accidents</td>
+                    <td>@Html.RadioButton("reportType", "congestion", false) Congestions</td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><input type="submit" value="Search" /></td>
+                </tr>
+            </table>
+
+
+            if (!Model.Any())
+            {
+                <tr>
+                    <td>Theres nothing during this point of time. </td>
+                </tr>
             }
+            else if (ViewBag.reportType == "accident")
+            {
 
-        </table>
-        <div id="barchart_material" style="width: 900px; height: 500px;">
-            @*<script>
-                    TestDrawChart("@RoadName", "@AcccidentDate", "@AccDescription", @rfValue, @i);
-                </script>*@
-        </div>
-                }
-                else if (ViewBag.reportType == "congestion")
-                {
 
-                    <table border="1">
-                        <tr>
-                            <th>Road Name</th>
-                            <th>DateTime</th>
-                            <th>Rainfall Value</th>
-                            <th>Average Speed</th>
-                        </tr>
+                <table border="1">
+                    <tr>
+                        <th>Road Name</th>
+                        <th>Date</th>
+                        <th>Rainfall Value</th>
+                        <th>Accident Description</th>
+                    </tr>
 
-                        @foreach (var item in Model)
+                    @{
+                        List<decimal> RFValue = new List<decimal>();
+                        String RoadName = "";
+                        List<String> AcccidentDate = new List<String>();
+                        List<String> AccDescription = new List<String>();
+                        int i = 0;
+
+
+                        foreach (var item in Model)
                         {
+                            if (item != null)
+                            {
+                                RoadName = item.tblRoadName.rnRoadName;
+                                AcccidentDate.Add(item.tblTrafficAccident.taDateTime.ToString("dd/MM/yyyy"));
+                                RFValue.Add(item.tblRainfall.rfValue);
+                                AccDescription.Add(item.tblTrafficAccident.taDescription);
+                            }
 
                             <tr>
                                 <td>
                                     @item.tblRoadName.rnRoadName
                                 </td>
 
-                                <td>@item.tblTrafficSpeed.tsDateTime.ToString()</td>
+                                <td>@item.tblTrafficAccident.taDateTime.ToString("dd/MM/yyyy")</td>
 
                                 <td>@item.tblRainfall.rfValue</td>
 
-                                <td>@((item.tblTrafficSpeed.tsMinSpeed + item.tblTrafficSpeed.tsMaxSpeed) / 2) </td>
+                                <td>@item.tblTrafficAccident.taDescription</td>
 
                             </tr>
-
+                            i++;
                         }
 
-                    </table>
+                        //JavaScriptSerializer jsss = new JavaScriptSerializer();
+                        //string rfValue = jsss.Serialize((object)RFValue);
+
                     }
 
+                </table>
+                <div id="barchart_material" style="width: 900px; height: 500px;">
+                    @*<script>
+                            TestDrawChart("@RoadName", "@AcccidentDate", "@AccDescription", @rfValue, @i);
+                        </script>*@
+                </div>
+                        }
+                        else if (ViewBag.reportType == "congestion")
+                        {
 
-                }
+                            <table border="1">
+                                <tr>
+                                    <th>Road Name</th>
+                                    <th>DateTime</th>
+                                    <th>Rainfall Value</th>
+                                    <th>Average Speed</th>
+                                </tr>
+
+                                @foreach (var item in Model)
+                                {
+
+                                    <tr>
+                                        <td>
+                                            @item.tblRoadName.rnRoadName
+                                        </td>
+
+                                        <td>@item.tblTrafficSpeed.tsDateTime.ToString()</td>
+
+                                        <td>@item.tblRainfall.rfValue</td>
+
+                                        <td>@((item.tblTrafficSpeed.tsMinSpeed + item.tblTrafficSpeed.tsMaxSpeed) / 2) </td>
+
+                                    </tr>
+
+                                }
+
+                            </table>
+                            }
+
+
+                        }
+    </div>
+</div>
