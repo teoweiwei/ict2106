@@ -51,7 +51,7 @@ namespace TrafficReport.Controllers
             ViewData["roadNames"] = new SelectList(roadName);
 
 
-            IQueryable<QueryViewModel> initModel = trafficAccidentGateway.initModel();
+            IQueryable<QueryViewModel> initModel = DataGateway.initModel();
             
             return View(initModel);
         }
@@ -61,6 +61,7 @@ namespace TrafficReport.Controllers
         {
             List<SelectListItem> regionList = new List<SelectListItem>();
             // List<myViewModel> regionList = new List<myViewModel>();
+            
             var query = (from ln in db.tblLocationNames
                          orderby ln.lnRegion
                          select new { Text = ln.lnRegion, Value = ln.lnRegion }).Distinct().ToList();
@@ -196,6 +197,48 @@ namespace TrafficReport.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public ActionResult CallSecondaryOption(char id)
+        {
+
+            List<string> oneYearOption = new List<string>();
+            for (int j = 16; j > 0; j--)
+            {
+                string i="20";
+                if (j < 10) { i += "0"; }
+                string str = i + j.ToString();
+                oneYearOption.Add(str);
+            }
+
+            List<string> oneMonthOption = new List<string>();
+            oneMonthOption.Add("January");
+            oneMonthOption.Add("February");
+            oneMonthOption.Add("March");
+            oneMonthOption.Add("April");
+            oneMonthOption.Add("May");
+            oneMonthOption.Add("June");
+            oneMonthOption.Add("July");
+            oneMonthOption.Add("August");
+            oneMonthOption.Add("September");
+            oneMonthOption.Add("October");
+            oneMonthOption.Add("November");
+            oneMonthOption.Add("December");
+
+            List<string> oneDayOption = new List<string>();
+            for (int i=0; i<24; i++) {
+                string str = i.ToString() + ":00";
+                if (i < 10) { str = "0" + str; }
+                oneDayOption.Add(str);
+            }
+
+            if ((id == '1')) { return Json(oneDayOption, JsonRequestBehavior.AllowGet); }
+            else if (id == '2') { return Json(oneMonthOption, JsonRequestBehavior.AllowGet); }
+            else if (id == '3') { return Json(oneYearOption, JsonRequestBehavior.AllowGet); }
+            else { return null; }
+            
+        }
+
 
         protected override void Dispose(bool disposing)
         {

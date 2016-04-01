@@ -54,7 +54,6 @@ namespace TrafficReport.DAL
         internal IQueryable<QueryViewModel> filterDatabase(string regions, string roadNames, string period, string reportType)
         {
             var queryResults = initModel();
-            
             int periodDuration = 0;
             if (period.Equals("1month"))
             {
