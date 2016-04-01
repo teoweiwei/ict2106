@@ -22,7 +22,7 @@
                 <tr>
                     <td>Region: </td>
                     <td>
-                        @Html.DropDownList("regions")
+                        @Html.DropDownList("regions", null, new { @OnChange = "CallRoadName(this,document.getElementById('secondaryOption'))" })
                     </td>
                     <td>Road Name: </td>
                     <td colspan="2">
@@ -52,6 +52,7 @@
                     <td></td>
                     <td></td>
                     <td>
+                        @*@Html.DropDownList("secondaryOption")*@
                         <select id="secondaryOption"></select>
                     </td>
                     <td><input type="submit" value="Search" /></td>
@@ -309,27 +310,44 @@
 
 <script type="text/javascript">
     function configureDropDownLists(ddl1, secondaryOption) {
-        alert("success");
         switch (ddl1) {
             case 'Day':
                 secondaryOption.options.length = 0;
-                var id = '1';
+                var id = "Day";
                 CallSecondaryOption(id);
                 break;
             case 'Month':
                 secondaryOption.options.length = 0;
-                var id = '2';
+                var id = "Month";
                 CallSecondaryOption(id);
                 break;
             case 'Year':
                 secondaryOption.options.length = 0;
-                var id = '3';
+                var id = "Year";
                 CallSecondaryOption(id);
                 break;
+
             default:
                 secondaryOption.options.length = 0;
             break;
         }
+    }
+
+
+    function CallRoadName(region, secondaryOption) {
+        secondaryOption.options.length = 0;
+        $.ajax({
+            url: '@Url.Action("CallRoadName", "Traffic")',
+            type: 'GET',
+            dataType: 'Json',
+            data: { 'region': region.value },
+            success: function (test) {
+                setOption(test);
+            },
+            error: function () {
+                alert("Error Occured");
+            }
+        });
     }
 
     function CallSecondaryOption(id) {
@@ -339,14 +357,18 @@
             dataType: 'Json',
             data: {'id' : id},
             success: function (test) {
-                for (i = 0; i < test.length; i++) {
-                    createOption(secondaryOption, test[i], test[i]);
-                }
+                setOption(test);
             },
             error: function () {
                 alert("Error Occured");
             }
         });
+    }
+
+    function setOption(test) {
+        for (i = 0; i < test.length; i++) {
+            createOption(secondaryOption, test[i], test[i]);
+        }
     }
 
     function createOption(ddl, text, value) {

@@ -199,7 +199,7 @@ namespace TrafficReport.Controllers
         }
 
         [HttpGet]
-        public ActionResult CallSecondaryOption(char id)
+        public ActionResult CallSecondaryOption(String id)
         {
 
             List<string> oneYearOption = new List<string>();
@@ -232,11 +232,29 @@ namespace TrafficReport.Controllers
                 oneDayOption.Add(str);
             }
 
-            if ((id == '1')) { return Json(oneDayOption, JsonRequestBehavior.AllowGet); }
-            else if (id == '2') { return Json(oneMonthOption, JsonRequestBehavior.AllowGet); }
-            else if (id == '3') { return Json(oneYearOption, JsonRequestBehavior.AllowGet); }
+            if ((id == "Day")) { return Json(oneDayOption, JsonRequestBehavior.AllowGet); }
+            else if (id == "Month") { return Json(oneMonthOption, JsonRequestBehavior.AllowGet); }
+            else if (id == "Year") { return Json(oneYearOption, JsonRequestBehavior.AllowGet); }
+            
             else { return null; }
             
+        }
+
+        [HttpGet]
+        public ActionResult CallRoadName(String region)
+        {
+            List<string> LocationUpdate = new List<string>();
+            var query = (from ln in db.tblLocationNames
+                         where ln.lnRegion == region
+                         orderby ln.lnRegion
+                         select new { ln.lnLocationName }).Distinct().ToList();
+
+            foreach (var item in query)
+            {
+                LocationUpdate.Add(item.ToString());
+            }
+
+            return Json(LocationUpdate, JsonRequestBehavior.AllowGet);
         }
 
 
