@@ -61,7 +61,7 @@ namespace TrafficReport.DAL
                 periodDuration = -1;
                 DateTime comparingDates = DateTime.Today.AddMonths(periodDuration);
 
-                queryResults = (
+               queryResults = (
                                 from rn in db.tblRoadNames
                                 join ta in db.tblTrafficAccidents on rn.rnID equals ta.taRoadName
                                 join ln in db.tblLocationNames on rn.rnLocation equals ln.lnID
@@ -84,18 +84,15 @@ namespace TrafficReport.DAL
                                     
                                 }
                                 );
-               
-                
-                foreach(var item in queryResults)
-                {
 
-                    new QueryViewModel
-                    {
-                        date = item.date,
-                        rainfall = item.rainfall,
-                        number = item.number
-                    };
-                }
+                
+                    //new QueryViewModel
+                    //{
+                    //    date = item.date,
+                    //    rainfall = item.rainfall,
+                    //    number = item.number
+                    //};
+                
             }
             //else if (period.Equals("3month"))
             //{
@@ -105,9 +102,20 @@ namespace TrafficReport.DAL
             //{
             //    periodDuration = -6;
             //}
-            else if (period.Equals("1year"))
+            else if (period.Equals("1year") || period.Equals("3month") || period.Equals("6month"))
             {
-                periodDuration = -12;
+                if (period.Equals("1year")){
+                    periodDuration = -12;
+                }
+                if (period.Equals("3month"))
+                {
+                    periodDuration = -3;
+                }
+                if (period.Equals("6month"))
+                {
+                    periodDuration = -6;
+                }
+
                 DateTime comparingDates = DateTime.Today.AddMonths(periodDuration);
 
                 queryResults = (
@@ -134,9 +142,6 @@ namespace TrafficReport.DAL
 
                                 }
                                 );
-            }else if (period.Equals("today"))
-            {
-
             }
             
 

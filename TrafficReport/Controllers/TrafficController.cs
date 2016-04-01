@@ -19,9 +19,12 @@ namespace TrafficReport.Controllers
         private TrafficSpeedGateway trafficSpeedGateway = new TrafficSpeedGateway();
         
         private TrafficReportContext db = new TrafficReportContext();
-
+        public TrafficController()
+        {
+            ViewBag.findByDay = "0";
+        }
         // GET: Traffic
-        public ActionResult Index()
+        public ActionResult Index(string val)
         {
 
             List<SelectListItem> regionList = new List<SelectListItem>();
