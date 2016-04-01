@@ -56,7 +56,7 @@ namespace TrafficReport.DAL
             return null;
         }
 
-        internal IQueryable<myViewModel> initModel()
+        internal IQueryable<QueryViewModel> initModel()
         {
             DateTime todaysDate = DateTime.Now.Date;
 
@@ -67,19 +67,19 @@ namespace TrafficReport.DAL
 
                                    where DbFunctions.DiffDays(rf.rfDate, todaysDate) == 0
 
-                                   select new myViewModel
+                                   select new QueryViewModel
                                    {
 
-                                       tblRoadName = rn,
-                                       tblLocationName = ln,
-                                       tblRainfall = rf
+                                       //tblRoadName = rn,
+                                       //tblLocationName = ln,
+                                       //tblRainfall = rf
 
                                    }
                 );
             return initial;
         }
 
-        internal IQueryable<myViewModel> filterDatabase(string regions, string roadNames, string period)
+        internal IQueryable<QueryViewModel> filterDatabase(string regions, string roadNames, string period)
         {
 
             int periodDuration = 0;
@@ -111,12 +111,12 @@ namespace TrafficReport.DAL
 
                                    where rn.rnRoadName == roadNames && rf.rfDate > comparingDates
 
-                                   select new myViewModel
+                                   select new QueryViewModel
                                    {
 
-                                       tblRoadName = rn,
-                                       tblLocationName = ln,
-                                       tblRainfall = rf
+                                       //tblRoadName = rn,
+                                       //tblLocationName = ln,
+                                       //tblRainfall = rf
 
                                    }
                                    );

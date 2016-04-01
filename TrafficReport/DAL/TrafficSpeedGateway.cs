@@ -36,7 +36,7 @@ namespace TrafficReport.DAL
             return savedSpeedData;
         }
 
-        internal IQueryable<myViewModel> filterDatabase(string regions, string roadNames, string period, string reportType)
+        internal IQueryable<QueryViewModel> filterDatabase(string regions, string roadNames, string period, string reportType)
         {
 
             int periodDuration = 0;
@@ -69,13 +69,13 @@ namespace TrafficReport.DAL
                                    where rn.rnRoadName == roadNames && rn.rnID == ts.tsRoadName && ts.tsDateTime > comparingDates && DbFunctions.DiffDays(ts.tsDateTime, rf.rfDate) == 0
                                    && ((ts.tsMinSpeed + ts.tsMaxSpeed) / 2) < (rn.rnSpeedLimit / 2)
 
-                                   select new myViewModel
+                                   select new QueryViewModel
                                    {
 
-                                       tblRoadName = rn,
-                                       tblTrafficSpeed = ts,
-                                       tblLocationName = ln,
-                                       tblRainfall = rf
+                                       //tblRoadName = rn,
+                                       //tblTrafficSpeed = ts,
+                                       //tblLocationName = ln,
+                                       //tblRainfall = rf
 
                                    }
                                    );

@@ -37,7 +37,7 @@ namespace TrafficReport.Controllers
 
             
             ViewBag.regions = regionList;
-            
+                        
 
             List<string> roadName = new List<string>();
             roadName.Add("Jurong East Avenue 1");
@@ -48,7 +48,7 @@ namespace TrafficReport.Controllers
             ViewData["roadNames"] = new SelectList(roadName);
 
 
-            IQueryable<myViewModel> initModel = trafficAccidentGateway.initModel();
+            IQueryable<QueryViewModel> initModel = trafficAccidentGateway.initModel();
             
             return View(initModel);
         }
@@ -71,8 +71,10 @@ namespace TrafficReport.Controllers
             //ViewData["regions"] = regionList;
             ViewBag.regions = regionList;
             ViewBag.reportType = reportType;
+            ViewBag.period = period;
 
-            List<string> roadName = new List<string>();
+
+            List < string> roadName = new List<string>();
             roadName.Add("Jurong East Avenue 1");
             roadName.Add("TAMPINES EXPRESSWAY");
             roadName.Add("PAN ISLAND EXPRESSWAY");
@@ -80,11 +82,13 @@ namespace TrafficReport.Controllers
 
             ViewData["roadNames"] = new SelectList(roadName);
 
-            IQueryable<myViewModel> queryResults = trafficAccidentGateway.initModel();
+            IQueryable<QueryViewModel> queryResults = trafficAccidentGateway.initModel();
+            //IEnumerable<QueryViewModel> queryR = trafficAccidentGateway.filterDatabase(regions, roadNames, period, reportType); 
 
             if (reportType.Equals("accident"))
             {
                 queryResults = trafficAccidentGateway.filterDatabase(regions, roadNames, period, reportType);
+                
             }
             else if (reportType.Equals("congestion"))
             {

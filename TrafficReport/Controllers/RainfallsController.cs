@@ -46,7 +46,7 @@ namespace TrafficReport.Controllers
             ViewData["roadNames"] = new SelectList(roadName);
 
 
-            IQueryable<myViewModel> initModel = rainfallGateway.initModel();
+            IQueryable<QueryViewModel> initModel = rainfallGateway.initModel();
 
             return View(initModel);
         }
@@ -77,7 +77,7 @@ namespace TrafficReport.Controllers
 
             ViewData["roadNames"] = new SelectList(roadName);
 
-            IQueryable<myViewModel> queryResults = trafficAccidentGateway.initModel();
+            IQueryable<QueryViewModel> queryResults = trafficAccidentGateway.initModel();
             
             queryResults = rainfallGateway.filterDatabase(regions, roadNames, period);
             

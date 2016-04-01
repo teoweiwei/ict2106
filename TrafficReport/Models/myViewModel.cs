@@ -6,7 +6,7 @@ using System.Web;
 namespace TrafficReport.Models
 {
 
-    public class myViewModel
+    public class NewViewModel
     {
 
         public tblRoadName tblRoadName { get; set; }

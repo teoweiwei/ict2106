@@ -1,5 +1,5 @@
 ﻿
-@model IEnumerable<TrafficReport.Models.myViewModel>
+@model IEnumerable<TrafficReport.Models.QueryViewModel>
 
 @{
     ViewBag.Title = "Search";
@@ -30,11 +30,12 @@
 
                 <tr>
                     <td>Period: </td>
+                    
+                    @*<td width="100px">@Html.RadioButton("period", "3month", false) 3-Month </td>*@
+                    <td width="100px">@Html.RadioButton("period", "today", false) Today </td>
                     <td width="100px">
                         @Html.RadioButton("period", "1month", true) 1-Month
                     </td>
-                    <td width="100px">@Html.RadioButton("period", "3month", false) 3-Month </td>
-                    <td width="100px">@Html.RadioButton("period", "6month", false) 6-Months </td>
                     <td width="100px">@Html.RadioButton("period", "1year", false) 1-Year </td>
 
                 </tr>
@@ -88,7 +89,7 @@
                                             if(item != null)
                                             {
                                                 //@: data.addRow(["@item.tblTrafficAccident.taDateTime.ToString("dd/MM/yyyy")", "@item.tblRainfall.rfValue.ToString()", "@item.tblTrafficAccident.taDescription.ToString()"]);
-                                                  @: data.addRow(["@item.tblTrafficAccident.taDateTime.ToString("dd/MM/yyyy")", @item.tblRainfall.rfValue, @i]);
+                                                 // @: data.addRow(["@item.tblTrafficAccident.taDateTime.ToString("dd/MM/yyyy")", @item.tblRainfall.rfValue, @i]);
                                             }
                                         }
 
@@ -131,7 +132,7 @@
                         <th>Road Name</th>
                         <th>Date</th>
                         <th>Rainfall Value</th>
-                        <th>Accident Description</th>
+                        <th>Number of Accidents </th>
                     </tr>
 
                     @{
@@ -147,14 +148,78 @@
 
                             <tr>
                                 <td>
-                                    @item.tblRoadName.rnRoadName
+                                    @*@item.tblRoadName.rnRoadName*@
+                                    @item.roadName
+                                    
                                 </td>
 
-                                <td>@item.tblTrafficAccident.taDateTime.ToString("dd/MM/yyyy")</td>
+                                <td>
+                                @*@item.tblTrafficAccident.taDateTime.ToString("dd/MM/yyyy")*@
+                                    @if (ViewBag.period == "1year")
+                                    {
+                                        //if (item.date == 1)
 
-                                <td>@item.tblRainfall.rfValue</td>
+                                        //{
+                                        //    item.monthName = "January";
+                                        //}
+                                        switch (item.date)
+                                        {
+                                            case 1:
+                                                item.monthName = "January";
+                                                break;
+                                            case 2:
+                                                item.monthName = "February";
+                                                break;
+                                            case 3:
+                                                item.monthName = "March";
+                                                break;
+                                            case 4:
+                                                item.monthName = "April";
+                                                break;
+                                            case 5:
+                                                item.monthName = "May";
+                                                break;
+                                            case 6:
+                                                item.monthName = "June";
+                                                break;
+                                            case 7:
+                                                item.monthName = "July";
+                                                break;
+                                            case 8:
+                                                item.monthName = "August";
+                                                break;
+                                            case 9:
+                                                item.monthName = "September";
+                                                break;
+                                            case 10:
+                                                item.monthName = "October";
+                                                break;
+                                            case 11:
+                                                item.monthName = "November";
+                                                break;
+                                            case 12:
+                                                item.monthName = "December";
+                                                break;
+                                        }
 
-                                <td>@item.tblTrafficAccident.taDescription</td>
+                                    @item.monthName
+                                    }
+                                    else if(ViewBag.period == "1month")
+                                    {
+                                        @item.date
+                                    }
+                                </td>
+
+                                <td>
+                                    
+                                    @item.rainfall
+                                @*@item.tblRainfall.rfValue*@
+                                </td>
+
+                                <td>
+                                    @item.number
+                                @*@item.tblTrafficAccident.taDescription*@
+                                </td>
 
                             </tr>
                             //i++;
@@ -185,7 +250,7 @@
                                         {
                                             if (item != null)
                                             {
-                                                @: data.addRow(["@item.tblTrafficSpeed.tsDateTime.ToString("dd/MM/yyyy")", @item.tblRainfall.rfValue, @((item.tblTrafficSpeed.tsMinSpeed + item.tblTrafficSpeed.tsMaxSpeed) / 2)]);
+                                             //   @: data.addRow(["@item.tblTrafficSpeed.tsDateTime.ToString("dd/MM/yyyy")", @item.tblRainfall.rfValue, @((item.tblTrafficSpeed.tsMinSpeed + item.tblTrafficSpeed.tsMaxSpeed) / 2)]);
                                                                                                             }
                                         }
 
@@ -217,14 +282,14 @@
 
                                     <tr>
                                         <td>
-                                            @item.tblRoadName.rnRoadName
+                                            @*@item.tblRoadName.rnRoadName*@
                                         </td>
 
-                                        <td>@item.tblTrafficSpeed.tsDateTime.ToString()</td>
+                                        @*<td>@item.tblTrafficSpeed.tsDateTime.ToString()</td>*@
 
-                                        <td>@item.tblRainfall.rfValue</td>
+                                        @*<td>@item.tblRainfall.rfValue</td>*@
 
-                                        <td>@((item.tblTrafficSpeed.tsMinSpeed + item.tblTrafficSpeed.tsMaxSpeed) / 2) </td>
+                                        @*<td>@((item.tblTrafficSpeed.tsMinSpeed + item.tblTrafficSpeed.tsMaxSpeed) / 2) </td>*@
 
                                     </tr>
 
