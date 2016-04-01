@@ -133,9 +133,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RainfallsController.cs" />
     <Compile Include="Controllers\LTADataMallController.cs" />
-    <Compile Include="Controllers\TrafficAccidentsController.cs" />
     <Compile Include="Controllers\TrafficController.cs" />
-    <Compile Include="Controllers\TrafficSpeedsController.cs" />
     <Compile Include="DAL\DataGateway.cs" />
     <Compile Include="DAL\IDataGateway.cs" />
     <Compile Include="DAL\LocationNameGateway.cs" />
@@ -182,14 +180,13 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\GoogleReverseGeocodingGateway.cs" />
+    <Compile Include="Services\ILTADataMallGateway.cs" />
     <Compile Include="Services\LTADataMallGateway.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\image\citytraffic.jpg" />
-    <Content Include="datasets\Traffic Incidents Data Set.txt" />
-    <Content Include="datasets\Traffic Speed Band Data.txt" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -244,10 +241,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Rainfalls\Index.cshtml" />
     <Content Include="Views\Rainfalls\Upload.cshtml" />
-    <Content Include="Views\Traffic\Create.cshtml" />
-    <Content Include="Views\Traffic\Delete.cshtml" />
-    <Content Include="Views\Traffic\Details.cshtml" />
-    <Content Include="Views\Traffic\Edit.cshtml" />
     <Content Include="Views\Traffic\Index.cshtml" />
     <Content Include="Views\Traffic\FormResults.cshtml" />
     <Content Include="Views\LTADataMall\Index.cshtml" />
