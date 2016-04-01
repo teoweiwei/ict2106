@@ -4,14 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Runtime.Serialization.Json;
 using System.Text;
-using System.Web;
 using TrafficReport.Models;
 
 namespace TrafficReport.Services
 {
-    public class LTADataMallGateway
+    public class LTADataMallGateway : ILTADataMallGateway
     {
         private const string ACCIDENT_URL = "http://datamall.mytransport.sg/ltaodataservice.svc/IncidentSet";
         private const string SPEED_URL = "http://datamall.mytransport.sg/ltaodataservice.svc/TrafficSpeedBandSet";
@@ -47,7 +45,7 @@ namespace TrafficReport.Services
             return speedData;
         }
 
-        private string LTADataMallRequest(string url)
+        public string LTADataMallRequest(string url)
         {
             try
             {

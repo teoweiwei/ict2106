@@ -16,12 +16,6 @@ namespace TrafficReport.DAL
             this.data = db.Set<T>();
         }
 
-
-
-       
-
-        
-
         public IEnumerable<T> SelectAll()
         {
             return data.ToList();

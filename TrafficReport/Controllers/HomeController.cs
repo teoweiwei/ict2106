@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using TrafficReport.DAL;
-using TrafficReport.Models;
+﻿using System.Web.Mvc;
 
 namespace TrafficReport.Controllers
 {
@@ -12,7 +6,6 @@ namespace TrafficReport.Controllers
     {
         public ActionResult Index()
         {
-            
             return View();
         }
 
