@@ -64,8 +64,6 @@ namespace TrafficReport.Controllers
             //}
             ViewBag.roadNames = LocationUpdate;
 
-            IQueryable<QueryViewModel> initModel = DataGateway.initModel();
-            
             IQueryable<QueryViewModel> initModel = trafficAccidentGateway.initModel();
             
             return View("Index", initModel);
