@@ -1,42 +1,34 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Home Page";
 }
 
 <div class="jumbotron">
-    <div class="indexHeader">
-        <h1>Traffic Report</h1>
-        <p class="lead">Traffic Report is a web application that allows you to view and analyse traffic data and weather data and get an insight into the trends occuring. </p>
+    <div class="container indexHeader">
+
+        <h1 style="color: white"><b>Traffic Report</b></h1>
+        <p style="color: white" class="lead">Traffic Report is a web application that allows you to view and analyse traffic data and weather data and get an insight into the trends occuring. </p>
+
     </div>
+
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Search</h2>
-        <form>
-            <table>
-                <tr>
-                    <td>
-                        Region:
-                        
-                    </td>
-                </tr>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <h1> Rainfall</h1>
+                <a class="btn btn-primary" href='@Url.Action("Index", "Rainfalls")' role="button">Rainfall</a>
+            </div>
+            <div class="col-md-4">
+                <h1> Traffic Analysis</h1>
+                <a class="btn btn-primary" href='@Url.Action("Index", "Traffic")' role="button">Get LTA Data</a>
+            </div>
+            <div class="col-md-4">
+                <h1> Get LTA Data</h1>
+                <a class="btn btn-primary" href='@Url.Action("Index", "LTADataMall")' role="button">Get LTA Data</a>
 
-            </table>
+            </div>
 
-        </form>
+        </div>
     </div>
-    @*<div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>*@
 </div>
-
-
-
