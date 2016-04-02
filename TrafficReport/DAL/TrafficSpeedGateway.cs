@@ -96,7 +96,8 @@ namespace TrafficReport.DAL
 
                                  where rn.rnRoadName == roadNames && rn.rnID == ts.tsRoadName && ts.tsDateTime > comparingDates && DbFunctions.DiffDays(ts.tsDateTime, rf.rfDate) == 0
                                                         && ((ts.tsMinSpeed + ts.tsMaxSpeed) / 2) < (rn.rnSpeedLimit / 2)
-                                 group rf by rf.rfDate.Day into Date
+                                 //group rf by rf.rfDate.Day into Date
+                                 group new {rn, ts, ln, rf} by new { rn.rnRoadName, ts.tsMaxSpeed, ts.tsMinSpeed, ts.tsDateTime, rn.rnSpeedLimit, rf.rfValue} into grp
                                  select new QueryViewModel
                                  {
 
@@ -104,12 +105,11 @@ namespace TrafficReport.DAL
                                     //tblTrafficAccident = ta,
                                     //tblLocationName = ln,
                                     //tblRainfall = rf
-
-                                    date = Date.Key,
-                                     rainfall = (double)Date.Average(value => value.rfValue),
-                                     number = Date.Count(),
-                                     roadName = roadNames
-
+                                     
+                                     dateTime = grp.Key.tsDateTime,
+                                     rainfall = (double)grp.Key.rfValue,
+                                     number = (int)((grp.Key.tsMinSpeed + grp.Key.tsMaxSpeed) / 2),
+                                     roadName = grp.Key.rnRoadName
                                  }
                                  );
 
@@ -148,29 +148,39 @@ namespace TrafficReport.DAL
                 DateTime comparingDates = DateTime.Today.AddMonths(periodDuration);
 
                 queryResults = (
-                                from rn in db.tblRoadNames
-                                join ta in db.tblTrafficAccidents on rn.rnID equals ta.taRoadName
-                                join ln in db.tblLocationNames on rn.rnLocation equals ln.lnID
-                                join rf in db.tblRainfalls on rn.rnLocation equals rf.rfLocation
+                                 from rn in db.tblRoadNames
+                                 join ts in db.tblTrafficSpeeds on rn.rnID equals ts.tsRoadName
+                                 join ln in db.tblLocationNames on rn.rnLocation equals ln.lnID
+                                 join rf in db.tblRainfalls on rn.rnLocation equals rf.rfLocation
 
-                                where rn.rnRoadName == roadNames && rn.rnID == ta.taRoadName && ta.taDateTime > comparingDates && DbFunctions.DiffDays(ta.taDateTime, rf.rfDate) == 0
-                                group rf by rf.rfDate.Month into Date
-                                select new QueryViewModel
-                                {
+                                 where rn.rnRoadName == roadNames && rn.rnID == ts.tsRoadName && ts.tsDateTime > comparingDates && DbFunctions.DiffDays(ts.tsDateTime, rf.rfDate) == 0
+                                                        && ((ts.tsMinSpeed + ts.tsMaxSpeed) / 2) < (rn.rnSpeedLimit / 2)
+                                 //group rf by rf.rfDate.Day into Date
+                                 group new { rn, ts, ln, rf } by new { rn.rnRoadName, ts.tsMaxSpeed, ts.tsMinSpeed, rf.rfDate.Month, rn.rnSpeedLimit, rf.rfValue, ((ts.tsMinSpeed + ts.tsMaxSpeed) / 2).Value } into grp
+                                 group grp by grp.Key.Month into col
+                                 select new QueryViewModel
+                                 {
 
-                                    //tblRoadName = rn,
-                                    //tblTrafficAccident = ta,
-                                    //tblLocationName = ln,
-                                    //tblRainfall = rf
+                                     //tblRoadName = rn,
+                                     //tblTrafficAccident = ta,
+                                     //tblLocationName = ln,
+                                     //tblRainfall = rf
 
-                                    date = Date.Key,
-                                    rainfall = (double)Date.Average(value => value.rfValue),
-                                    number = Date.Count(),
-                                    roadName = roadNames
+                                     //date = grp.Key.Month,
+                                     //rainfall = (double)grp.Average(value => value.rf.rfValue),
+                                     ////rainfall = (double)grp.Key.rfValue,
+                                     ////number = (int)grp.Average(avg => avg.ts.),
+                                     //roadName = grp.Key.rnRoadName
 
+                                     date = col.Key,
+                                     rainfall = (double)col.Average(value => value.Key.rfValue),
+                                     //rainfall = (double)grp.Key.rfValue,
+                                     //number = (int)grp.Average(avg => avg.ts.),
+                                     number = (int)col.Average(avg => avg.Key.Value),
+                                     roadName = roadNames
 
-                                }
-                                );
+                                 }
+                                 );
             }
 
             return queryResults;

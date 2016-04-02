@@ -17,18 +17,19 @@ namespace TrafficReport.Controllers
         private LocationNameGateway locationNameGateway = new LocationNameGateway();
         private TrafficAccidentGateway trafficAccidentGateway = new TrafficAccidentGateway();
         private TrafficSpeedGateway trafficSpeedGateway = new TrafficSpeedGateway();
-        
+        string regionClicked;
         private TrafficReportContext db = new TrafficReportContext();
         public TrafficController()
         {
-            ViewBag.findByDay = "0";
         }
         // GET: Traffic
-        public ActionResult Index(string val)
-        {
-
+        
+        public ActionResult Index(String region)
+        {   
+            List<SelectListItem> LocationUpdate = new List<SelectListItem>();
             List<SelectListItem> regionList = new List<SelectListItem>();
             // List<myViewModel> regionList = new List<myViewModel>();
+            regionList.Add(new SelectListItem { Value = "Choose", Text = "<--  Region  -->" });
             var query = (from ln in db.tblLocationNames
                          orderby ln.lnRegion
                          select new  { Text = ln.lnRegion, Value = ln.lnRegion }).Distinct().ToList();
@@ -40,28 +41,44 @@ namespace TrafficReport.Controllers
 
             
             ViewBag.regions = regionList;
-                        
 
-            List<string> roadName = new List<string>();
-            roadName.Add("Jurong East Avenue 1");
-            roadName.Add("TAMPINES EXPRESSWAY");
-            roadName.Add("PAN ISLAND EXPRESSWAY");
-            roadName.Add("CENTRAL EXPRESSWAY");
+            LocationUpdate.Add(new SelectListItem { Value = "selectRegion", Text = "<-- Select A Region First -->"});
+            //List<string> roadName = new List<string>();
+            //roadName.Add("Jurong East Avenue 1");
+            //roadName.Add("TAMPINES EXPRESSWAY");
+            //roadName.Add("PAN ISLAND EXPRESSWAY");
+            //roadName.Add("CENTRAL EXPRESSWAY");
 
-            ViewData["roadNames"] = new SelectList(roadName);
+            //ViewData["roadNames"] = new SelectList(roadName);
+
+            //LocationUpdate.Add(new SelectListItem { Value = "", Text = "" });
+            //var roadquery = (from ln in db.tblLocationNames
+            //             join rn in db.tblRoadNames on ln.lnID equals rn.rnLocation
+            //             where ln.lnRegion == region
+            //             orderby rn.rnRoadName
+            //             select new { Text = rn.rnRoadName, Value = rn.rnRoadName }).Distinct().ToList();
+
+            //foreach (var item in roadquery)
+            //{
+            //    LocationUpdate.Add(new SelectListItem { Value = item.Value.ToString(), Text = item.Text });
+            //}
+            ViewBag.roadNames = LocationUpdate;
 
 
-            IQueryable<QueryViewModel> initModel = DataGateway.initModel();
+            IQueryable<QueryViewModel> initModel = trafficAccidentGateway.initModel();
             
-            return View(initModel);
+            return View("Index", initModel);
         }
 
         [HttpPost]
         public ActionResult HandleForm(string regions, string roadNames, string period, string reportType)
         {
+            
+            regionClicked = regions;
+            List<SelectListItem> LocationUpdate = new List<SelectListItem>();
             List<SelectListItem> regionList = new List<SelectListItem>();
             // List<myViewModel> regionList = new List<myViewModel>();
-            
+            regionList.Add(new SelectListItem { Value = "Choose", Text = "<--  Region  -->" });
             var query = (from ln in db.tblLocationNames
                          orderby ln.lnRegion
                          select new { Text = ln.lnRegion, Value = ln.lnRegion }).Distinct().ToList();
@@ -71,33 +88,46 @@ namespace TrafficReport.Controllers
                 regionList.Add(new SelectListItem { Value = item.Value.ToString(), Text = item.Text });
             }
 
-
+            
             //ViewData["regions"] = regionList;
             ViewBag.regions = regionList;
             ViewBag.reportType = reportType;
             ViewBag.period = period;
+            LocationUpdate.Add(new SelectListItem { Value = "Choose", Text = "<--  Please Select A Road Name  -->" });
+            var roadquery = (from ln in db.tblLocationNames
+                             join rn in db.tblRoadNames on ln.lnID equals rn.rnLocation
+                             where ln.lnRegion == regions
+                             orderby rn.rnRoadName
+                             select new { Text = rn.rnRoadName, Value = rn.rnRoadName }).Distinct().ToList();
 
+            foreach (var item in roadquery)
+            {
+                LocationUpdate.Add(new SelectListItem { Value = item.Value.ToString(), Text = item.Text });
+            }
+            ViewBag.roadNames = LocationUpdate;
 
-            List < string> roadName = new List<string>();
-            roadName.Add("Jurong East Avenue 1");
-            roadName.Add("TAMPINES EXPRESSWAY");
-            roadName.Add("PAN ISLAND EXPRESSWAY");
-            roadName.Add("CENTRAL EXPRESSWAY");
+            //List < string> roadName = new List<string>();
+            //roadName.Add("Jurong East Avenue 1");
+            //roadName.Add("TAMPINES EXPRESSWAY");
+            //roadName.Add("PAN ISLAND EXPRESSWAY");
+            //roadName.Add("CENTRAL EXPRESSWAY");
 
-            ViewData["roadNames"] = new SelectList(roadName);
+            //ViewData["roadNames"] = new SelectList(roadName);
 
             IQueryable<QueryViewModel> queryResults = trafficAccidentGateway.initModel();
             //IEnumerable<QueryViewModel> queryR = trafficAccidentGateway.filterDatabase(regions, roadNames, period, reportType); 
 
-            if (reportType.Equals("accident"))
-            {
-                queryResults = trafficAccidentGateway.filterDatabase(regions, roadNames, period, reportType);
                 
-            }
-            else if (reportType.Equals("congestion"))
-            {
-                queryResults = trafficSpeedGateway.filterDatabase(regions, roadNames, period, reportType);
-            }
+                if (reportType.Equals("accident"))
+                {
+                    queryResults = trafficAccidentGateway.filterDatabase(regions, roadNames, period, reportType);
+
+                }
+                else if (reportType.Equals("congestion"))
+                {
+                    queryResults = trafficSpeedGateway.filterDatabase(regions, roadNames, period, reportType);
+                }
+            
            
             
             return View("Index", queryResults);
@@ -243,16 +273,28 @@ namespace TrafficReport.Controllers
         [HttpGet]
         public ActionResult CallRoadName(String region)
         {
-            List<string> LocationUpdate = new List<string>();
+            List<SelectListItem> LocationUpdate = new List<SelectListItem>();
+            //List<string> LocationUpdate = new List<string>();
             var query = (from ln in db.tblLocationNames
+                         join rn in db.tblRoadNames on ln.lnID equals rn.rnLocation
                          where ln.lnRegion == region
-                         orderby ln.lnRegion
-                         select new { ln.lnLocationName }).Distinct().ToList();
+                         orderby rn.rnRoadName
+                         select new { Text = rn.rnRoadName, Value = rn.rnRoadName }).Distinct().ToList();
 
             foreach (var item in query)
             {
-                LocationUpdate.Add(item.ToString());
+                LocationUpdate.Add(new SelectListItem { Value = item.Value.ToString(), Text = item.Text });
             }
+            ViewBag.roadNames = LocationUpdate;
+            //RedirectToAction("Index");
+            //var query = (from ln in db.tblLocationNames
+            //             orderby ln.lnRegion
+            //             select new { Text = ln.lnRegion, Value = ln.lnRegion }).Distinct().ToList();
+
+            //foreach (var item in query)
+            //{
+            //    regionList.Add(new SelectListItem { Value = item.Value.ToString(), Text = item.Text });
+            //}
 
             return Json(LocationUpdate, JsonRequestBehavior.AllowGet);
         }
