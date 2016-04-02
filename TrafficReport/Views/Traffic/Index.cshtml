@@ -165,44 +165,36 @@
             <div class="col-md-6">                
                 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                 <script type="text/javascript">
-                                function TestDrawChart() {
-                                    google.charts.load('current', { 'packages': ['bar'] });
-                                    google.charts.setOnLoadCallback(drawChart);
-                                    function drawChart() {
+                    function DrawChart_Accident() {
+                        google.charts.load('current', { 'packages': ['bar'] });
+                        google.charts.setOnLoadCallback(drawChart_Accident);
+                        function drawChart_Accident() {
 
-                                        @{ int i = 0; }
-                                        @foreach (var item in Model)
-                                        {
-                                            if (item != null)
-                                            {
-                                                i++;
-                                            }
-                                        }
-                                        // new method
-                                        var data = new google.visualization.DataTable();
-                                        data.addColumn('string', 'Date');
-                                        data.addColumn('number', 'rfValue');
-                                        data.addColumn('number','Number of Accidents');
-                                        @foreach (var item in Model)
-                                        {
-                                            if(item != null)
-                                            {
-                                                //@: data.addRow(["@item.tblTrafficAccident.taDateTime.ToString("dd/MM/yyyy")", "@item.tblRainfall.rfValue.ToString()", "@item.tblTrafficAccident.taDescription.ToString()"]);
-                                                //@: data.addRow(["@item.tblTrafficAccident.taDateTime.ToString("dd/MM/yyyy")", @item.tblRainfall.rfValue, @i]);
-                                            }
-                                        }
-                                        var options = {
-                                            bars: 'horizontal' // Required for Material Bar Charts.
-                                        };
-
-                                        var chart = new google.charts.Bar(document.getElementById('barchart_material'));
-                                        chart.draw(data, options);
-                                    }
+                            var data = new google.visualization.DataTable();
+                            data.addColumn('string', 'Date');
+                            data.addColumn('number', 'rfValue');
+                            data.addColumn('number', 'Number of Accidents');
+                            @foreach (var item in Model)
+                            {
+                                if(item != null)
+                                {
+                                    //@: data.addRow(["@item.tblTrafficAccident.taDateTime.ToString("dd/MM/yyyy")", "@item.tblRainfall.rfValue.ToString()", "@item.tblTrafficAccident.taDescription.ToString()"]);
+                                    //@: data.addRow(["10","11", "12"]);
+                                    @: data.addRow(["1/@item.date/2016", @item.rainfall, @item.number]);
                                 }
+                            }
+                            var options = {
+                                bars: 'horizontal' // Required for Material Bar Charts.
+                            };
+
+                            var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+                            chart.draw(data, options);
+                        }
+                    }
                 </script>
 
                 <div id="barchart_material" style="width: 900px; height: 500px;">
-                    <script>TestDrawChart();</script>
+                    <script>DrawChart_Accident();</script>
                 </div>
 
 
@@ -290,7 +282,7 @@
             <div class="col-md-6">
                 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                 <script type="text/javascript">
-                    function TestDrawChart_Congestion() {
+                    function DrawChart_Congestion() {
                         google.charts.load('current', { 'packages': ['bar'] });
                         google.charts.setOnLoadCallback(drawChart_Congestion);
                         function drawChart_Congestion() {
@@ -300,25 +292,27 @@
                             data.addColumn('number', 'rfValue');
                             data.addColumn('number', 'Average Speed');
                             @foreach (var item in Model)
-                        {
-                            if (item != null)
                             {
-                                //   @: data.addRow(["@item.tblTrafficSpeed.tsDateTime.ToString("dd/MM/yyyy")", @item.tblRainfall.rfValue, @((item.tblTrafficSpeed.tsMinSpeed + item.tblTrafficSpeed.tsMaxSpeed) / 2)]);
-                                                                                            }
-                        }
+                                if (item != null)
+                                {
+                                    //   @: data.addRow(["@item.tblTrafficSpeed.tsDateTime.ToString("dd/MM/yyyy")", @item.tblRainfall.rfValue, @((item.tblTrafficSpeed.tsMinSpeed + item.tblTrafficSpeed.tsMaxSpeed) / 2)]);
+                                    @: data.addRow(["1/@item.date/2016", @item.rainfall, @item.number]);
 
-                            var options = {
+                                }
+                            }
+
+                                    var options = {
                                 bars: 'horizontal' // Required for Material Bar Charts.
                             };
 
-                            var chart = new google.charts.Bar(document.getElementById('barchart_material_Congestion'));
-                            chart.draw(data, options);
-                        }
-                    }
+                                var chart = new google.charts.Bar(document.getElementById('barchart_material_Congestion'));
+                                chart.draw(data, options);
+                            }
+                            }
                 </script>
 
                 <div id="barchart_material_Congestion" style="width: 900px; height: 500px;">
-                    <script>TestDrawChart_Congestion();</script>
+                    <script>DrawChart_Congestion();</script>
                 </div>
             </div>
         </div>                                        
