@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using TrafficReport.Models;
+﻿using TrafficReport.Models;
 
 namespace TrafficReport.DAL
 {
+    //This gateway perform database operation on tblLocationName table
     public class LocationNameGateway : DataGateway<tblLocationName>
     {
     }

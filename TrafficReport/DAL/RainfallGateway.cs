@@ -9,8 +9,10 @@ using System.Data.Entity;
 
 namespace TrafficReport.DAL
 {
+    //This gateway perform database operation on tblRainfall table
     public class RainfallGateway : DataGateway<tblRainfall>
     {
+        //Save rainfall data into database from CSV file
         public IEnumerable<tblRainfall> SaveRainfallData(HttpPostedFileBase upload)
         {
             if (upload != null && upload.ContentLength > 0)
@@ -25,17 +27,21 @@ namespace TrafficReport.DAL
                     List<string> row = new List<string>();
                     read.ReadLine();
                     
+                    //Read each row of data in the CSV file till end
                     while (!read.EndOfStream)
                     {
                         tblRainfall rainfallData = new tblRainfall();
                         row = read.ReadLine().Split(',').ToList();
 
+                        //Get location id from tblLocationNames based on location name
                         string locationName = row[0];
                         int locationId = db.tblLocationNames.Where(l => l.lnLocationName.Equals(locationName)).ToList()[0].lnID;
 
+                        //Parse date
                         rainfallData.rfDate = DateTime.ParseExact(row[3] + "/" + row[2] + "/" + row[1], "d/M/yyyy", CultureInfo.InvariantCulture);
                         rainfallData.rfLocation = locationId;
 
+                        //Insert value as 0 if no rainfall value else get actual value
                         if(row[4].Equals("-"))
                         {
                             rainfallData.rfValue = 0;
@@ -50,6 +56,7 @@ namespace TrafficReport.DAL
                         savedRainfallData.Add(rainfallData);
                     }
 
+                    //Return the list of saved records
                     return savedRainfallData;
                 }
             }

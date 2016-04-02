@@ -2,27 +2,33 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using TrafficReport.Models;
 using TrafficReport.Services;
 
 namespace TrafficReport.DAL
 {
+    //This gateway perform database operation on tblTrafficAccident table
     public class TrafficAccidentGateway : DataGateway<tblTrafficAccident>
     {
         private GoogleReverseGeocodingGateway googleReverseGeocodingGateway = new GoogleReverseGeocodingGateway();
 
+        //Save traffic acident data into database
         public List<tblTrafficAccident> SaveAccidentData(List<LTADataMallModel.AccidentData> dataList)
         {
+            //List of successfully saved records
             List<tblTrafficAccident> savedAccidentData = new List<tblTrafficAccident>();
 
+            //Loop to save each record
             for (int i = 0; i < dataList.Count(); i++)
             {
+                //Extract only data type is Accident
                 if (dataList[i].Type.Equals("Accident"))
                 {
+                    //Check if the accident record exist in the database base on accident's description
                     string checkDescription = dataList[i].Message;
                     if (data.Where(m => m.taDescription.Equals(checkDescription)).ToList().Count() == 0)
                     {
+                        //Create model can assign value to respective fields
                         tblTrafficAccident accidentData = new tblTrafficAccident();
                         accidentData.taID = dataList[i].IncidentID;
                         accidentData.taDescription = dataList[i].Message;
@@ -30,10 +36,12 @@ namespace TrafficReport.DAL
                         accidentData.taLat = dataList[i].Latitude;
                         accidentData.taLong = dataList[i].Longitude;
 
+                        //Get road name from Google Geocoding web service by provide latitude and longitude coordinates
                         string roadName = googleReverseGeocodingGateway.GetRoadNameGeolocation(accidentData.taLat, accidentData.taLong);
-
+                        
                         if (roadName != null)
                         {
+                            //Only save accident record if the road name exist in the database
                             Boolean idExist = db.tblRoadNames.Where(r => r.rnRoadName.ToLower().Equals(roadName.ToLower())).ToList().Count() != 0;
 
                             if (idExist)
@@ -48,6 +56,7 @@ namespace TrafficReport.DAL
                 }
             }
 
+            //Return the list of saved records
             return savedAccidentData;
         }
 

@@ -2,27 +2,34 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using TrafficReport.Models;
 
 namespace TrafficReport.DAL
 {
+    //This gateway perform database operation on tblTrafficSpeed table
     public class TrafficSpeedGateway : DataGateway<tblTrafficSpeed>
     {
+        //Save traffic speed data into database
         public List<tblTrafficSpeed> SaveSpeedData(List<LTADataMallModel.SpeedData> dataList)
         {
+            //List of successfully saved records
             List<tblTrafficSpeed> savedSpeedData = new List<tblTrafficSpeed>();
+
+            //List of road name traffic speed data to be saved. Road name with location ID assigned will be saved for this scope of project, else all Singapore's road speed date will be saved
             IQueryable<tblRoadName> validRoadNameList = db.tblRoadNames.Where(l => l.rnLocation != null);
 
+            //Loop to save each record
             for (int i = 0; i < dataList.Count(); i++)
             {
+                //Check if current record in a vaild road to be saved
                 int roadID = dataList[i].LinkID;
                 Boolean isValid = validRoadNameList.Where(d => d.rnID == roadID).ToList().Count() > 0;
 
+                //Save traffic speed record which is inside the valid list
                 if(isValid)
                 {
+                    //Create model can assign value to respective fields
                     tblTrafficSpeed speedData = new tblTrafficSpeed();
-
                     speedData.tsRoadName = roadID;
                     speedData.tsDateTime = dataList[i].CreateDate;
                     speedData.tsMinSpeed = dataList[i].MinimumSpeed;
@@ -33,6 +40,7 @@ namespace TrafficReport.DAL
                 }
             }
 
+            //Return the list of saved records
             return savedSpeedData;
         }
 

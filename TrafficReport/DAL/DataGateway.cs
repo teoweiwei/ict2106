@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
-using TrafficReport.Models;
 
 namespace TrafficReport.DAL
 {
@@ -20,7 +17,6 @@ namespace TrafficReport.DAL
         public IEnumerable<T> SelectAll()
         {
             return data.ToList();
-
         }
 
         public T Delete(int? id)

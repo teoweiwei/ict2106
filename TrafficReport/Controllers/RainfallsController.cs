@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TrafficReport.DAL;
@@ -11,6 +8,7 @@ using TrafficReport.Models;
 
 namespace TrafficReport.Controllers
 {
+    //This controller handles user request on querying weather report and uploading of rainfall value CSV file
     public class RainfallsController : Controller
     {
         private RainfallGateway rainfallGateway = new RainfallGateway();
@@ -18,7 +16,7 @@ namespace TrafficReport.Controllers
 
         private TrafficAccidentGateway trafficAccidentGateway = new TrafficAccidentGateway();
 
-        // GET: Rainfalls
+        //Index page
         public ActionResult Index()
         {
             
@@ -96,19 +94,17 @@ namespace TrafficReport.Controllers
             return View("Index", queryResults);
         }
 
-        public ActionResult Upload()
-        {
-            return View(rainfallGateway.SelectAll());
-        }
-
+        //Upload rainfall CSV file
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Upload(HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
+                //Record that has been successfully saved into database
                 IEnumerable<tblRainfall> savedRainfallRecord = rainfallGateway.SaveRainfallData(upload);
-
+                
+                //Display error when no file uploaded
                 if(savedRainfallRecord == null)
                 {
                     ModelState.AddModelError("File", "Error in uploading file");
