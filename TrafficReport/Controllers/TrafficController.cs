@@ -51,7 +51,7 @@ namespace TrafficReport.Controllers
             ViewData["roadNames"] = new SelectList(roadName);
 
 
-            IQueryable<QueryViewModel> initModel = DataGateway.initModel();
+            IQueryable<QueryViewModel> initModel = trafficAccidentGateway.initModel();
             
             return View(initModel);
         }

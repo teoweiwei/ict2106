@@ -7,6 +7,5 @@ namespace TrafficReport.Services
     {
         List<LTADataMallModel.AccidentData> GetLTAAccidentData();
         List<LTADataMallModel.SpeedData> GetLTASpeedData();
-        string LTADataMallRequest(string url);
     }
 }
