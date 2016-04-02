@@ -45,7 +45,7 @@ namespace TrafficReport.Services
             return speedData;
         }
 
-        public string LTADataMallRequest(string url)
+        private string LTADataMallRequest(string url)
         {
             try
             {

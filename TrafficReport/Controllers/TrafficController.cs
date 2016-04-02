@@ -23,7 +23,7 @@ namespace TrafficReport.Controllers
         {
         }
         // GET: Traffic
-        
+
         public ActionResult Index(String region)
         {   
             List<SelectListItem> LocationUpdate = new List<SelectListItem>();
@@ -41,7 +41,7 @@ namespace TrafficReport.Controllers
 
             
             ViewBag.regions = regionList;
-
+                        
             LocationUpdate.Add(new SelectListItem { Value = "selectRegion", Text = "<-- Select A Region First -->"});
             //List<string> roadName = new List<string>();
             //roadName.Add("Jurong East Avenue 1");
@@ -64,7 +64,8 @@ namespace TrafficReport.Controllers
             //}
             ViewBag.roadNames = LocationUpdate;
 
-
+            IQueryable<QueryViewModel> initModel = DataGateway.initModel();
+            
             IQueryable<QueryViewModel> initModel = trafficAccidentGateway.initModel();
             
             return View("Index", initModel);
@@ -88,7 +89,7 @@ namespace TrafficReport.Controllers
                 regionList.Add(new SelectListItem { Value = item.Value.ToString(), Text = item.Text });
             }
 
-            
+
             //ViewData["regions"] = regionList;
             ViewBag.regions = regionList;
             ViewBag.reportType = reportType;
@@ -118,17 +119,17 @@ namespace TrafficReport.Controllers
             //IEnumerable<QueryViewModel> queryR = trafficAccidentGateway.filterDatabase(regions, roadNames, period, reportType); 
 
                 
-                if (reportType.Equals("accident"))
-                {
-                    queryResults = trafficAccidentGateway.filterDatabase(regions, roadNames, period, reportType);
-
-                }
-                else if (reportType.Equals("congestion"))
-                {
-                    queryResults = trafficSpeedGateway.filterDatabase(regions, roadNames, period, reportType);
-                }
-            
+            if (reportType.Equals("accident"))
+            {
+                queryResults = trafficAccidentGateway.filterDatabase(regions, roadNames, period, reportType);
+                
+            }
+            else if (reportType.Equals("congestion"))
+            {
+                queryResults = trafficSpeedGateway.filterDatabase(regions, roadNames, period, reportType);
+            }
            
+            
             
             return View("Index", queryResults);
         }
