@@ -12,7 +12,7 @@
                 <tr>
                     <td>Region: </td>
                     <td>
-                        @Html.DropDownList("regions")
+                        @Html.DropDownList("regions", null, new { onchange = "this.form.submit()" })
                     </td>
                     <td>Road Name: </td>
                     <td colspan="2">
@@ -62,13 +62,64 @@
                     @foreach (var item in Model)
                 {
                     <tr>
-                        @*<td>
-                            @item.tblRainfall.rnRoadName
+                        <td>
+                            
+                            @item.roadName
                         </td>
 
-                        <td>@item.tblRainfall.rfDate.ToString("dd/MM/yyyy")</td>
+                        <td>
+                        @if (ViewBag.period == "1year" || ViewBag.period == "3month" || ViewBag.period == "6month")
+                        {
 
-                        <td>@item.tblRainfall.rfValue</td>*@
+                            switch (item.date)
+                            {
+                                case 1:
+                                    item.monthName = "January";
+                                    break;
+                                case 2:
+                                    item.monthName = "February";
+                                    break;
+                                case 3:
+                                    item.monthName = "March";
+                                    break;
+                                case 4:
+                                    item.monthName = "April";
+                                    break;
+                                case 5:
+                                    item.monthName = "May";
+                                    break;
+                                case 6:
+                                    item.monthName = "June";
+                                    break;
+                                case 7:
+                                    item.monthName = "July";
+                                    break;
+                                case 8:
+                                    item.monthName = "August";
+                                    break;
+                                case 9:
+                                    item.monthName = "September";
+                                    break;
+                                case 10:
+                                    item.monthName = "October";
+                                    break;
+                                case 11:
+                                    item.monthName = "November";
+                                    break;
+                                case 12:
+                                    item.monthName = "December";
+                                    break;
+                            }
+
+                            @item.monthName
+                        }
+                        else if (ViewBag.period == "1month")
+                        {
+                            @item.date
+                        }
+                        </td>
+
+                        <td>@item.rainfall</td>
 
                     </tr>
                     }

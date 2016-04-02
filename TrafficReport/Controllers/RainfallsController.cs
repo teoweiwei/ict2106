@@ -21,9 +21,11 @@ namespace TrafficReport.Controllers
         // GET: Rainfalls
         public ActionResult Index()
         {
-
+            
+            List<SelectListItem> LocationUpdate = new List<SelectListItem>();
             List<SelectListItem> regionList = new List<SelectListItem>();
-            // List<myViewModel> regionList = new List<myViewModel>();
+
+            regionList.Add(new SelectListItem { Value = "Choose", Text = "<--  Region  -->" });
             var query = (from ln in db.tblLocationNames
                          orderby ln.lnRegion
                          select new { Text = ln.lnRegion, Value = ln.lnRegion }).Distinct().ToList();
@@ -36,14 +38,10 @@ namespace TrafficReport.Controllers
 
             ViewBag.regions = regionList;
 
+            LocationUpdate.Add(new SelectListItem { Value = "selectRegion", Text = "<-- Select A Region First -->" });
 
-            List<string> roadName = new List<string>();
-            roadName.Add("Jurong East Avenue 1");
-            roadName.Add("TAMPINES EXPRESSWAY");
-            roadName.Add("PAN ISLAND EXPRESSWAY");
-            roadName.Add("CENTRAL EXPRESSWAY");
-
-            ViewData["roadNames"] = new SelectList(roadName);
+            ViewBag.roadNames = LocationUpdate;
+            
 
 
             IQueryable<QueryViewModel> initModel = rainfallGateway.initModel();
@@ -54,8 +52,9 @@ namespace TrafficReport.Controllers
         [HttpPost]
         public ActionResult HandleForm(string regions, string roadNames, string period)
         {
+            List<SelectListItem> LocationUpdate = new List<SelectListItem>();
             List<SelectListItem> regionList = new List<SelectListItem>();
-            // List<myViewModel> regionList = new List<myViewModel>();
+
             var query = (from ln in db.tblLocationNames
                          orderby ln.lnRegion
                          select new { Text = ln.lnRegion, Value = ln.lnRegion }).Distinct().ToList();
@@ -65,20 +64,31 @@ namespace TrafficReport.Controllers
                 regionList.Add(new SelectListItem { Value = item.Value.ToString(), Text = item.Text });
             }
 
-
-            //ViewData["regions"] = regionList;
+            
             ViewBag.regions = regionList;
+            //let the index page know what choices where made so as to display the right data for the user
+            
+            ViewBag.period = period;
 
-            List<string> roadName = new List<string>();
-            roadName.Add("Jurong East Avenue 1");
-            roadName.Add("TAMPINES EXPRESSWAY");
-            roadName.Add("PAN ISLAND EXPRESSWAY");
-            roadName.Add("CENTRAL EXPRESSWAY");
+            LocationUpdate.Add(new SelectListItem { Value = "Choose", Text = "<-- Select A Road Name -->" });
 
-            ViewData["roadNames"] = new SelectList(roadName);
+            //find the roadnames based on the region chosen
+            var roadquery = (from ln in db.tblLocationNames
+                             join rn in db.tblRoadNames on ln.lnID equals rn.rnLocation
+                             where ln.lnRegion == regions
+                             orderby rn.rnRoadName
+                             select new { Text = rn.rnRoadName, Value = rn.rnRoadName }).Distinct().ToList();
+
+            foreach (var item in roadquery)
+            {
+                LocationUpdate.Add(new SelectListItem { Value = item.Value.ToString(), Text = item.Text });
+            }
+            ViewBag.roadNames = LocationUpdate;
+
 
             IQueryable<QueryViewModel> queryResults = trafficAccidentGateway.initModel();
             
+            //filter the rainfall based on the search query
             queryResults = rainfallGateway.filterDatabase(regions, roadNames, period);
             
 

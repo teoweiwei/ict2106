@@ -35,12 +35,11 @@
                 <tr>
                     <td>Period: </td>
                     
-                    @*<td width="100px">@Html.RadioButton("period", "3month", false) 3-Month </td>*@
-                   @* <td width="100px">@Html.RadioButton("period", "today", false, new { @OnClick = "configureDropDownLists('Day',document.getElementById('secondaryOption'))" }) 1-Day </td>*@
-                    <td width="100px"> @Html.RadioButton("period", "1month", true, new { @OnClick = "configureDropDownLists('Month',document.getElementById('secondaryOption'))" }) 1-Month </td>
+                    <td width="100px"> @Html.RadioButton("period", "1month", true) 1-Month </td>
                     <td width="100px">@Html.RadioButton("period", "3month", false) 3-Month </td>
                     <td width="100px">@Html.RadioButton("period", "6month", false) 6-month </td>
-                    <td width="100px">@Html.RadioButton("period", "1year", false, new { @OnClick = "configureDropDownLists('Year',document.getElementById('secondaryOption'))" }) 1-Year </td>
+                    <td width="100px">@Html.RadioButton("period", "1year", false) 1-Year </td>
+                    @*<td width="100px">@Html.RadioButton("period", "1year", false, new { @OnClick = "configureDropDownLists('Year',document.getElementById('secondaryOption'))" }) 1-Year </td>*@
 
                 </tr>
                 <tr>
@@ -54,8 +53,6 @@
                     <td></td>
                     <td></td>
                     <td>
-                        @*@Html.DropDownList("secondaryOption")*@
-                        <select id="secondaryOption"></select>
                     </td>
                     <td><input type="submit" value="Search" /></td>
                 </tr>
@@ -145,30 +142,18 @@
                     @{
                         foreach (var item in Model)
                         {
-                            //if (item != null)
-                            //{
-                            //    RoadName = item.tblRoadName.rnRoadName;
-                            //    AcccidentDate.Add(item.tblTrafficAccident.taDateTime.ToString("dd/MM/yyyy"));
-                            //    RFValue.Add(item.tblRainfall.rfValue);
-                            //    AccDescription.Add(item.tblTrafficAccident.taDescription.ToString());
-                            //}
 
                             <tr>
                                 <td>
-                                    @*@item.tblRoadName.rnRoadName*@
                                     @item.roadName
                                     
                                 </td>
 
                                 <td>
-                                @*@item.tblTrafficAccident.taDateTime.ToString("dd/MM/yyyy")*@
+                             
                                     @if (ViewBag.period == "1year" || ViewBag.period == "3month" || ViewBag.period == "6month")
                                     {
-                                        //if (item.date == 1)
-
-                                        //{
-                                        //    item.monthName = "January";
-                                        //}
+                                        
                                         switch (item.date)
                                         {
                                             case 1:
@@ -220,21 +205,15 @@
                                 <td>
                                     
                                     @item.rainfall
-                                @*@item.tblRainfall.rfValue*@
                                 </td>
 
                                 <td>
                                     @item.number
-                                @*@item.tblTrafficAccident.taDescription*@
                                 </td>
 
                             </tr>
-                            //i++;
                         }
-
-                       // JavaScriptSerializer jsss = new JavaScriptSerializer();
-                       // string rfValue = jsss.Serialize((object)RFValue);
-
+                        
                     }
 
                 </table>
@@ -291,22 +270,64 @@
                                         <td>
                                             
                                             @item.roadName
-                                            @*@item.tblRoadName.rnRoadName*@
-                                        </td>
 
                                         <td>
+                                           @if (ViewBag.period == "1year" || ViewBag.period == "3month" || ViewBag.period == "6month")
+                                           {
+                                               switch (item.date)
+                                               {
+                                                   case 1:
+                                                       item.monthName = "January";
+                                                       break;
+                                                   case 2:
+                                                       item.monthName = "February";
+                                                       break;
+                                                   case 3:
+                                                       item.monthName = "March";
+                                                       break;
+                                                   case 4:
+                                                       item.monthName = "April";
+                                                       break;
+                                                   case 5:
+                                                       item.monthName = "May";
+                                                       break;
+                                                   case 6:
+                                                       item.monthName = "June";
+                                                       break;
+                                                   case 7:
+                                                       item.monthName = "July";
+                                                       break;
+                                                   case 8:
+                                                       item.monthName = "August";
+                                                       break;
+                                                   case 9:
+                                                       item.monthName = "September";
+                                                       break;
+                                                   case 10:
+                                                       item.monthName = "October";
+                                                       break;
+                                                   case 11:
+                                                       item.monthName = "November";
+                                                       break;
+                                                   case 12:
+                                                       item.monthName = "December";
+                                                       break;
+                                               }
+
+                                            @item.monthName
+                                           }
+                                           else if (ViewBag.period == "1month")
+                                           {
                                             @item.date
+                                           }
                                         </td>
-                                           @* @item.tblTrafficSpeed.tsDateTime.ToString()*@
 
                                         <td>
                                             @item.rainfall
-                                        @*@item.tblRainfall.rfValue*@
                                         </td>
 
                                         <td>
                                             @item.number
-                                        @*@((item.tblTrafficSpeed.tsMinSpeed + item.tblTrafficSpeed.tsMaxSpeed) / 2)*@ 
                                         </td>
 
                                     </tr>
@@ -321,7 +342,7 @@
     </div>
 </div>
 
-<script type="text/javascript">
+@*<script type="text/javascript">
     function configureDropDownLists(ddl1, secondaryOption) {
         switch (ddl1) {
             case 'Day':
@@ -390,4 +411,4 @@
         opt.text = text;
         ddl.options.add(opt);
     }
-</script>
+</script>*@

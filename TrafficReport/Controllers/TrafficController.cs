@@ -17,7 +17,7 @@ namespace TrafficReport.Controllers
         private LocationNameGateway locationNameGateway = new LocationNameGateway();
         private TrafficAccidentGateway trafficAccidentGateway = new TrafficAccidentGateway();
         private TrafficSpeedGateway trafficSpeedGateway = new TrafficSpeedGateway();
-        string regionClicked;
+        
         private TrafficReportContext db = new TrafficReportContext();
         public TrafficController()
         {
@@ -28,7 +28,8 @@ namespace TrafficReport.Controllers
         {   
             List<SelectListItem> LocationUpdate = new List<SelectListItem>();
             List<SelectListItem> regionList = new List<SelectListItem>();
-            // List<myViewModel> regionList = new List<myViewModel>();
+
+            //inserts the distinct regions from the database
             regionList.Add(new SelectListItem { Value = "Choose", Text = "<--  Region  -->" });
             var query = (from ln in db.tblLocationNames
                          orderby ln.lnRegion
@@ -42,28 +43,12 @@ namespace TrafficReport.Controllers
             
             ViewBag.regions = regionList;
                         
+            // insert a placeholder for the roadnames (to populate after the ser seleted a region)
             LocationUpdate.Add(new SelectListItem { Value = "selectRegion", Text = "<-- Select A Region First -->"});
-            //List<string> roadName = new List<string>();
-            //roadName.Add("Jurong East Avenue 1");
-            //roadName.Add("TAMPINES EXPRESSWAY");
-            //roadName.Add("PAN ISLAND EXPRESSWAY");
-            //roadName.Add("CENTRAL EXPRESSWAY");
-
-            //ViewData["roadNames"] = new SelectList(roadName);
-
-            //LocationUpdate.Add(new SelectListItem { Value = "", Text = "" });
-            //var roadquery = (from ln in db.tblLocationNames
-            //             join rn in db.tblRoadNames on ln.lnID equals rn.rnLocation
-            //             where ln.lnRegion == region
-            //             orderby rn.rnRoadName
-            //             select new { Text = rn.rnRoadName, Value = rn.rnRoadName }).Distinct().ToList();
-
-            //foreach (var item in roadquery)
-            //{
-            //    LocationUpdate.Add(new SelectListItem { Value = item.Value.ToString(), Text = item.Text });
-            //}
+           
             ViewBag.roadNames = LocationUpdate;
 
+            //initialise a model for the index page
             IQueryable<QueryViewModel> initModel = trafficAccidentGateway.initModel();
             
             return View("Index", initModel);
@@ -73,10 +58,10 @@ namespace TrafficReport.Controllers
         public ActionResult HandleForm(string regions, string roadNames, string period, string reportType)
         {
             
-            regionClicked = regions;
             List<SelectListItem> LocationUpdate = new List<SelectListItem>();
             List<SelectListItem> regionList = new List<SelectListItem>();
-            // List<myViewModel> regionList = new List<myViewModel>();
+
+                //inserts the distinct regions from the database
             regionList.Add(new SelectListItem { Value = "Choose", Text = "<--  Region  -->" });
             var query = (from ln in db.tblLocationNames
                          orderby ln.lnRegion
@@ -87,12 +72,14 @@ namespace TrafficReport.Controllers
                 regionList.Add(new SelectListItem { Value = item.Value.ToString(), Text = item.Text });
             }
 
-
-            //ViewData["regions"] = regionList;
+            
             ViewBag.regions = regionList;
+            //let the index page know what choices where made so as to display the right data for the user
             ViewBag.reportType = reportType;
             ViewBag.period = period;
-            LocationUpdate.Add(new SelectListItem { Value = "Choose", Text = "<--  Please Select A Road Name  -->" });
+
+            //find the roadnames based on the region chosen
+            LocationUpdate.Add(new SelectListItem { Value = "Choose", Text = "<-- Select A Road Name -->" });
             var roadquery = (from ln in db.tblLocationNames
                              join rn in db.tblRoadNames on ln.lnID equals rn.rnLocation
                              where ln.lnRegion == regions
@@ -104,19 +91,11 @@ namespace TrafficReport.Controllers
                 LocationUpdate.Add(new SelectListItem { Value = item.Value.ToString(), Text = item.Text });
             }
             ViewBag.roadNames = LocationUpdate;
-
-            //List < string> roadName = new List<string>();
-            //roadName.Add("Jurong East Avenue 1");
-            //roadName.Add("TAMPINES EXPRESSWAY");
-            //roadName.Add("PAN ISLAND EXPRESSWAY");
-            //roadName.Add("CENTRAL EXPRESSWAY");
-
-            //ViewData["roadNames"] = new SelectList(roadName);
+            
 
             IQueryable<QueryViewModel> queryResults = trafficAccidentGateway.initModel();
-            //IEnumerable<QueryViewModel> queryR = trafficAccidentGateway.filterDatabase(regions, roadNames, period, reportType); 
 
-                
+            //filter the databases based on the choice of the user
             if (reportType.Equals("accident"))
             {
                 queryResults = trafficAccidentGateway.filterDatabase(regions, roadNames, period, reportType);

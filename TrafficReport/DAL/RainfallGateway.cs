@@ -69,11 +69,7 @@ namespace TrafficReport.DAL
 
                                    select new QueryViewModel
                                    {
-
-                                       //tblRoadName = rn,
-                                       //tblLocationName = ln,
-                                       //tblRainfall = rf
-
+                                       
                                    }
                 );
             return initial;
@@ -110,13 +106,13 @@ namespace TrafficReport.DAL
                                    join rf in db.tblRainfalls on rn.rnLocation equals rf.rfLocation
 
                                    where rn.rnRoadName == roadNames && rf.rfDate > comparingDates
-
+                                   group rf by rf.rfDate.Month into Date
                                    select new QueryViewModel
                                    {
+                                       date = Date.Key,
+                                       rainfall = (double)Date.Average(value => value.rfValue),
+                                       roadName = roadNames
 
-                                       //tblRoadName = rn,
-                                       //tblLocationName = ln,
-                                       //tblRainfall = rf
 
                                    }
                                    );

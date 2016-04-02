@@ -127,12 +127,7 @@ namespace TrafficReport.DAL
                                 group rf by rf.rfDate.Month into Date
                                 select new QueryViewModel
                                 {
-
-                                    //tblRoadName = rn,
-                                    //tblTrafficAccident = ta,
-                                    //tblLocationName = ln,
-                                    //tblRainfall = rf
-
+                                   
                                     date = Date.Key,
                                     rainfall = (double)Date.Average(value => value.rfValue),
                                     number = Date.Count(),
