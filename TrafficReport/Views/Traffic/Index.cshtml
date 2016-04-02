@@ -1,159 +1,108 @@
-﻿
-@model IEnumerable<TrafficReport.Models.QueryViewModel>
-
+﻿@model IEnumerable<TrafficReport.Models.QueryViewModel>
 @{
     ViewBag.Title = "Search";
 }
-
-<h2>Traffic Reports</h2>
 @using System.Web.Script.Serialization;
 @using System.Collections.Generic;
 @using Newtonsoft.Json;
 
+<!-- FORM CONTAINER -->
 <div class="container">
-    <div class="row col-md-6">
+    @using (Html.BeginForm("HandleForm", "Traffic", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        <!-- Form Region RoadName-->
+        <h1><b>Traffic Report</b></h1>
+        <div class="form-group">
+            <div class="form-inline">
 
-        
+                <label class="col-sm-2 col-md-2">Regions :</label>
+                <div class="col-sm-2 col-md-2">
+                    @Html.DropDownList("regions", null, new { onchange = "this.form.submit()" })
+                </div>
 
+                <label class="col-sm-2 col-md-2">Road Name :</label>
 
-        @using (Html.BeginForm("HandleForm", "Traffic", FormMethod.Post))
-        {
-            <table>
-                <tr>
-                    <td>Region: </td>
-                    <td>
-                        @Html.DropDownList("regions", null, new { onchange = "this.form.submit()" })
-                    </td>
-                    <td>Road Name: </td>
-                    <td colspan="2">
-                        @Html.DropDownList("roadNames")
-                    </td>
+                <div class="col-sm-2 col-md-2">
+                    @Html.DropDownList("roadNames")
+                </div>
+            </div>
+        </div>
 
+        <!-- Radio Button-->
+        <div class="form-group">
+            <div class="form-inline">
 
-                </tr>
+                <label class="col-sm-2 ">Period :</label>
 
-                <tr>
-                    <td>Period: </td>
-                    
-                    <td width="100px"> @Html.RadioButton("period", "1month", true) 1-Month </td>
-                    <td width="100px">@Html.RadioButton("period", "3month", false) 3-Month </td>
-                    <td width="100px">@Html.RadioButton("period", "6month", false) 6-month </td>
-                    <td width="100px">@Html.RadioButton("period", "1year", false) 1-Year </td>
-                    @*<td width="100px">@Html.RadioButton("period", "1year", false, new { @OnClick = "configureDropDownLists('Year',document.getElementById('secondaryOption'))" }) 1-Year </td>*@
+                <div class="col-sm-6">
+                    <label class="radio-inline">
+                        @Html.RadioButton("period", "1month", true) 1-Month
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButton("period", "3month", false) 3-Months
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButton("period", "6month", false) 6-Months
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButton("period", "1year", false) 1-Year
+                    </label>
+                </div>
 
-                </tr>
-                <tr>
-                    <td>Report Type: </td>
-                    <td>@Html.RadioButton("reportType", "accident", true) Accidents</td>
-                    <td>@Html.RadioButton("reportType", "congestion", false) Congestions</td>
-                </tr>
+            </div>
+        </div>
 
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                    </td>
-                    <td><input type="submit" value="Search" /></td>
-                </tr>
-            </table>
-            <br><br>
+         <!--Inline the radio buttons -->
+        <div class="form-group">
+            <div class="form-inline">
 
-            if (!Model.Any())
-            {
-                <tr>
-                    <td>Theres nothing during this point of time. </td>
-                </tr>
-            }
-            else if (ViewBag.reportType == "accident")
-            {
+                <label class="col-sm-2 ">Report type :</label>
 
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                            <script type="text/javascript">
-                                function TestDrawChart() {
-                                    google.charts.load('current', { 'packages': ['bar'] });
-                                    google.charts.setOnLoadCallback(drawChart);
-                                    function drawChart() {
-                                                 
-                                        @{ int i = 0; }
-                                        @foreach (var item in Model)
-                                        {
-                                            if (item != null)
-                                            {
-                                                i++;
-                                            }
-                                        }
-                                        // new method
-                                        var data = new google.visualization.DataTable();
-                                        data.addColumn('string', 'Date');
-                                        data.addColumn('number', 'rfValue');
-                                        data.addColumn('number','Number of Accidents');
-                                        @foreach (var item in Model)
-                                        {
-                                            if(item != null)
-                                            {
-                                                //@: data.addRow(["@item.tblTrafficAccident.taDateTime.ToString("dd/MM/yyyy")", "@item.tblRainfall.rfValue.ToString()", "@item.tblTrafficAccident.taDescription.ToString()"]);
-                                                //@: data.addRow(["@item.tblTrafficAccident.taDateTime.ToString("dd/MM/yyyy")", @item.tblRainfall.rfValue, @i]);
-                                            }
-                                        }
+                <div class="col-sm-6">
+                    <label class="radio-inline">
+                        @Html.RadioButton("reportType", "accident", true) Accidents
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButton("reportType", "congestion", false) Congestions
+                    </label>
+                </div>
+            </div>
+        </div>
 
-                                        // OLD METHOD - sabri
-                                        //var data = google.visualization.arrayToDataTable([
-                                        //  ['Date', 'rfValue'],
-                                        //  [Description, rfValue[0]],
-                                        //  [Description[1], rfValue[1]],
-                                        //  [Description[2], rfValue[2]],
-                                        //  [Description[3], rfValue[3]]
-                                        //]);
+        <!-- Search Button-->
+        <button class="btn btn-primary" type="submit" value="Search"> Search</button>
+    }
+</div>
+<!-- ######################################################################## -->
+<br />
 
+<div  style="padding-left:80px; padding-right:80px">
+    <!-- Table for Accident Data -->
+    @if (!Model.Any())
+    { <p>Nothing to display</p> }
+    else if (ViewBag.reportType == "accident")
+    {
+        <!-- ACCIDENT -->
+        <div class="row">
+            <!-- TABLE ITSELF-->
+            <div class="col-md-6">                
+                <table class="table table-condensed table-hover">
 
-                                        var options = {
-                                            bars: 'horizontal' // Required for Material Bar Charts.
-                                        };
-
-                                        var chart = new google.charts.Bar(document.getElementById('barchart_material'));
-                                        chart.draw(data, options);
-                                    }
-                                }
-                            </script>
-                            
-                            
-                            
-                            //-------------------- STEP 1 ---------------------------------------//
-                            // When User [POST] query, this is activated, so will call the function above this
-                            <div id="barchart_material" style="width: 900px; height: 500px;">
-                                <script>
-                                    TestDrawChart();
-                                </script>
-                            </div>
-
-
-
-                            <br>
-                            <br>
-                <table border="1">
-                    <tr>
+                    <tr class="warning">
                         <th>Road Name</th>
                         <th>Date</th>
                         <th>Rainfall Value</th>
                         <th>Number of Accidents </th>
                     </tr>
 
-                    @{
-                        foreach (var item in Model)
+                    @{foreach (var item in Model)
                         {
-
                             <tr>
-                                <td>
-                                    @item.roadName
-                                    
-                                </td>
+                                <td>@item.roadName</td>
 
-                                <td>
-                             
-                                    @if (ViewBag.period == "1year" || ViewBag.period == "3month" || ViewBag.period == "6month")
+                                <td>@if (ViewBag.period == "1year" || ViewBag.period == "3month" || ViewBag.period == "6month")
                                     {
-                                        
+
                                         switch (item.date)
                                         {
                                             case 1:
@@ -194,221 +143,186 @@
                                                 break;
                                         }
 
-                                    @item.monthName
+                                        @item.monthName
                                     }
-                                    else if(ViewBag.period == "1month")
+                                    else if (ViewBag.period == "1month")
                                     {
                                         @item.date
                                     }
                                 </td>
 
-                                <td>
-                                    
-                                    @item.rainfall
-                                </td>
+                                <td>@item.rainfall</td>
 
-                                <td>
-                                    @item.number
-                                </td>
-
+                                <td>@item.number</td>
                             </tr>
                         }
-                        
+
                     }
 
                 </table>
+            </div>
+            <!-- SCRIPT DATA-->
+            <div class="col-md-6">                
+                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                <script type="text/javascript">
+                                function TestDrawChart() {
+                                    google.charts.load('current', { 'packages': ['bar'] });
+                                    google.charts.setOnLoadCallback(drawChart);
+                                    function drawChart() {
 
-                        }
-                        else if (ViewBag.reportType == "congestion")
-                        {
-                            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                                <script type="text/javascript">
-                                    function TestDrawChart_Congestion() {
-                                        google.charts.load('current', { 'packages': ['bar'] });
-                                        google.charts.setOnLoadCallback(drawChart_Congestion);
-                                        function drawChart_Congestion() {
-
-                                            var data = new google.visualization.DataTable();
-                                            data.addColumn('string', 'Date');
-                                            data.addColumn('number', 'rfValue');
-                                            data.addColumn('number', 'Average Speed');
-                                            @foreach (var item in Model)
+                                        @{ int i = 0; }
+                                        @foreach (var item in Model)
                                         {
                                             if (item != null)
                                             {
-                                             //   @: data.addRow(["@item.tblTrafficSpeed.tsDateTime.ToString("dd/MM/yyyy")", @item.tblRainfall.rfValue, @((item.tblTrafficSpeed.tsMinSpeed + item.tblTrafficSpeed.tsMaxSpeed) / 2)]);
-                                                                                                            }
+                                                i++;
+                                            }
                                         }
-
-                                            var options = {
-                                                bars: 'horizontal' // Required for Material Bar Charts.
-                                            };
-
-                                            var chart = new google.charts.Bar(document.getElementById('barchart_material_Congestion'));
-                                            chart.draw(data, options);
+                                        // new method
+                                        var data = new google.visualization.DataTable();
+                                        data.addColumn('string', 'Date');
+                                        data.addColumn('number', 'rfValue');
+                                        data.addColumn('number','Number of Accidents');
+                                        @foreach (var item in Model)
+                                        {
+                                            if(item != null)
+                                            {
+                                                //@: data.addRow(["@item.tblTrafficAccident.taDateTime.ToString("dd/MM/yyyy")", "@item.tblRainfall.rfValue.ToString()", "@item.tblTrafficAccident.taDescription.ToString()"]);
+                                                //@: data.addRow(["@item.tblTrafficAccident.taDateTime.ToString("dd/MM/yyyy")", @item.tblRainfall.rfValue, @i]);
+                                            }
                                         }
+                                        var options = {
+                                            bars: 'horizontal' // Required for Material Bar Charts.
+                                        };
+
+                                        var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+                                        chart.draw(data, options);
                                     }
-                                </script>
-
-                                <div id="barchart_material_Congestion" style="width: 900px; height: 500px;">
-                                    <script>
-                                        TestDrawChart_Congestion();
-                                    </script>
-                                </div>
-                            <table border="1">
-                                <tr>
-                                    <th>Road Name</th>
-                                    <th>DateTime</th>
-                                    <th>Rainfall Value</th>
-                                    <th>Average Speed</th>
-                                </tr>
-
-                                @foreach (var item in Model)
-                                {
-
-                                    <tr>
-                                        <td>
-                                            
-                                            @item.roadName
-
-                                        <td>
-                                           @if (ViewBag.period == "1year" || ViewBag.period == "3month" || ViewBag.period == "6month")
-                                           {
-                                               switch (item.date)
-                                               {
-                                                   case 1:
-                                                       item.monthName = "January";
-                                                       break;
-                                                   case 2:
-                                                       item.monthName = "February";
-                                                       break;
-                                                   case 3:
-                                                       item.monthName = "March";
-                                                       break;
-                                                   case 4:
-                                                       item.monthName = "April";
-                                                       break;
-                                                   case 5:
-                                                       item.monthName = "May";
-                                                       break;
-                                                   case 6:
-                                                       item.monthName = "June";
-                                                       break;
-                                                   case 7:
-                                                       item.monthName = "July";
-                                                       break;
-                                                   case 8:
-                                                       item.monthName = "August";
-                                                       break;
-                                                   case 9:
-                                                       item.monthName = "September";
-                                                       break;
-                                                   case 10:
-                                                       item.monthName = "October";
-                                                       break;
-                                                   case 11:
-                                                       item.monthName = "November";
-                                                       break;
-                                                   case 12:
-                                                       item.monthName = "December";
-                                                       break;
-                                               }
-
-                                            @item.monthName
-                                           }
-                                           else if (ViewBag.period == "1month")
-                                           {
-                                            @item.date
-                                           }
-                                        </td>
-
-                                        <td>
-                                            @item.rainfall
-                                        </td>
-
-                                        <td>
-                                            @item.number
-                                        </td>
-
-                                    </tr>
-
                                 }
+                </script>
 
-                            </table>
-                            }
+                <div id="barchart_material" style="width: 900px; height: 500px;">
+                    <script>TestDrawChart();</script>
+                </div>
 
 
+            </div>
+        </div>
+    }
+    else if (ViewBag.reportType == "congestion")
+    {
+        <!-- CONGESTION -->
+        <div class="row">
+
+            <!-- TABLE ITSELF-->
+            <div class="col-md-6">
+                <table class="table table-condensed table-hover">
+                    <tr class="warning">
+                        <th>Road Name</th>
+                        <th>DateTime</th>
+                        <th>Rainfall Value</th>
+                        <th>Average Speed</th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.roadName</td>
+
+                            <td>@if (ViewBag.period == "1year" || ViewBag.period == "3month" || ViewBag.period == "6month")
+                                {
+                                    switch (item.date)
+                                    {
+                                        case 1:
+                                            item.monthName = "January";
+                                            break;
+                                        case 2:
+                                            item.monthName = "February";
+                                            break;
+                                        case 3:
+                                            item.monthName = "March";
+                                            break;
+                                        case 4:
+                                            item.monthName = "April";
+                                            break;
+                                        case 5:
+                                            item.monthName = "May";
+                                            break;
+                                        case 6:
+                                            item.monthName = "June";
+                                            break;
+                                        case 7:
+                                            item.monthName = "July";
+                                            break;
+                                        case 8:
+                                            item.monthName = "August";
+                                            break;
+                                        case 9:
+                                            item.monthName = "September";
+                                            break;
+                                        case 10:
+                                            item.monthName = "October";
+                                            break;
+                                        case 11:
+                                            item.monthName = "November";
+                                            break;
+                                        case 12:
+                                            item.monthName = "December";
+                                            break;
+                                    }
+
+                                    @item.monthName
+                                }
+                                else if (ViewBag.period == "1month")
+                                {
+                                    @item.date
+                                }
+                            </td>
+
+                            <td>@item.rainfall</td>
+
+                            <td>@item.number</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <!-- SCRIPT DATA -->
+            <div class="col-md-6">
+                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                <script type="text/javascript">
+                    function TestDrawChart_Congestion() {
+                        google.charts.load('current', { 'packages': ['bar'] });
+                        google.charts.setOnLoadCallback(drawChart_Congestion);
+                        function drawChart_Congestion() {
+
+                            var data = new google.visualization.DataTable();
+                            data.addColumn('string', 'Date');
+                            data.addColumn('number', 'rfValue');
+                            data.addColumn('number', 'Average Speed');
+                            @foreach (var item in Model)
+                        {
+                            if (item != null)
+                            {
+                                //   @: data.addRow(["@item.tblTrafficSpeed.tsDateTime.ToString("dd/MM/yyyy")", @item.tblRainfall.rfValue, @((item.tblTrafficSpeed.tsMinSpeed + item.tblTrafficSpeed.tsMaxSpeed) / 2)]);
+                                                                                            }
                         }
-    </div>
+
+                            var options = {
+                                bars: 'horizontal' // Required for Material Bar Charts.
+                            };
+
+                            var chart = new google.charts.Bar(document.getElementById('barchart_material_Congestion'));
+                            chart.draw(data, options);
+                        }
+                    }
+                </script>
+
+                <div id="barchart_material_Congestion" style="width: 900px; height: 500px;">
+                    <script>TestDrawChart_Congestion();</script>
+                </div>
+            </div>
+        </div>                                        
+    }
 </div>
 
-@*<script type="text/javascript">
-    function configureDropDownLists(ddl1, secondaryOption) {
-        switch (ddl1) {
-            case 'Day':
-                secondaryOption.options.length = 0;
-                var id = "Day";
-                CallSecondaryOption(id);
-                break;
-            case 'Month':
-                secondaryOption.options.length = 0;
-                var id = "Month";
-                CallSecondaryOption(id);
-                break;
-            case 'Year':
-                secondaryOption.options.length = 0;
-                var id = "Year";
-                CallSecondaryOption(id);
-                break;
 
-            default:
-                secondaryOption.options.length = 0;
-            break;
-        }
-    }
-
-
-    function Index(region, secondaryOption) {
-        secondaryOption.options.length = 0;
-        $.ajax({
-            url: '@Url.Action("Index", "Traffic")',
-            type: 'GET',
-            dataType: 'Json',
-            data: { 'Value': Value },
-            success: function (test) {
-                setOption(test);
-            },
-            error: function () {
-                alert("Error Occured");
-            }
-        });
-    }
-
-    function CallSecondaryOption(id) {
-        $.ajax({
-            url: '@Url.Action("CallSecondaryOption", "Traffic")',
-            type: 'GET',
-            dataType: 'Json',
-            data: {'id' : id},
-            success: function (test) {
-                setOption(test);
-            },
-            error: function () {
-                alert("Error Occured");
-            }
-        });
-    }
-
-    function setOption(test) {
-        for (i = 0; i < test.length; i++) {
-            createOption(secondaryOption, test[i], test[i]);
-        }
-    }
-
-    function createOption(ddl, text, value) {
-        var opt = document.createElement('option');
-        opt.value = value;
-        opt.text = text;
-        ddl.options.add(opt);
-    }
-</script>*@
