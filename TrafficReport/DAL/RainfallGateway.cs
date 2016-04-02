@@ -56,7 +56,7 @@ namespace TrafficReport.DAL
             return null;
         }
 
-        internal IQueryable<QueryViewModel> initModel()
+        internal IQueryable<QueryViewModel> InitModel()
         {
             DateTime todaysDate = DateTime.Now.Date;
 
@@ -75,7 +75,7 @@ namespace TrafficReport.DAL
             return initial;
         }
 
-        internal IQueryable<QueryViewModel> filterDatabase(string regions, string roadNames, string period)
+        internal IQueryable<QueryViewModel> FilterDatabase(string regions, string roadNames, string period)
         {
 
             int periodDuration = 0;

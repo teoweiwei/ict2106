@@ -49,7 +49,7 @@ namespace TrafficReport.Controllers
             ViewBag.roadNames = LocationUpdate;
 
             //initialise a model for the index page
-            IQueryable<QueryViewModel> initModel = trafficAccidentGateway.initModel();
+            IQueryable<QueryViewModel> initModel = trafficAccidentGateway.InitModel();
             
             return View("Index", initModel);
         }
@@ -93,12 +93,12 @@ namespace TrafficReport.Controllers
             ViewBag.roadNames = LocationUpdate;
             
 
-            IQueryable<QueryViewModel> queryResults = trafficAccidentGateway.initModel();
+            IQueryable<QueryViewModel> queryResults = trafficAccidentGateway.InitModel();
 
             //filter the databases based on the choice of the user
             if (reportType.Equals("accident"))
             {
-                queryResults = trafficAccidentGateway.filterDatabase(regions, roadNames, period, reportType);
+                queryResults = trafficAccidentGateway.FilterDatabase(regions, roadNames, period, reportType);
                 
             }
             else if (reportType.Equals("congestion"))
@@ -206,76 +206,76 @@ namespace TrafficReport.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet]
-        public ActionResult CallSecondaryOption(String id)
-        {
+        //[HttpGet]
+        //public ActionResult CallSecondaryOption(String id)
+        //{
 
-            List<string> oneYearOption = new List<string>();
-            for (int j = 16; j > 0; j--)
-            {
-                string i="20";
-                if (j < 10) { i += "0"; }
-                string str = i + j.ToString();
-                oneYearOption.Add(str);
-            }
+        //    List<string> oneYearOption = new List<string>();
+        //    for (int j = 16; j > 0; j--)
+        //    {
+        //        string i="20";
+        //        if (j < 10) { i += "0"; }
+        //        string str = i + j.ToString();
+        //        oneYearOption.Add(str);
+        //    }
 
-            List<string> oneMonthOption = new List<string>();
-            oneMonthOption.Add("January");
-            oneMonthOption.Add("February");
-            oneMonthOption.Add("March");
-            oneMonthOption.Add("April");
-            oneMonthOption.Add("May");
-            oneMonthOption.Add("June");
-            oneMonthOption.Add("July");
-            oneMonthOption.Add("August");
-            oneMonthOption.Add("September");
-            oneMonthOption.Add("October");
-            oneMonthOption.Add("November");
-            oneMonthOption.Add("December");
+        //    List<string> oneMonthOption = new List<string>();
+        //    oneMonthOption.Add("January");
+        //    oneMonthOption.Add("February");
+        //    oneMonthOption.Add("March");
+        //    oneMonthOption.Add("April");
+        //    oneMonthOption.Add("May");
+        //    oneMonthOption.Add("June");
+        //    oneMonthOption.Add("July");
+        //    oneMonthOption.Add("August");
+        //    oneMonthOption.Add("September");
+        //    oneMonthOption.Add("October");
+        //    oneMonthOption.Add("November");
+        //    oneMonthOption.Add("December");
 
-            List<string> oneDayOption = new List<string>();
-            for (int i=0; i<24; i++) {
-                string str = i.ToString() + ":00";
-                if (i < 10) { str = "0" + str; }
-                oneDayOption.Add(str);
-            }
+        //    List<string> oneDayOption = new List<string>();
+        //    for (int i=0; i<24; i++) {
+        //        string str = i.ToString() + ":00";
+        //        if (i < 10) { str = "0" + str; }
+        //        oneDayOption.Add(str);
+        //    }
 
-            if ((id == "Day")) { return Json(oneDayOption, JsonRequestBehavior.AllowGet); }
-            else if (id == "Month") { return Json(oneMonthOption, JsonRequestBehavior.AllowGet); }
-            else if (id == "Year") { return Json(oneYearOption, JsonRequestBehavior.AllowGet); }
+        //    if ((id == "Day")) { return Json(oneDayOption, JsonRequestBehavior.AllowGet); }
+        //    else if (id == "Month") { return Json(oneMonthOption, JsonRequestBehavior.AllowGet); }
+        //    else if (id == "Year") { return Json(oneYearOption, JsonRequestBehavior.AllowGet); }
             
-            else { return null; }
+        //    else { return null; }
             
-        }
+        //}
 
-        [HttpGet]
-        public ActionResult CallRoadName(String region)
-        {
-            List<SelectListItem> LocationUpdate = new List<SelectListItem>();
-            //List<string> LocationUpdate = new List<string>();
-            var query = (from ln in db.tblLocationNames
-                         join rn in db.tblRoadNames on ln.lnID equals rn.rnLocation
-                         where ln.lnRegion == region
-                         orderby rn.rnRoadName
-                         select new { Text = rn.rnRoadName, Value = rn.rnRoadName }).Distinct().ToList();
+        //[HttpGet]
+        //public ActionResult CallRoadName(String region)
+        //{
+        //    List<SelectListItem> LocationUpdate = new List<SelectListItem>();
+        //    List<string> LocationUpdate = new List<string>();
+        //    var query = (from ln in db.tblLocationNames
+        //                 join rn in db.tblRoadNames on ln.lnID equals rn.rnLocation
+        //                 where ln.lnRegion == region
+        //                 orderby rn.rnRoadName
+        //                 select new { Text = rn.rnRoadName, Value = rn.rnRoadName }).Distinct().ToList();
 
-            foreach (var item in query)
-            {
-                LocationUpdate.Add(new SelectListItem { Value = item.Value.ToString(), Text = item.Text });
-            }
-            ViewBag.roadNames = LocationUpdate;
-            //RedirectToAction("Index");
-            //var query = (from ln in db.tblLocationNames
-            //             orderby ln.lnRegion
-            //             select new { Text = ln.lnRegion, Value = ln.lnRegion }).Distinct().ToList();
+        //    foreach (var item in query)
+        //    {
+        //        LocationUpdate.Add(new SelectListItem { Value = item.Value.ToString(), Text = item.Text });
+        //    }
+        //    ViewBag.roadNames = LocationUpdate;
+        //    RedirectToAction("Index");
+        //    var query = (from ln in db.tblLocationNames
+        //                 orderby ln.lnRegion
+        //                 select new { Text = ln.lnRegion, Value = ln.lnRegion }).Distinct().ToList();
 
-            //foreach (var item in query)
-            //{
-            //    regionList.Add(new SelectListItem { Value = item.Value.ToString(), Text = item.Text });
-            //}
+        //    foreach (var item in query)
+        //    {
+        //        regionList.Add(new SelectListItem { Value = item.Value.ToString(), Text = item.Text });
+        //    }
 
-            return Json(LocationUpdate, JsonRequestBehavior.AllowGet);
-        }
+        //    return Json(LocationUpdate, JsonRequestBehavior.AllowGet);
+        //}
 
 
         protected override void Dispose(bool disposing)

@@ -51,9 +51,9 @@ namespace TrafficReport.DAL
             return savedAccidentData;
         }
 
-        internal IQueryable<QueryViewModel> filterDatabase(string regions, string roadNames, string period, string reportType)
+        internal IQueryable<QueryViewModel> FilterDatabase(string regions, string roadNames, string period, string reportType)
         {
-            var queryResults = initModel();
+            var queryResults = InitModel();
             int periodDuration = 0;
             if (period.Equals("1month"))
             {
@@ -70,12 +70,6 @@ namespace TrafficReport.DAL
                                 group rf by rf.rfDate.Day into Date
                                 select new QueryViewModel
                                 {
-
-                                    //tblRoadName = rn,
-                                    //tblTrafficAccident = ta,
-                                    //tblLocationName = ln,
-                                    //tblRainfall = rf
-
                                     date = Date.Key,
                                     rainfall = (double)Date.Average(value => value.rfValue),
                                     number = Date.Count(),
@@ -83,24 +77,10 @@ namespace TrafficReport.DAL
                                     
                                 }
                                 );
-
                 
-                    //new QueryViewModel
-                    //{
-                    //    date = item.date,
-                    //    rainfall = item.rainfall,
-                    //    number = item.number
-                    //};
                 
             }
-            //else if (period.Equals("3month"))
-            //{
-            //    periodDuration = -3;
-            //}
-            //else if (period.Equals("6month"))
-            //{
-            //    periodDuration = -6;
-            //}
+            
             else if (period.Equals("1year") || period.Equals("3month") || period.Equals("6month"))
             {
                 if (period.Equals("1year")){
@@ -138,72 +118,12 @@ namespace TrafficReport.DAL
                                 );
             }
             
-
             
-
-
-            //var queryResults = (
-            //                    from rn in db.tblRoadNames
-            //                    join ta in db.tblTrafficAccidents on rn.rnID equals ta.taRoadName
-            //                    join ln in db.tblLocationNames on rn.rnLocation equals ln.lnID
-            //                    join rf in db.tblRainfalls on rn.rnLocation equals rf.rfLocation
-
-            //                    where rn.rnRoadName == roadNames && rn.rnID == ta.taRoadName && ta.taDateTime > comparingDates && DbFunctions.DiffDays(ta.taDateTime, rf.rfDate) == 0
-            //                    group ta by ta.taDateTime.Month into Date
-
-
-            //                    select new QueryViewModel
-            //                    {
-
-            //                        //tblRoadName = rn,
-            //                        //tblTrafficAccident = ta,
-            //                        //tblLocationName = ln,
-            //                        //tblRainfall = rf
-
-            //                        //date = Date.Key,
-            //                        rainfall = 0,
-            //                        number = Date.Count()
-                                    
-                                    
-                                                    
-                                          
-            //                    }
-            //                    );
-
-            
-           
-
             return queryResults;
             
         }
 
-        public string getMonthName(int number)
-        {
-            if(number == 1)
-            {
-                return "January";
-            }
-            if(number == 9)
-            {
-                return "September";
-            }
-            return "lol";
-        }
-
-
-        //internal IEnumerable<QueryViewModel> initQueryModel()
-        //{
-        //    DateTime todaysDate = DateTime.Now.Date;
-
-        //    var initial = new IEnumerable<QueryViewModel>
-        //    {
-                
-                
-        //    };
-        //    return initial;
-        //}
-
-        internal IQueryable<QueryViewModel> initModel()
+        internal IQueryable<QueryViewModel> InitModel()
         {
             DateTime todaysDate = DateTime.Now.Date;
 
@@ -218,10 +138,7 @@ namespace TrafficReport.DAL
 
                 select new QueryViewModel
                 {
-                    //tblRoadName = rn,
-                    //tblTrafficAccident = ta,
-                    //tblLocationName = ln,
-                    //tblRainfall = rf
+                 
                 }
                 );
             return initial;

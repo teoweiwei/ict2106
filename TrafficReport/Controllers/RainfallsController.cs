@@ -44,7 +44,7 @@ namespace TrafficReport.Controllers
             
 
 
-            IQueryable<QueryViewModel> initModel = rainfallGateway.initModel();
+            IQueryable<QueryViewModel> initModel = rainfallGateway.InitModel();
 
             return View(initModel);
         }
@@ -86,10 +86,10 @@ namespace TrafficReport.Controllers
             ViewBag.roadNames = LocationUpdate;
 
 
-            IQueryable<QueryViewModel> queryResults = trafficAccidentGateway.initModel();
+            IQueryable<QueryViewModel> queryResults = trafficAccidentGateway.InitModel();
             
             //filter the rainfall based on the search query
-            queryResults = rainfallGateway.filterDatabase(regions, roadNames, period);
+            queryResults = rainfallGateway.FilterDatabase(regions, roadNames, period);
             
 
 
