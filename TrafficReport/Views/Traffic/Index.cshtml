@@ -7,12 +7,12 @@
 @using Newtonsoft.Json;
 
 <!-- FORM CONTAINER -->
-<div>
+
     <div class="container">
 
         <div class="row">
             <!-- Form -->
-            <div class="col-md-5">
+            <div class="col-md-8">
                 @using (Html.BeginForm("HandleForm", "Traffic", FormMethod.Post, new { @class = "form-horizontal" }))
         {
         <!-- Form Region RoadName-->
@@ -107,7 +107,7 @@
 
     <!-- TABLE -->
     <div style="padding-left:80px; padding-right:80px">
-        
+        <hr />
 
         <div class="row">
             <div class="col-md-5">
@@ -278,4 +278,4 @@
 
        
     </div>
-</div>
+
