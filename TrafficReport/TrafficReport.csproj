@@ -245,9 +245,7 @@
     <Content Include="Views\Traffic\FormResults.cshtml" />
     <Content Include="Views\LTADataMall\Index.cshtml" />
     <Content Include="Views\LTADataMall\SavedAccidentList.cshtml" />
-    <Content Include="Views\LTADataMall\AccidentList.cshtml" />
     <Content Include="Views\LTADataMall\SavedSpeedList.cshtml" />
-    <Content Include="Views\LTADataMall\SpeedList.cshtml" />
     <Content Include="Views\LTADataMall\SavedRoadNameList.cshtml" />
   </ItemGroup>
   <ItemGroup>
