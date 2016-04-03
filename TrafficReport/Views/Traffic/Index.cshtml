@@ -8,11 +8,11 @@
 
 <!-- FORM CONTAINER -->
 <div>
-    <div style="padding-left:50px; padding-right:50px; margin-top:30px">
+    <div class="container">
 
         <div class="row">
             <!-- Form -->
-            <div class="col-md-4">
+            <div class="col-md-5">
                 @using (Html.BeginForm("HandleForm", "Traffic", FormMethod.Post, new { @class = "form-horizontal" }))
         {
         <!-- Form Region RoadName-->
@@ -82,9 +82,9 @@
                     </div>
 
             <!-- Search Button-->
-                    <div class="col-md-offset-3 col-md-3">
+
                         <button class="btn btn-primary" type="submit" value="Search"> Search</button>
-                    </div>
+
 
         }
             </div>
@@ -95,14 +95,127 @@
             <br />
             <br />
 
+
+        </div>
+    </div>
+
+    <!-- ######################################################################## -->
+
+    <br />
+    <br />
+
+    <!-- TABLE -->
+    <div style="padding-left:50px; padding-right:50px">
+
+        <div class="row">
+            <div class="col-md-5">
+                <!-- Table for Accident Data -->
+                @if (!Model.Any())
+            { }
+            else if (ViewBag.reportType == "accident")
+            {
+        <!-- ACCIDENT -->
+
+        <!-- TABLE ITSELF-->
+
+                    <table class="table table-condensed table-hover">
+
+                        <tr class="warning">
+                            <th>Road Name</th>
+                            <th>Date</th>
+                            <th>Rainfall Value</th>
+                            <th>Number of Accidents </th>
+                        </tr>
+
+                        @{foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.roadName</td>
+
+                                    <td>
+                                        @if (ViewBag.period == "1year" || ViewBag.period == "3month" || ViewBag.period == "6month")
+                                        {
+                                            // Convert the Month Format
+                                            string[] strMonth = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
+                                            item.monthName = strMonth[item.date - 1];
+                                            // Display Month Name
+                                            @item.monthName
+                                        }
+                                        else if (ViewBag.period == "1month")
+                                        {
+                                            @item.date
+                                        }
+                                    </td>
+
+                                    <td>@item.rainfall</td>
+
+                                    <td>@item.number</td>
+                                </tr>
+                            }
+
+                        }
+
+                    </table>
+
+
+
+
+                            }
+                            else if (ViewBag.reportType == "congestion")
+                            {
+        <!-- CONGESTION -->
+
+
+        <!-- TABLE ITSELF-->
+
+                                <table class="table table-condensed table-hover">
+                                    <tr class="warning">
+                                        <th>Road Name</th>
+                                        <th>DateTime</th>
+                                        <th>Rainfall Value</th>
+                                        <th>Average Speed</th>
+                                    </tr>
+
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.roadName</td>
+
+                                            <td>
+                                                @if (ViewBag.period == "1year" || ViewBag.period == "3month" || ViewBag.period == "6month")
+                                                {
+                                                    // Convert the Month Format
+                                                    string[] strMonth = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
+                                                    item.monthName = strMonth[item.date - 1];
+                                                    // Display Month Name
+                                                    @item.monthName
+                                                }
+                                                else if (ViewBag.period == "1month")
+                                                {
+                                                    @item.date
+                                                }
+                                            </td>
+
+                                            <td>@item.rainfall</td>
+
+                                            <td>@item.number</td>
+                                        </tr>
+                                    }
+                                </table>
+
+
+
+                            }
+            </div>
+
             <!-- Bar chart -->
             <div class="col-md-6">
                 @if (!Model.Any())
-                {  }
+                { }
                 else
                 {
                         <!-- SCRIPT DATA AND DRAW CHART-->
-                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                         <script type="text/javascript">
                             function DrawChart(x) {
                                 google.charts.load('current', { 'packages': ['bar'] });
@@ -113,7 +226,7 @@
                                     data.addColumn('string', 'Date');
                                     data.addColumn('number', 'Rain Fall Value');
                                     data.addColumn('number', x);
-                                    
+
                                     @foreach (var item in Model)
                                     {
                                         if (item != null)
@@ -142,128 +255,25 @@
                             }
                         </script>
 
-                        if (ViewBag.reportType == "accident")
-                        {
-                            <script>var x = "Number of Accidents";</script>
-                        }
-                        else
-                        {
-                            <script>var x = "Average Speed";</script>
-                        }
+                    if (ViewBag.reportType == "accident")
+                    {
+                        <script>var x = "Number of Accidents";</script>
+                    }
+                    else
+                    {
+                        <script>var x = "Average Speed";</script>
+                    }
 
-                        <div id="barchart_material" class="col-md-6" style="width: 630px; height: 350px;">
-                            <script>DrawChart(x);</script>
-                        </div>
+                    <div id="barchart_material" class="col-md-6" style="width: 630px; height: 350px;">
+                        <script>DrawChart(x);</script>
+                    </div>
 
                 }
 
             </div>
-        </div>
-    </div>
 
-    <!-- ######################################################################## -->
-
-    <br />
-    <br />
-
-    <!-- TABLE -->
-    <div style="padding-left:50px; padding-right:50px">
-        <!-- Table for Accident Data -->
-        @if (!Model.Any())
-    { }
-    else if (ViewBag.reportType == "accident")
-    {
-        <!-- ACCIDENT -->
-    <div class="row">
-        <!-- TABLE ITSELF-->
-        <div class="col-md-5">
-            <table class="table table-condensed table-hover">
-
-                <tr class="warning">
-                    <th>Road Name</th>
-                    <th>Date</th>
-                    <th>Rainfall Value</th>
-                    <th>Number of Accidents </th>
-                </tr>
-
-                @{foreach (var item in Model)
-                        {
-                    <tr>
-                        <td>@item.roadName</td>
-
-                        <td>
-                            @if (ViewBag.period == "1year" || ViewBag.period == "3month" || ViewBag.period == "6month")
-                            {
-                                // Convert the Month Format
-                                string[] strMonth = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
-                                item.monthName = strMonth[item.date - 1];
-                                // Display Month Name
-                                @item.monthName
-                            }
-                            else if (ViewBag.period == "1month")
-                            {
-                                @item.date
-                            }
-                    </td>
-
-                    <td>@item.rainfall</td>
-
-                    <td>@item.number</td>
-                </tr>
-                        }
-
-                }
-
-            </table>
         </div>
 
+       
     </div>
-    }
-    else if (ViewBag.reportType == "congestion")
-    {
-        <!-- CONGESTION -->
-    <div class="row">
-
-        <!-- TABLE ITSELF-->
-        <div class="col-md-6">
-            <table class="table table-condensed table-hover">
-                <tr class="warning">
-                    <th>Road Name</th>
-                    <th>DateTime</th>
-                    <th>Rainfall Value</th>
-                    <th>Average Speed</th>
-                </tr>
-
-                @foreach (var item in Model)
-                    {
-                    <tr>
-                        <td>@item.roadName</td>
-
-                        <td>
-                            @if (ViewBag.period == "1year" || ViewBag.period == "3month" || ViewBag.period == "6month")
-                            {
-                                // Convert the Month Format
-                                string[] strMonth = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
-                                item.monthName = strMonth[item.date - 1];
-                                // Display Month Name
-                                @item.monthName
-                            }
-                            else if (ViewBag.period == "1month")
-                            {
-                                @item.date
-                            }
-                    </td>
-
-                    <td>@item.rainfall</td>
-
-                    <td>@item.number</td>
-                </tr>
-                    }
-            </table>
-        </div>
-
-    </div>
-    }
-    </div>
-
 </div>
