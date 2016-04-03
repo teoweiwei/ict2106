@@ -82,7 +82,7 @@
                     </div>
 
             <!-- Search Button-->
-                    <div class="col-md-3">
+                    <div class="col-md-offset-3 col-md-3">
                         <button class="btn btn-primary" type="submit" value="Search"> Search</button>
                     </div>
 
@@ -137,7 +137,7 @@
                             }
                         </script>
 
-                        <div id="barchart_material" style="width: 900px; height: 500px;">
+                        <div id="barchart_material" style="width: 630px; height: 350px;">
                             <script>DrawChart_Accident();</script>
                         </div>
 
@@ -174,6 +174,7 @@
 
                                     var options = {
                                         bars: 'horizontal' // Required for Material Bar Charts.
+
                                     };
 
                                     var chart = new google.charts.Bar(document.getElementById('barchart_material_Congestion'));
@@ -182,7 +183,7 @@
                             }
                         </script>
 
-                        <div id="barchart_material_Congestion" style="width: 700px; height: 500px;">
+                        <div id="barchart_material_Congestion" style="width: 630px; height: 350px;">
                             <script>DrawChart_Congestion();</script>
                         </div>
                     </div>
@@ -208,7 +209,7 @@
         <!-- ACCIDENT -->
     <div class="row">
         <!-- TABLE ITSELF-->
-        <div class="col-md-6">
+        <div class="col-md-5">
             <table class="table table-condensed table-hover">
 
                 <tr class="warning">
