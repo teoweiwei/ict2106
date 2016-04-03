@@ -98,7 +98,7 @@
             <!-- Bar chart -->
             <div class="col-md-6">
                 @if (!Model.Any())
-                { <p>Nothing to display</p> }
+                {  }
                 else
                 {
                         <!-- SCRIPT DATA AND DRAW CHART-->
@@ -170,7 +170,7 @@
     <div style="padding-left:50px; padding-right:50px">
         <!-- Table for Accident Data -->
         @if (!Model.Any())
-    { <p>Nothing to display</p> }
+    { }
     else if (ViewBag.reportType == "accident")
     {
         <!-- ACCIDENT -->
