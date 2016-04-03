@@ -99,35 +99,26 @@
             <div class="col-md-6">
                 @if (!Model.Any())
                 { <p>Nothing to display</p> }
-                else if (ViewBag.reportType == "accident" || ViewBag.reportType == "congestion")
+                else
                 {
-               <!-- ACCIDENT -->
-
-                <!-- SCRIPT DATA-->
-                    <div class="col-md-6">
+                        <!-- SCRIPT DATA AND DRAW CHART-->
                         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                         <script type="text/javascript">
-                            function DrawChart() {
+                            function DrawChart(x) {
                                 google.charts.load('current', { 'packages': ['bar'] });
                                 google.charts.setOnLoadCallback(drawChart);
                                 function drawChart() {
 
-
-
                                     var data = new google.visualization.DataTable();
                                     data.addColumn('string', 'Date');
-                                    data.addColumn('number', 'rfValue');
-                                    if (ViewBag.reportType == "accident" || ViewBag.reportType == "congestion")
-                                    {
-                                        data.addColumn('number', 'Number of Accidents');
-                                    }else if (ViewBag.reportType == "accident" || ViewBag.reportType == "congestion") {
-                                        data.addColumn('number', 'Average Speed');
-                                    }
+                                    data.addColumn('number', 'Rain Fall Value');
+                                    data.addColumn('number', x);
+                                    
                                     @foreach (var item in Model)
                                     {
                                         if (item != null)
                                         {
-                                            if (item.date < 12)
+                                            if (item.date < 13)
                                             {
                                                 string[] strMonth = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
                                                 item.monthName = strMonth[item.date - 1];
@@ -151,12 +142,18 @@
                             }
                         </script>
 
-                        <div id="barchart_material" style="width: 630px; height: 350px;">
-                            <script>DrawChart();</script>
+                        if (ViewBag.reportType == "accident")
+                        {
+                            <script>var x = "Number of Accidents";</script>
+                        }
+                        else
+                        {
+                            <script>var x = "Average Speed";</script>
+                        }
+
+                        <div id="barchart_material" class="col-md-6" style="width: 630px; height: 350px;">
+                            <script>DrawChart(x);</script>
                         </div>
-
-
-                    </div>
 
                 }
 
@@ -197,55 +194,16 @@
                         <td>
                             @if (ViewBag.period == "1year" || ViewBag.period == "3month" || ViewBag.period == "6month")
                             {
+                                // Convert the Month Format
                                 string[] strMonth = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
                                 item.monthName = strMonth[item.date - 1];
-
-                                //switch (item.date)
-                                //{
-                                //    case 1:
-                                //        item.monthName = "January";
-                                //        break;
-                                //    case 2:
-                                //        item.monthName = "February";
-                                //        break;
-                                //    case 3:
-                                //        item.monthName = "March";
-                                //        break;
-                                //    case 4:
-                                //        item.monthName = "April";
-                                //        break;
-                                //    case 5:
-                                //        item.monthName = "May";
-                                //        break;
-                                //    case 6:
-                                //        item.monthName = "June";
-                                //        break;
-                                //    case 7:
-                                //        item.monthName = "July";
-                                //        break;
-                                //    case 8:
-                                //        item.monthName = "August";
-                                //        break;
-                                //    case 9:
-                                //        item.monthName = "September";
-                                //        break;
-                                //    case 10:
-                                //        item.monthName = "October";
-                                //        break;
-                                //    case 11:
-                                //        item.monthName = "November";
-                                //        break;
-                                //    case 12:
-                                //        item.monthName = "December";
-                                //        break;
-                            //}
-
+                                // Display Month Name
                                 @item.monthName
-                                    }
-                                    else if (ViewBag.period == "1month")
-                                    {
+                            }
+                            else if (ViewBag.period == "1month")
+                            {
                                 @item.date
-                                    }
+                            }
                     </td>
 
                     <td>@item.rainfall</td>
@@ -283,53 +241,17 @@
 
                         <td>
                             @if (ViewBag.period == "1year" || ViewBag.period == "3month" || ViewBag.period == "6month")
-                                {
-                                    switch (item.date)
-                                    {
-                                        case 1:
-                                            item.monthName = "January";
-                                            break;
-                                        case 2:
-                                            item.monthName = "February";
-                                            break;
-                                        case 3:
-                                            item.monthName = "March";
-                                            break;
-                                        case 4:
-                                            item.monthName = "April";
-                                            break;
-                                        case 5:
-                                            item.monthName = "May";
-                                            break;
-                                        case 6:
-                                            item.monthName = "June";
-                                            break;
-                                        case 7:
-                                            item.monthName = "July";
-                                            break;
-                                        case 8:
-                                            item.monthName = "August";
-                                            break;
-                                        case 9:
-                                            item.monthName = "September";
-                                            break;
-                                        case 10:
-                                            item.monthName = "October";
-                                            break;
-                                        case 11:
-                                            item.monthName = "November";
-                                            break;
-                                        case 12:
-                                            item.monthName = "December";
-                                            break;
-                                    }
-
-                            @item.monthName
-                                }
-                                else if (ViewBag.period == "1month")
-                                {
-                            @item.date
-                                }
+                            {
+                                // Convert the Month Format
+                                string[] strMonth = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
+                                item.monthName = strMonth[item.date - 1];
+                                // Display Month Name
+                                @item.monthName
+                            }
+                            else if (ViewBag.period == "1month")
+                            {
+                                @item.date
+                            }
                     </td>
 
                     <td>@item.rainfall</td>

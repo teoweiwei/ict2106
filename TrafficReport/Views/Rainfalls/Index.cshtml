@@ -148,14 +148,21 @@
 
                             var data = new google.visualization.DataTable();
                             data.addColumn('string', 'Date');
-                            data.addColumn('number', 'rfValue');
+                            data.addColumn('number', 'Rain Fall Value');
                             @foreach (var item in Model)
                             {
                                 if (item != null)
                                 {
-                                    //   @: data.addRow(["@item.tblTrafficSpeed.tsDateTime.ToString("dd/MM/yyyy")", @item.tblRainfall.rfValue, @((item.tblTrafficSpeed.tsMinSpeed + item.tblTrafficSpeed.tsMaxSpeed) / 2)]);
-                                    @: data.addRow(["1/@item.date/2016", @item.rainfall]);
+                                    if (item.date < 13)
+                                    {
+                                        string[] strMonth = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
+                                        item.monthName = strMonth[item.date - 1];
+                                        @: data.addRow(["@item.monthName", @item.rainfall]);
+                                    }
+                                    else {
+                                        @: data.addRow(["@item.date/2016", @item.rainfall]);
 
+                                    }
                                 }
                             }
 
@@ -178,14 +185,16 @@
     <!-- This form inCharge of Uploading-->
     @using (Html.BeginForm("Upload", "Rainfalls", null, FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
     {
-        <h3><b>CSV File Upload</b></h3>
+        <div>
+            <h3><b>CSV File Upload</b></h3>
 
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary()
-        <div class="form-group">
-            <input type="file" id="csvFile" name="upload" class="btn btn-link" />
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary()
+            <div class="form-group">
+                <input type="file" id="csvFile" name="upload" class="btn btn-link" />
+            </div>
+            <button type="submit" value="Upload" class="btn btn-info">Upload</button>
         </div>
-        <button type="submit" value="Upload" class="btn btn-info">Upload</button>
     }
 
 </div>
