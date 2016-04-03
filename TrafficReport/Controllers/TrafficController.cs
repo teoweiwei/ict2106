@@ -96,7 +96,7 @@ namespace TrafficReport.Controllers
             }
             else if (reportType.Equals("congestion"))
             {
-                queryResults = trafficSpeedGateway.filterDatabase(regions, roadNames, period, reportType);
+                queryResults = trafficSpeedGateway.FilterDatabase(regions, roadNames, period, reportType);
             }
            
             

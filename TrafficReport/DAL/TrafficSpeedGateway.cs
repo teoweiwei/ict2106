@@ -44,7 +44,7 @@ namespace TrafficReport.DAL
             return savedSpeedData;
         }
 
-        internal IQueryable<QueryViewModel> filterDatabase(string regions, string roadNames, string period, string reportType)
+        internal IQueryable<QueryViewModel> FilterDatabase(string regions, string roadNames, string period, string reportType)
         {
 
             //int periodDuration = 0;
@@ -89,7 +89,7 @@ namespace TrafficReport.DAL
             //                       );
             //return viewModel;
 
-            var queryResults = initModel();
+            var queryResults = InitModel();
             int periodDuration = 0;
             if (period.Equals("1month"))
             {
@@ -194,7 +194,7 @@ namespace TrafficReport.DAL
             return queryResults;
         }
 
-        internal IQueryable<QueryViewModel> initModel()
+        internal IQueryable<QueryViewModel> InitModel()
         {
             DateTime todaysDate = DateTime.Now.Date;
 
