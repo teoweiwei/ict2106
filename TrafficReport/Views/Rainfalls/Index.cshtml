@@ -4,139 +4,190 @@
 }
 
 <div class="container">
-    <!-- this form contains Rainfall DATA-->
-    @using (Html.BeginForm("HandleForm", "RainFalls", FormMethod.Post, new { @class = "form-horizontal" }))
-    {
-        <h1><b>Check Rainfall Data</b></h1>
+    <div class="row">
+
+
+        <!-- this form contains Rainfall DATA-->
+        <div class="col-md-5">
+            @using (Html.BeginForm("HandleForm", "RainFalls", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                <h1><b>Check Rainfall Data</b></h1>
 
          <!--In lines the Region and Roadname -->
-        <div class="form-group">
-            <div class="form-inline">
-                <label class="col-sm-2 col-md-2">Region :</label>
+                <div class="form-group">
+                    <div class="form-inline">
+                        <label class="col-sm-3 col-md-3">Region :</label>
 
-                <div class="col-sm-2 col-md-2">
-                    @Html.DropDownList("regions", null, new { onchange = "this.form.submit()" })
+                        <div class="col-sm-3 col-md-3">
+                            @Html.DropDownList("regions", null, new { onchange = "this.form.submit()" })
+                        </div>
+
+
+                    </div>
                 </div>
 
-                <label class="col-sm-2 col-md-2">Road Name :</label>
+                <div class="form-group">
+                    <div class="form-inline">
 
-                <div class="col-sm-2 col-md-2">
-                    @Html.DropDownList("roadNames")
+                        <label class="col-sm-3 col-md-3">Road Name :</label>
+
+                        <div class="col-sm-3 col-md-3">
+                            @Html.DropDownList("roadNames")
+                        </div>
+
+                    </div>
                 </div>
-            </div>
-        </div>
 
         <!--Inline the radio buttons -->
-        <div class="form-group">
-            <div class="form-inline">
+                <div class="form-group">
+                    <div class="form-inline">
 
-                <label class="col-sm-2 ">Period :</label>
+                        <label class="col-sm-3 ">Period :</label>
 
-                <div class="col-sm-6">
-                    <label class="radio-inline">
-                        @Html.RadioButton("period", "1month", true) 1-Month
-                    </label>
-                    <label class="radio-inline">
-                        @Html.RadioButton("period", "3month", false) 3-Months
-                    </label>
-                    <label class="radio-inline">
-                        @Html.RadioButton("period", "6month", false) 6-Months
-                    </label>
-                    <label class="radio-inline">
-                        @Html.RadioButton("period", "1year", false) 1-Year
-                    </label>
+                        <div class="col-sm-8">
+                            <label class="radio-inline">
+                                @Html.RadioButton("period", "1month", true) 1-Month
+                            </label>
+                            <label class="radio-inline">
+                                @Html.RadioButton("period", "3month", false) 3-Months
+                            </label>
+                            <label class="radio-inline">
+                                @Html.RadioButton("period", "6month", false) 6-Months
+                            </label>
+                            <label class="radio-inline">
+                                @Html.RadioButton("period", "1year", false) 1-Year
+                            </label>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
         <!-- Search Button-->
-        <button class="btn btn-primary" type="submit" value="Search"> Search</button>
+                <button class="btn btn-primary" type="submit" value="Search"> Search</button>
 
-    }
+            }
+        </div>
 
-    <br />
-
-    @if (!Model.Any())
-    {
-        
-    }
-    else {
-        <table class="table table-hover">
-            <tr class="warning">
-                <th>Road Name</th>
-                <th>Date</th>
-                <th>Rainfall Value</th>
-            </tr>
-            @foreach (var item in Model)
+        <!-- This form inCharge of Uploading-->
+        <div class="col-md-5">
+            
+            @using (Html.BeginForm("Upload", "Rainfalls", null, FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
             {
-                <tr>
-                    <td>
-                        @item.roadName
-                    </td>
+                <div>
+                    <h3><b>CSV File Upload</b></h3>
 
-                    <td>
-                        @if (ViewBag.period == "1year" || ViewBag.period == "3month" || ViewBag.period == "6month")
-                        {
-
-                            switch (item.date)
-                            {
-                                case 1:
-                                    item.monthName = "January";
-                                    break;
-                                case 2:
-                                    item.monthName = "February";
-                                    break;
-                                case 3:
-                                    item.monthName = "March";
-                                    break;
-                                case 4:
-                                    item.monthName = "April";
-                                    break;
-                                case 5:
-                                    item.monthName = "May";
-                                    break;
-                                case 6:
-                                    item.monthName = "June";
-                                    break;
-                                case 7:
-                                    item.monthName = "July";
-                                    break;
-                                case 8:
-                                    item.monthName = "August";
-                                    break;
-                                case 9:
-                                    item.monthName = "September";
-                                    break;
-                                case 10:
-                                    item.monthName = "October";
-                                    break;
-                                case 11:
-                                    item.monthName = "November";
-                                    break;
-                                case 12:
-                                    item.monthName = "December";
-                                    break;
-                            }
-
-                            @item.monthName
-                        }
-                        else if (ViewBag.period == "1month")
-                        {
-                            @item.date
-                        }
-                    </td>
-
-                    <td>@item.rainfall</td>
-
-                </tr>
-                }
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary()
+                    <div class="form-group">
+                        <input type="file" id="csvFile" name="upload" class="btn btn-link" />
+                    </div>
+                    <button type="submit" value="Upload" class="btn btn-info">Upload</button>
+                </div>
+            }
 
 
+        </div>
+    </div>
+
+</div>
 
 
-            </table>
-                        <!-- SCRIPT DATA -->
-            <div class="col-md-6">
+<br />
+
+<div style="padding-left:80px; padding-right:80px">
+    <hr />
+    
+    <div class="row">
+        <!-- TABLE-->
+        <div class="col-md-5">
+            @if (!Model.Any())
+            {
+
+            }
+            else {
+                <table class="table table-hover">
+                    <tr class="warning">
+                        <th>Road Name</th>
+                        <th>Date</th>
+                        <th>Rainfall Value</th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.roadName
+                            </td>
+
+                            <td>
+                                @if (ViewBag.period == "1year" || ViewBag.period == "3month" || ViewBag.period == "6month")
+                                {
+
+                                    switch (item.date)
+                                    {
+                                        case 1:
+                                            item.monthName = "January";
+                                            break;
+                                        case 2:
+                                            item.monthName = "February";
+                                            break;
+                                        case 3:
+                                            item.monthName = "March";
+                                            break;
+                                        case 4:
+                                            item.monthName = "April";
+                                            break;
+                                        case 5:
+                                            item.monthName = "May";
+                                            break;
+                                        case 6:
+                                            item.monthName = "June";
+                                            break;
+                                        case 7:
+                                            item.monthName = "July";
+                                            break;
+                                        case 8:
+                                            item.monthName = "August";
+                                            break;
+                                        case 9:
+                                            item.monthName = "September";
+                                            break;
+                                        case 10:
+                                            item.monthName = "October";
+                                            break;
+                                        case 11:
+                                            item.monthName = "November";
+                                            break;
+                                        case 12:
+                                            item.monthName = "December";
+                                            break;
+                                    }
+
+                                    @item.monthName
+                                }
+                                else if (ViewBag.period == "1month")
+                                {
+                                    @item.date
+                                }
+                            </td>
+
+                            <td>@item.rainfall</td>
+
+                        </tr>
+                    }
+
+
+
+
+                </table>
+                                       
+            }
+
+
+        </div>
+        <!-- SCRIPT DATA BAR CHART --> 
+        <div class="col-md-6">
+            @if (!Model.Any()) { }
+            else
+            {
                 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                 <script type="text/javascript">
                     function DrawChart_Rainfall() {
@@ -156,7 +207,7 @@
                                         string[] strMonth = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
                                         item.monthName = strMonth[item.date - 1];
                                         @: data.addRow(["@item.monthName", @item.rainfall]);
-                                    }
+                                                                }
                                     else {
                                         @: data.addRow(["@item.date/2016", @item.rainfall]);
 
@@ -164,35 +215,27 @@
                                 }
                             }
 
-                                    var options = {
+                            var options = {
                                 bars: 'horizontal' // Required for Material Bar Charts.
                             };
 
-                                var chart = new google.charts.Bar(document.getElementById('barchart_material_Congestion'));
-                                chart.draw(data, options);
-                            }
-                            }
+                            var chart = new google.charts.Bar(document.getElementById('barchart_material_Congestion'));
+                            chart.draw(data, options);
+                        }
+                    }
                 </script>
 
-                <div id="barchart_material_Congestion" style="width: 900px; height: 500px;">
+                <div id="barchart_material_Congestion" style="width: 630px; height: 400px;">
                     <script>DrawChart_Rainfall();</script>
                 </div>
-            </div>
-    }
 
-    <!-- This form inCharge of Uploading-->
-    @using (Html.BeginForm("Upload", "Rainfalls", null, FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
-    {
-        <div>
-            <h3><b>CSV File Upload</b></h3>
-
-            @Html.AntiForgeryToken()
-            @Html.ValidationSummary()
-            <div class="form-group">
-                <input type="file" id="csvFile" name="upload" class="btn btn-link" />
-            </div>
-            <button type="submit" value="Upload" class="btn btn-info">Upload</button>
+            }
+            
         </div>
-    }
+    </div>
+    
+
+
+
 
 </div>
