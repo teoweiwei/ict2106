@@ -16,9 +16,6 @@ namespace TrafficReport.Controllers
         private TrafficSpeedGateway trafficSpeedGateway = new TrafficSpeedGateway();
         
         private TrafficReportContext db = new TrafficReportContext();
-        public TrafficController()
-        {
-        }
 
         public ActionResult Index(String region)
         {   
