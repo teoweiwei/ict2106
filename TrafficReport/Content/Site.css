@@ -23,7 +23,7 @@ textarea {
 }
 
 .jumbotron{
-    min-height: 600px;
+    min-height: 380px;
     background-image: url(image/traffic.jpg);
     background-repeat:no-repeat;
     background-size:cover;
